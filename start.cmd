@@ -1,1 +1,10 @@
-"C:\Program Files\Java\jdk-15.0.1\bin\java.exe" "-javaagent:E:\Application\IntelliJ IDEA Community Edition 2021.2.1\lib\idea_rt.jar=59303:E:\Application\IntelliJ IDEA Community Edition 2021.2.1\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\ST3VOS\.m2\repository\org\openjfx\javafx-controls\11.0.2\javafx-controls-11.0.2.jar;C:\Users\ST3VOS\.m2\repository\org\openjfx\javafx-graphics\11.0.2\javafx-graphics-11.0.2.jar;C:\Users\ST3VOS\.m2\repository\org\openjfx\javafx-base\11.0.2\javafx-base-11.0.2.jar -p C:\Users\ST3VOS\.m2\repository\org\openjfx\javafx-graphics\11.0.2\javafx-graphics-11.0.2-win.jar;C:\Users\ST3VOS\.m2\repository\org\openjfx\javafx-controls\11.0.2\javafx-controls-11.0.2-win.jar;E:\Scolarite\University\Licence_3\Projet\Labyrinthus\target\classes;C:\Users\ST3VOS\.m2\repository\org\openjfx\javafx-base\11.0.2\javafx-base-11.0.2-win.jar -m game/game.Main
+@REM "C:\Program Files\Java\jdk-15.0.1\bin\java.exe" 
+@REM -Dfile.encoding=UTF-8
+@REM -classpath javafx\javafx-controls-11.0.2.jar;
+@REM javafx/javafx-graphics-11.0.2.jar;
+@REM javafx\javafx-base-11.0.2.jar 
+@REM -p javafx\javafx-controls-11.0.2-win.jar;
+@REM javafx/javafx-graphics-11.0.2.jar;
+@REM %1%\target\classes;javafx\javafx-base-11.0.2.jar 
+@REM -m game/game.Main
+java 
