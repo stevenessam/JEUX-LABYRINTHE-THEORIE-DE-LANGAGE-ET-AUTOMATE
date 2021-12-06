@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+	<script src='../js/automate.js'></script>
+</head>
+<body>
+	<script>
+		const HTMLParse = new AutomateBuilder
+		
+var typevaluesStart = []
+var typevaluesEnd = []
+var startinstruction = []
+
+	var separator = HTMLParse.addToken(" ","separate",[0])
+	
+	/* params */
+	var paramsStart = HTMLParse.addToken("(","paramsStart",[separator])
+	var paramsEnd = HTMLParse.addToken(")","paramsEnd",[separator],[separator])
+
+	/* int */
+	var integer = HTMLParse.addToken(/[0-9]/,"integer",[paramsStart,0,separator,-1],[separator,paramsEnd])
+	typevaluesStart.push(integer)
+	typevaluesEnd.push(integer)
+
+	/* operator + */
+	var integer = HTMLParse.addToken("+","operator +",[separator,integer],[separator,integer])
+	typevaluesStart.push(integer)
+	typevaluesEnd.push(integer)
+
+	/* operator * */
+	var integer = HTMLParse.addToken("*","operator *",[paramsEnd,separator,integer],[separator,integer,paramsStart])
+	typevaluesStart.push(integer)
+	typevaluesEnd.push(integer)
+
+		const tests = [
+			"1 + (6 + 1 ) * 10 + 2 * 3",
+			"3 * 3 + 7 * 7 + 4",
+		]
+		function test(){
+			tests.forEach(test=>{
+				console.log(HTMLParse.print(test))
+			})
+		}
+		test()
+	</script>
+</body>
+</html>
