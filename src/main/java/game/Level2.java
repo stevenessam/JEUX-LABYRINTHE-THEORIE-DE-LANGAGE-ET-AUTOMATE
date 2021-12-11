@@ -81,15 +81,15 @@ public class Level2 implements Level {
     }
 
     public void adjustWalls(Game game) {
-        game.getTile(2, 9).setState(
-            game.isVisited(2, 10) > 0 ?
-            TileState.WALL :
-            TileState.EMPTY
-        );
-        game.getTile(12, 7).setState(
-            (game.isVisited(2, 10) == 1 && game.isVisited(12, 4) != 1) ?
-            TileState.EMPTY :
-            TileState.WALL
-        );
+        // game.getTile(2, 9).setState(
+        //     game.isVisited(2, 10) > 0 ?
+        //     TileState.WALL :
+        //     TileState.EMPTY
+        // );
+        // game.getTile(12, 7).setState(
+        //     (game.isVisited(2, 10) == 1 && game.isVisited(12, 4) != 1) ?
+        //     TileState.EMPTY :
+        //     TileState.WALL
+        // );
     }
 }

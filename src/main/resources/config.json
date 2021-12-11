@@ -1,0 +1,8 @@
+{
+	player:{
+		UP:"Z",
+		LEFT:"Q",
+		RIGHT:"D",
+		DOWN:"S",
+	}
+}
