@@ -14,7 +14,7 @@ public class player extends gameObject{
 		setSprite(Textures.Knight,2,1);
 	}
 	public void DOWN(){
-		if (y<this.getScene().height-1 && getNoCollision(x, y + 1)) {
+		if (y<this.getScene().getCanvasHeight()-1 && getNoCollision(x, y + 1)) {
 			y+=speed;
 		}
 	}
@@ -24,7 +24,7 @@ public class player extends gameObject{
 		}
 	}
 	public void RIGHT(){
-		if (x<this.getScene().width-1 && getNoCollision(x + 1, y)) {
+		if (x<this.getScene().getCanvasWidth()-1 && getNoCollision(x + 1, y)) {
 			x+=speed;
 		}
 	}

@@ -14,8 +14,14 @@ import javafx.util.Duration;
 public class gameScene extends Canvas{
 	List<gameObject> batch = new ArrayList<gameObject>();
 	Image background;
-	int width;
-	int height;
+	private int width;
+	private int height;
+	public int getCanvasHeight() {
+		return height;
+	}
+	public int getCanvasWidth() {
+		return width;
+	}
 	private GraphicsContext graphic;
 	public gameScene(int width, int height) {
 		this.width = width;
