@@ -23,6 +23,8 @@ public class gameObject {
 	private gameScene scene;
 	public void setScene(gameScene scene) {
 		this.scene = scene;
+		this.x = x*this.scene.getScale();
+		this.y = y*this.scene.getScale();
 	}
 	protected gameScene getScene() {
 		return scene;
@@ -38,6 +40,11 @@ public class gameObject {
 		//ressourcesManager.getImage("Empty")
 		// sprite.setViewOrder(10);
 	}
+	public gameObject(int x,int y,String sprite){
+		this.x = x;
+		this.y = y;
+		this.sprite = new Image(sprite);
+	}
 	protected void update(){
 
 	}
@@ -47,6 +54,13 @@ public class gameObject {
 		}else{
 			graphic.drawImage(sprite, ((frame)%column)*width, (int)((frame)/column)*height, width, height, x, y, width, height);
 		}
+	}
+	public void setSprite(int col,int row){
+		this.width = (int) (sprite.getWidth()/col);
+		this.height = (int) (sprite.getHeight()/row);
+		this.column = col;
+		this.row = row;
+		this.frame = 0;
 	}
 	public void setSprite(String url,int col,int row){
 		sprite = new Image(url);

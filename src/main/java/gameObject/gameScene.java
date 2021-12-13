@@ -16,6 +16,10 @@ public class gameScene extends Canvas{
 	Image background;
 	private int width;
 	private int height;
+	private int scale = 16;
+	public int getScale() {
+		return scale;
+	}
 	public int getCanvasHeight() {
 		return height;
 	}
