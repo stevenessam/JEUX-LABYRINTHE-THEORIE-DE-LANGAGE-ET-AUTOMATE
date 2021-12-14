@@ -1,6 +1,7 @@
 package gameObject;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -26,9 +27,12 @@ public class player extends gameObject{
 	@Override
 	protected void update() {
 		this.setFrame(((this.getTimer()/50)+1)%2);
-		x+=dx*speed;
-		y+=dy*speed;
-
+		float x=getX()+dx*speed;
+		float y=getY()+dy*speed;
+		if(canWalkOn(x, y)){
+			setX(x);
+			setY(y);
+		}
 	}
 	@Override
 	public void render(GraphicsContext graphic) {
@@ -68,5 +72,11 @@ public class player extends gameObject{
 			case "RIGHT":dx=pressed?1:0;break;
 			case "UP":dy=pressed?-1:0;break;
 		}
+	}
+	private boolean canWalkOn(float x,float y){
+		List<gameObject> objects = this.getScene().getObjects(x,y);
+		return objects.stream().filter((gameObject gO)->{
+			return gameObjectType.PATH.equals(gO.getType());
+		}).findFirst().isPresent();
 	}
 }

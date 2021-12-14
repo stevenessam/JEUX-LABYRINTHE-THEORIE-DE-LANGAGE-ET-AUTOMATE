@@ -1,5 +1,5 @@
 package gameObject;
 
 public enum gameObjectType {
-	SOLID,PLAYER,NOCLIP
+	SOLID,PLAYER,NOCLIP,PATH
 }

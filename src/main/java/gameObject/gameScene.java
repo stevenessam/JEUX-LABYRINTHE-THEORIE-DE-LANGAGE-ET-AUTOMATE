@@ -10,6 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
+import ressourceManages.Textures;
 
 public class gameScene extends Canvas{
 	List<gameObject> batch = new ArrayList<gameObject>();
@@ -39,6 +40,7 @@ public class gameScene extends Canvas{
 		setScaleY(width/height);
 		graphic = this.getGraphicsContext2D();
 		graphic.scale(scale, scale);
+		Textures.setScale(scale);
 	}
 	public void add(gameObject gameobject){
 		batch.add(gameobject);
@@ -91,7 +93,7 @@ public class gameScene extends Canvas{
 	}
 
 	public void setBackdrop(String texture){
-		background = new Image(texture);
+		background =  Textures.load(texture);
 	}
 	public void keypress(KeyCode keycode,boolean pressed){
 		batch.forEach((gameobject)->{

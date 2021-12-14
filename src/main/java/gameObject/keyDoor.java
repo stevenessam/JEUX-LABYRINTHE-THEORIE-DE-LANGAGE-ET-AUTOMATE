@@ -22,7 +22,7 @@ public class keyDoor extends gameObject{
 			super.render(graphic);
 	}
 	private boolean isplayerTouching(){
-		List<gameObject> objects = this.getScene().getObjects(x,y);
+		List<gameObject> objects = this.getScene().getObjects(getX(),getY());
 		return objects.stream().filter((gameObject gO)->{
 			return gameObjectType.PLAYER.equals(gO.getType());
 		}).findFirst().isPresent();

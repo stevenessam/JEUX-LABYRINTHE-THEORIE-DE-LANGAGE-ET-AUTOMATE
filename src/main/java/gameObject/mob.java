@@ -10,33 +10,33 @@ public class mob extends gameObject {
 		// this.pattern = pattern;
 		setSprite(Textures.mob, 2, 1);
 	}
-	public void DOWN() {
-		if (y < this.getScene().getCanvasHeight() - 1 && getNoCollision(x, y + 1)) {
-			y += speed;
-		}
-	}
-	public void LEFT() {
-		if (x > 0 && getNoCollision(x - 1, y)) {
-			x -= speed;
-		}
-	}
-	public void RIGHT() {
-		if (x < this.getScene().getCanvasWidth() - 1 && getNoCollision(x + 1, y)) {
-			x += speed;
-		}
-	}
-	public void UP() {
-		if (y > 0 && getNoCollision(x, y - 1)) {
-			y -= speed;
-		}
-	}
+	// public void DOWN() {
+	// 	if (y < this.getScene().getCanvasHeight() - 1 && getNoCollision(x, y + 1)) {
+	// 		y += speed;
+	// 	}
+	// }
+	// public void LEFT() {
+	// 	if (x > 0 && getNoCollision(x - 1, y)) {
+	// 		x -= speed;
+	// 	}
+	// }
+	// public void RIGHT() {
+	// 	if (x < this.getScene().getCanvasWidth() - 1 && getNoCollision(x + 1, y)) {
+	// 		x += speed;
+	// 	}
+	// }
+	// public void UP() {
+	// 	if (y > 0 && getNoCollision(x, y - 1)) {
+	// 		y -= speed;
+	// 	}
+	// }
 	public void moves() {
-		switch (pattern.next()) {
-			case DOWN:DOWN();break;
-			case LEFT:LEFT();break;
-			case RIGHT:RIGHT();break;
-			case UP:UP();break;
-		}
+		// switch (pattern.next()) {
+		// 	case DOWN:DOWN();break;
+		// 	case LEFT:LEFT();break;
+		// 	case RIGHT:RIGHT();break;
+		// 	case UP:UP();break;
+		// }
 	}
 	@Override
 	protected void update() {

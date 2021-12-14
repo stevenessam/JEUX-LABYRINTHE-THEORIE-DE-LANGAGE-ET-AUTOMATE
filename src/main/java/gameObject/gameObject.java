@@ -18,8 +18,8 @@ public class gameObject extends sprite{
 	private gameScene scene;
 	public void setScene(gameScene scene) {
 		this.scene = scene;
-		this.x = x*Game.BLOCK_WIDTH;
-		this.y = y*Game.BLOCK_HEIGHT;
+		this.setX(getX()*Game.BLOCK_WIDTH*this.scene.getScale());
+		this.setY(getY()*Game.BLOCK_HEIGHT*this.scene.getScale());
 	}
 	protected gameScene getScene() {
 		return scene;
@@ -33,8 +33,8 @@ public class gameObject extends sprite{
 	}
 	public gameObject(int x,int y,String sprite){
 		super(sprite);
-		this.x = x;
-		this.y = y;
+		this.setX(x);
+		this.setY(y);
 	}
 	protected void update(){
 
@@ -50,8 +50,8 @@ public class gameObject extends sprite{
 		}).findFirst().isEmpty();
 	}
 	public boolean isOn(double x,double y){
-		boolean onX = this.x<=x&&this.x+width>=x;
-		boolean onY = this.y<=y&&this.y+height>=y;
+		boolean onX = this.getX()<=x&&this.getX()+getWidth()>=x;
+		boolean onY = this.getY()<=y&&this.getX()+getHeight()>=y;
 		return onX&&onY;
 	}
 }
