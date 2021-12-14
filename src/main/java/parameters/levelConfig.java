@@ -1,5 +1,7 @@
 package parameters;
 
+import automate.Automate;
+import automate.Token;
 import gameObject.gameObject;
 import gameObject.gameScene;
 import gameObject.player;
@@ -9,13 +11,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.regex.Pattern;
 
 public class levelConfig {
 	private optionConfig option;
 	public levelConfig(optionConfig option) {
 		this.option = option;
-	}
-	public gameScene getLevelScene(){
+	}public gameScene getLevelScene(){
 		gameScene scene = new gameScene(480,360);
 		scene.setBackdrop(Textures.night_backdrop);
 		scene.add(new gameObject(0,0));
@@ -26,6 +28,18 @@ public class levelConfig {
 	}
 
 	public String ReadeFile(String file) {
+		Automate optionLang = new Automate();
+		Token ObjectStart = new Token("{","ObjectStart");
+		ObjectStart.add(0);
+		optionLang.addToken(ObjectStart);
+		Token Indent = new Token(Pattern.compile("[\n\t\r]",Pattern.CASE_INSENSITIVE),"Indent");
+		Indent.add(ObjectStart);
+		optionLang.addToken(Indent);
+		Token ObjectKey = new Token(Pattern.compile("[a-z]",Pattern.CASE_INSENSITIVE),"ObjectKey");
+		ObjectKey.add(ObjectStart);
+		ObjectKey.add(Indent);
+		optionLang.addToken(ObjectKey);
+		ObjectKey.add(ObjectKey);
 
 		InputStream config = optionConfig.class.getResourceAsStream(file);
 		if (config != null) {
