@@ -37,7 +37,6 @@ public class Game{
 		scene.setOnKeyReleased(event -> {
 			gameScene.keypress(event.getCode(),false);
 		});
-		System.out.println(scene.getAntiAliasing());
 	}
 
 	public Game() {

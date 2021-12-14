@@ -16,6 +16,7 @@ public class Textures {
 	public final static String Door = "door.png";
 	public final static String KeyDoor = "key.png";
 	public static final String Stats = "stats.png";
+	public static final String Floor = "floor.png";
 
 	private static int scale;
 	public static int getScale() {

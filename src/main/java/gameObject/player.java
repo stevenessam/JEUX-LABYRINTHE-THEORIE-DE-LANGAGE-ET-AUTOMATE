@@ -15,7 +15,7 @@ public class player extends gameObject{
 	private sprite lifeHUD = new sprite(Textures.Stats);
 
 	public player(int x, int y) {
-		super(x,y);
+		super(x,y+.5);
 		setType(gameObjectType.PLAYER);
 		setSprite(Textures.Knight,2,1);
 		lifeHUD.setSprite(3, 2);
@@ -27,8 +27,8 @@ public class player extends gameObject{
 	@Override
 	protected void update() {
 		this.setFrame(((this.getTimer()/50)+1)%2);
-		float x=getX()+dx*speed;
-		float y=getY()+dy*speed;
+		double x=getX()+dx*speed;
+		double y=getY()+dy*speed;
 		if(canWalkOn(x, y)){
 			setX(x);
 			setY(y);
@@ -73,10 +73,13 @@ public class player extends gameObject{
 			case "UP":dy=pressed?-1:0;break;
 		}
 	}
-	private boolean canWalkOn(float x,float y){
+	private boolean canWalkOn(double x,double y){
 		List<gameObject> objects = this.getScene().getObjects(x,y);
-		return objects.stream().filter((gameObject gO)->{
+		System.out.println(objects);
+		boolean floor = objects.stream().filter((gameObject gO)->{
 			return gameObjectType.PATH.equals(gO.getType());
 		}).findFirst().isPresent();
+		// System.out.println(floor);
+		return floor;
 	}
 }

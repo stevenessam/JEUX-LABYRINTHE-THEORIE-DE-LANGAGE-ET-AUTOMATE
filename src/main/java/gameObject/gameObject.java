@@ -28,10 +28,10 @@ public class gameObject extends sprite{
 	public gameObject(){
 		this(0,0);
 	}
-	public gameObject(int x,int y){
+	public gameObject(double x,double y){
 		this(x,y,"empty.png");
 	}
-	public gameObject(int x,int y,String sprite){
+	public gameObject(double x,double y,String sprite){
 		super(sprite);
 		this.setX(x);
 		this.setY(y);

@@ -2,25 +2,22 @@ package gameObject;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.PixelWriter;
-import javafx.scene.image.WritableImage;
 import ressourceManages.Textures;
 
 public class sprite {
 
-	private float x;
-	public float getX() {
+	private double x;
+	public double getX() {
 		return x;
 	}
-	public void setX(float x) {
+	public void setX(double x) {
 		this.x = x;
 	}
-	private float y;
-	public float getY() {
+	private double y;
+	public double getY() {
 		return y;
 	}
-	public void setY(float y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 	private int width;

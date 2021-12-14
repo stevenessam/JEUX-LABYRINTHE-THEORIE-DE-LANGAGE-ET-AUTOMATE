@@ -8,6 +8,7 @@ import gameObject.keyDoor;
 import gameObject.movement;
 import gameObject.pattern;
 import gameObject.door;
+import gameObject.floor;
 import gameObject.player;
 import ressourceManages.Textures;
 
@@ -23,7 +24,15 @@ public class levelConfig {
 
 		keyDoor key1 = new keyDoor(2,1);
 
-		scene.add(new wall(2,0));
+		scene.add(new floor(0,1));
+		scene.add(new floor(1,1));
+		scene.add(new floor(2,1));
+		scene.add(new floor(3,1));
+		scene.add(new floor(4,1));
+		scene.add(new floor(5,1));
+		scene.add(new floor(6,1));
+		scene.add(new floor(7,1));
+
 		scene.add(new wall(3,0));
 		scene.add(new wall(4,0));
 		scene.add(new door(5,0,key1));
