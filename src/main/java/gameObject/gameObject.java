@@ -2,19 +2,24 @@ package gameObject;
 
 import java.util.List;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
+import game.Game;
 import javafx.scene.input.KeyCode;
 
 public class gameObject extends sprite{
 	
-	protected gameObjectType type = gameObjectType.NOCLIP;
+	private gameObjectType type = gameObjectType.NOCLIP;
+	public gameObjectType getType() {
+		return type;
+	}
+	public void setType(gameObjectType type) {
+		this.type = type;
+	}
 
 	private gameScene scene;
 	public void setScene(gameScene scene) {
 		this.scene = scene;
-		this.x = x*this.scene.getScale();
-		this.y = y*this.scene.getScale();
+		this.x = x*Game.BLOCK_WIDTH;
+		this.y = y*Game.BLOCK_HEIGHT;
 	}
 	protected gameScene getScene() {
 		return scene;

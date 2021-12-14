@@ -16,9 +16,12 @@ public class gameScene extends Canvas{
 	Image background;
 	private int width;
 	private int height;
-	private int scale = 28;
+	private int scale = 2;
 	public int getScale() {
 		return scale;
+	}
+	public void setScale(int scale) {
+		this.scale = scale;
 	}
 	public int getCanvasHeight() {
 		return height;
@@ -29,12 +32,13 @@ public class gameScene extends Canvas{
 	private GraphicsContext graphic;
 	public gameScene(int width, int height) {
 		this.width = width;
-		setWidth(width);
+		setWidth(this.width);
 		this.height = height;
-		setHeight(height);
+		setHeight(this.height);
 		setScaleX(width/height);
 		setScaleY(width/height);
 		graphic = this.getGraphicsContext2D();
+		graphic.scale(scale, scale);
 	}
 	public void add(gameObject gameobject){
 		batch.add(gameobject);
@@ -44,7 +48,7 @@ public class gameScene extends Canvas{
 	private void rendering(){
 		timer++;
 		if(background != null){
-			graphic.drawImage(background,0,0,width,height);
+			graphic.drawImage(background,0,0,width/scale,height/scale);
 		}
 		batch.forEach((gameobject)->{
 			gameobject.update();

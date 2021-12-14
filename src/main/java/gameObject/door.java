@@ -6,19 +6,22 @@ public class door extends gameObject{
 
 	gameObjectType type = gameObjectType.SOLID;
 
-	int key_x;
-	int key_y;
+	keyDoor key;
 
-	public door(int x,int y,int key_x,int key_y) {
+	public door(int x,int y,keyDoor key) {
 		super(x,y);
-		this.key_x = key_x;
-		this.key_y = key_y;
+		this.key = key;
 		setSprite(Textures.Door,3,1);
 	}
 
 	@Override
 	protected void update() {
-		this.setFrame(((this.getTimer()/50)+1)%3);
+		if(this.key.isPickup()){
+			this.setFrame(1+((this.getTimer()/50)+1)%2);
+		}else{
+			this.setFrame(0);
+		}
+		
 	}
 
 }

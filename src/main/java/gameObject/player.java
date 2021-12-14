@@ -15,6 +15,7 @@ public class player extends gameObject{
 
 	public player(int x, int y) {
 		super(x,y);
+		setType(gameObjectType.PLAYER);
 		setSprite(Textures.Knight,2,1);
 		lifeHUD.setSprite(3, 2);
 	}

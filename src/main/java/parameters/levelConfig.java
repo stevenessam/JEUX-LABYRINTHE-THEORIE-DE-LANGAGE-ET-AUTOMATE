@@ -17,14 +17,16 @@ public class levelConfig {
 		this.option = option;
 	}
 	public gameScene getLevelScene(){
-		gameScene scene = new gameScene(480,360);
+		gameScene scene = new gameScene(1000,660);
 		scene.setBackdrop(Textures.night_backdrop);
 		scene.add(new gameObject(0,0));
+
+		keyDoor key1 = new keyDoor(2,1);
 
 		scene.add(new wall(2,0));
 		scene.add(new wall(3,0));
 		scene.add(new wall(4,0));
-		scene.add(new door(5,0,2,0));
+		scene.add(new door(5,0,key1));
 		scene.add(new wall(6,0));
 		scene.add(new wall(7,0));
 		scene.add(new wall(8,0));
@@ -34,7 +36,7 @@ public class levelConfig {
 		));
 
 		
-		scene.add(new keyDoor(2,1));
+		scene.add(key1);
 
 		player a =new player(0,0);
 		a.setControls(option.getPlayerControls(0));
