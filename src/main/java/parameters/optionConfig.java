@@ -21,22 +21,32 @@ public class optionConfig {
 		Automate optionLang = new Automate();
 		// optionLang.setDebug(true);
 
+		/** quand le symbole est "{" */
 		Token ObjectStart = new Token("{","ObjectStart");
+		/** quand on est a l'etat 0 */
 		ObjectStart.add(0);
+		/** ajouter le token à l'automate*/
 		optionLang.addToken(ObjectStart);
 
 		// System.out.println(Pattern.compile("[\t\n\r]",Pattern.CASE_INSENSITIVE).matcher("a\nb\n\tc").find());
-
+		
+		/** quand le symbole est un retour à la ligne ou une tabulation */
 		Token Indent = new Token(Pattern.compile("[\n\t\r]",Pattern.CASE_INSENSITIVE),"Indent");
 		// Token Indent = new Token(Arrays.asList(new Character[]{9,10,13}),"Indent");
+		/** quand on est a l'etat de ObjectStart */
 		Indent.add(ObjectStart);
+		/** ajouter le token */
 		optionLang.addToken(Indent);
 
+		/** quand le symbole est un lettre */
 		Token ObjectKey = new Token(Pattern.compile("[a-z]",Pattern.CASE_INSENSITIVE),"ObjectKey");
+		/** quand on est a l'etat de ObjectStart */
 		ObjectKey.add(ObjectStart);
+		/** quand on est a l'etat d'Indent */
 		ObjectKey.add(Indent);
+		/** ajouter le token */
 		optionLang.addToken(ObjectKey);
-		
+		/** quand on est a l'etat d'ObjectKey */
 		ObjectKey.add(ObjectKey);
 
 		Token ObjectAssign = new Token(":","ObjectAssign");
