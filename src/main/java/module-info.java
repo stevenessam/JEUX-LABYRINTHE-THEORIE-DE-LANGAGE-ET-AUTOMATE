@@ -1,4 +1,4 @@
 module game {
-    requires transitive javafx.controls;
-    exports game;
+	requires transitive javafx.controls;
+	exports game;
 }

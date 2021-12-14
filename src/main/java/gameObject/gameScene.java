@@ -16,7 +16,7 @@ public class gameScene extends Canvas{
 	Image background;
 	private int width;
 	private int height;
-	private int scale = 16;
+	private int scale = 28;
 	public int getScale() {
 		return scale;
 	}
@@ -40,7 +40,9 @@ public class gameScene extends Canvas{
 		batch.add(gameobject);
 		gameobject.setScene(this);
 	}
+	private int timer = 0;
 	private void rendering(){
+		timer++;
 		if(background != null){
 			graphic.drawImage(background,0,0,width,height);
 		}
@@ -56,12 +58,15 @@ public class gameScene extends Canvas{
 		isrunning = true;
 		timeline = new Timeline(
 			new KeyFrame(
-				Duration.millis(500),
+				Duration.millis(10),
 				event -> rendering()
 			)
 		);
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
+	}
+	public int getTimer(){
+		return timer;
 	}
 	public List<gameObject> getObjects(double x,double y){
 		List<gameObject> area = new ArrayList<gameObject>();
@@ -84,9 +89,9 @@ public class gameScene extends Canvas{
 	public void setBackdrop(String texture){
 		background = new Image(texture);
 	}
-	public void keypress(KeyCode keycode){
+	public void keypress(KeyCode keycode,boolean pressed){
 		batch.forEach((gameobject)->{
-			gameobject.keypress(keycode);
+			gameobject.keypress(keycode,pressed);
 		});
 	}
 }

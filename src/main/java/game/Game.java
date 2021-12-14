@@ -29,7 +29,10 @@ public class Game{
 		gamePane = new BorderPane();
 		setLocation(Location.GAMEPLAY);
 		scene.setOnKeyPressed(event -> {
-			gameScene.keypress(event.getCode());
+			gameScene.keypress(event.getCode(),true);
+		});
+		scene.setOnKeyReleased(event -> {
+			gameScene.keypress(event.getCode(),false);
 		});
 	}
 

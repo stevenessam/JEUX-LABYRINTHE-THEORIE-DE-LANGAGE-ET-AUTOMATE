@@ -13,12 +13,12 @@ public class door extends gameObject{
 		super(x,y);
 		this.key_x = key_x;
 		this.key_y = key_y;
-		setSprite(Textures.Door,2,1);
+		setSprite(Textures.Door,3,1);
 	}
 
 	@Override
 	protected void update() {
-		this.setFrame((this.frame+1)%2);
+		this.setFrame(((this.getTimer()/50)+1)%3);
 	}
 
 }
