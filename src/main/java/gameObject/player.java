@@ -15,9 +15,11 @@ public class player extends gameObject{
 	private sprite lifeHUD = new sprite(Textures.Stats);
 
 	public player(int x, int y) {
-		super(x,y+.5);
+		super(x,y);
 		setType(gameObjectType.PLAYER);
 		setSprite(Textures.Knight,2,1);
+		this.setDeltaX(.5);
+		this.setDeltaY(1);
 		lifeHUD.setSprite(3, 2);
 	}
 	private HashMap<KeyCode, String> playerControls;
@@ -41,7 +43,7 @@ public class player extends gameObject{
 		lifeHUD.setFrame(0);
 		double hearts = life;
 		for (int i = 0; i < 5; i++) {
-			lifeHUD.setX(10+i*16);
+			lifeHUD.setX(10+i*16*this.getScene().getScale());
 			if(hearts<1){
 				if(hearts<0){
 					lifeHUD.setFrame(2);
@@ -52,10 +54,10 @@ public class player extends gameObject{
 			lifeHUD.render(graphic);
 			hearts--;
 		}
-		lifeHUD.setY(26);
+		lifeHUD.setY(26*this.getScene().getScale());
 		lifeHUD.setFrame(0);
 		for (int i = 0; i < 3; i++) {
-			lifeHUD.setX(10+i*16);
+			lifeHUD.setX(10+i*16*this.getScene().getScale());
 			lifeHUD.setFrame(3+((this.getTimer()/25)+1)%3);
 			lifeHUD.render(graphic);
 		}
@@ -75,7 +77,7 @@ public class player extends gameObject{
 	}
 	private boolean canWalkOn(double x,double y){
 		List<gameObject> objects = this.getScene().getObjects(x,y);
-		System.out.println(objects);
+		// System.out.println(objects+" at "+x+" "+y);
 		boolean floor = objects.stream().filter((gameObject gO)->{
 			return gameObjectType.PATH.equals(gO.getType());
 		}).findFirst().isPresent();

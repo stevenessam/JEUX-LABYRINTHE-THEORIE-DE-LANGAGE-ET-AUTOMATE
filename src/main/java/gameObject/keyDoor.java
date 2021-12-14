@@ -13,7 +13,9 @@ public class keyDoor extends gameObject{
 	}
 
 	public keyDoor(int x,int y) {
-		super(x,y,Textures.KeyDoor);
+		super(x+.5,y+.5,Textures.KeyDoor);
+		this.setDeltaX(.5);
+		this.setDeltaY(.5);
 	}
 
 	@Override

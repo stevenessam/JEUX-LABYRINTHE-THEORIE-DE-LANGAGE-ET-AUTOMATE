@@ -79,6 +79,7 @@ public class gameScene extends Canvas{
 		batch.forEach((gameObject gO)->{
 			if(gO.isOn(x,y)){
 				area.add(gO);
+				// System.out.println(gO.getType()+" at "+x+" "+y);
 			}
 		});
 		return area;

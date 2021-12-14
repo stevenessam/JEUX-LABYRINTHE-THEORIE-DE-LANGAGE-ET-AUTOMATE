@@ -34,6 +34,18 @@ public class sprite {
 	private int column = 1;
 	private int row = 1;
 
+	private double deltaX = 0;
+	private double deltaY = 0;
+	public void setDeltaX(double deltaX) {
+		this.deltaX = deltaX;
+	}
+	public void setDeltaY(double deltaY) {
+		this.deltaY = deltaY;
+	}
+	public void setCentred(double delta) {
+		this.deltaX = delta;
+		this.deltaY = delta;
+	}
 
 
 	protected int frame = 1;
@@ -41,12 +53,16 @@ public class sprite {
 	public sprite(String sprite) {
 		// this.image = new Image(sprite);
 		this.image = Textures.load(sprite);
+		this.width = (int) this.image.getWidth();
+		this.height = (int) this.image.getHeight();
 		}
 	public void render(GraphicsContext graphic){
+		double dx = -width * this.deltaX;
+		double dy = -height * this.deltaY;
 		if(column == 1 && row ==1){
-			graphic.drawImage(image, x, y);
+			graphic.drawImage(image, x+dx, y+dy);
 		}else{
-			graphic.drawImage(image, ((frame)%column)*width, (int)((frame)/column)*height, width, height, x, y, width, height);
+			graphic.drawImage(image, ((frame)%column)*width, (int)((frame)/column)*height, width, height, x+dx, y+dy, width, height);
 		}
 	}
 	public void setSprite(int col,int row){

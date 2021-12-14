@@ -20,11 +20,12 @@ public class levelConfig {
 	public gameScene getLevelScene(){
 		gameScene scene = new gameScene(1000,660);
 		scene.setBackdrop(Textures.night_backdrop);
-		scene.add(new gameObject(0,0));
+		// scene.add(new gameObject(0,0));
 
 		keyDoor key1 = new keyDoor(2,1);
 
 		scene.add(new floor(0,1));
+		scene.add(new floor(1,0));
 		scene.add(new floor(1,1));
 		scene.add(new floor(2,1));
 		scene.add(new floor(3,1));
@@ -47,7 +48,7 @@ public class levelConfig {
 		
 		scene.add(key1);
 
-		player a =new player(0,0);
+		player a =new player(0,1);
 		a.setControls(option.getPlayerControls(0));
 		scene.add(a);
 		return scene;
