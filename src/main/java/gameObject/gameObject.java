@@ -50,8 +50,10 @@ public class gameObject extends sprite{
 		}).findFirst().isEmpty();
 	}
 	public boolean isOn(double x,double y){
-		boolean onX = this.getX()<=x&&this.getX()+getWidth()>=x;
-		boolean onY = this.getY()<=y&&this.getY()+getHeight()>=y;
+		double dx = -getWidth() * this.getDeltaX();
+		double dy = -getHeight() * this.getDeltaY();
+		boolean onX = this.getX()+dx<=x&&this.getX()+dx+getWidth()>=x;
+		boolean onY = this.getY()+dy<=y&&this.getY()+dy+getHeight()>=y;
 		return onX&&onY;
 	}
 }

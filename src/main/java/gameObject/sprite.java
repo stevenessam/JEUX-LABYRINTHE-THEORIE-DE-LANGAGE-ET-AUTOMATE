@@ -42,9 +42,15 @@ public class sprite {
 	public void setDeltaY(double deltaY) {
 		this.deltaY = deltaY;
 	}
-	public void setCentred(double delta) {
+	public void setDelta(double delta) {
 		this.deltaX = delta;
 		this.deltaY = delta;
+	}
+	public double getDeltaX() {
+		return deltaX;
+	}
+	public double getDeltaY() {
+		return deltaY;
 	}
 
 
