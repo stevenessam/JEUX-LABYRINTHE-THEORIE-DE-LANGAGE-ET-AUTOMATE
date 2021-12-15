@@ -1,5 +1,7 @@
 package parameters;
 
+import automate.Automate;
+import automate.Token;
 import gameObject.gameObject;
 import gameObject.wall;
 import gameObject.stairs;
@@ -13,20 +15,27 @@ import gameObject.door;
 import gameObject.floor;
 import gameObject.potion;
 import gameObject.player;
+import javafx.scene.paint.Material;
 import ressourceManages.Textures;
 
-public class levelConfig {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.regex.Pattern;
+
+public class levelConfig<BlockPlaceEvent, Player, Block> {
 	private optionConfig option;
+	//private KerberosTicket Bukkit;
+
 	public levelConfig(optionConfig option) {
 		this.option = option;
 	}
 	public gameScene getLevelScene(){
 		gameScene scene = new gameScene(1000,660);
+
 		scene.setBackdrop(Textures.night_backdrop);
 		// scene.add(new gameObject(0,0));
-
-
-
 
 		keyDoor key1 = new keyDoor(2,1);
 		stairs_item itemStair1 = new stairs_item(0,1);
@@ -70,4 +79,46 @@ public class levelConfig {
 	public gameScene getLevelScene(int level) {
 		return getLevelScene();
 	}
+
+
+	public String ReadeFile(String file) {
+
+		InputStream config = optionConfig.class.getResourceAsStream(file);
+		if (config != null) {
+			StringBuilder sb = new StringBuilder();
+			BufferedReader br = new BufferedReader(new InputStreamReader(config));
+			String line;
+			try {
+				while ((line = br.readLine()) != null) {
+					sb.append(line + System.lineSeparator());
+				}
+				return sb.toString().trim().replaceAll("[\n\t\r]", "");
+
+			} catch (IOException e) {
+				System.err.println("path Not find");
+			}
+
+		}else{
+			System.err.println(file + "not existe");
+		}
+		return null;
+	}
+
+	public void token(){
+		//Etats de L'automate
+		Automate ParaAuto = new Automate();
+		Token ObjectStart = new Token("{","ObjectStart");
+		ObjectStart.add(0);
+		ParaAuto.addToken(ObjectStart);
+		Token Indent = new Token(Pattern.compile("[\n\t\r]",Pattern.CASE_INSENSITIVE),"Indent");
+		Indent.add(ObjectStart);
+		ParaAuto.addToken(Indent);
+		Token ObjectKey = new Token(Pattern.compile("[a-z]",Pattern.CASE_INSENSITIVE),"ObjectKey");
+		ObjectKey.add(ObjectStart);
+		ObjectKey.add(Indent);
+		ParaAuto.addToken(ObjectKey);
+		ObjectKey.add(ObjectKey);
+
+	}
 }
+
