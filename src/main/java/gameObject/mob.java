@@ -20,11 +20,12 @@ public class mob extends gameObject {
 		 	case RIGHT:setX(getX()+speed);break;
 		 	case UP:setY(getY()-speed);break;
 		 }
-		System.out.println(move_mob);
  	}
 	@Override
 	protected void update() {
-		 moves();
+		if(wait(50)){
+			moves();
+		}
 		this.setFrame(((this.getTimer()/50)+1)%2);
 	}
 }

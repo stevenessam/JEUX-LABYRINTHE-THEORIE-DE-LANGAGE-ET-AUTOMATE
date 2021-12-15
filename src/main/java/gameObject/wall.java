@@ -14,7 +14,7 @@ public class wall extends gameObject {
 	}
 	@Override
 	protected void update() {
-		if(isLighted && (this.getTimer()/50)/3 == 1){
+		if(isLighted && wait(25)){
 			int r = (int)(Math.random()*3);
 			this.setFrame(((this.getTimer()/50)+r)%3);
 		}

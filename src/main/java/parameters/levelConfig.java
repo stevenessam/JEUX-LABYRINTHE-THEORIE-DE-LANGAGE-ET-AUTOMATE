@@ -11,6 +11,7 @@ import gameObject.movement;
 import gameObject.pattern;
 import gameObject.door;
 import gameObject.floor;
+import gameObject.potion;
 import gameObject.player;
 import ressourceManages.Textures;
 
@@ -48,6 +49,8 @@ public class levelConfig {
 		scene.add(new wall(6,0));
 		scene.add(new wall(7,0));
 		scene.add(new wall(8,0));
+
+		scene.add(new potion(6,1));
 
 
 

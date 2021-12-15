@@ -14,6 +14,10 @@ public class player extends gameObject{
 
 	private sprite lifeHUD = new sprite(Textures.Stats);
 
+	public void addHealth(double heart){
+		life+=heart;
+	}
+
 	public player(int x, int y) {
 		super(x,y);
 		setType(gameObjectType.PLAYER);

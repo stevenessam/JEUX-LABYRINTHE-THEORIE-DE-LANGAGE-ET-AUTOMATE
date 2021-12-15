@@ -8,10 +8,10 @@ public class stairs extends gameObject {
 
     stairs_item itemStair;
     public stairs(int x, int y,stairs_item itemStair) {
-        super(x, y);
+        super(x, y+.5);
         this.itemStair=itemStair;
         setSprite(Textures.stairs, 1, 1);
-
+		setDeltaY(.5);
     }
 
     @Override

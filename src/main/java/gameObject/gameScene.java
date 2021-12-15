@@ -46,16 +46,23 @@ public class gameScene extends Canvas{
 		batch.add(gameobject);
 		gameobject.setScene(this);
 	}
+	public void remove(gameObject gO){
+		batch.remove(gO);
+	}
 	private int timer = 0;
 	private void rendering(){
 		timer++;
 		if(background != null){
 			graphic.drawImage(background,0,0,width/scale,height/scale);
 		}
-		batch.forEach((gameobject)->{
-			gameobject.update();
-			gameobject.render(graphic);
-		});
+		try{
+			batch.forEach((gameobject)->{
+				gameobject.update();
+				gameobject.render(graphic);
+			});
+		}catch(Exception e){
+			System.out.println("NO SCENE");
+		}
 	}
 	private boolean isrunning = false;
 	private Timeline timeline;

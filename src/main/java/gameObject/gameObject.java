@@ -24,6 +24,10 @@ public class gameObject extends sprite{
 	protected gameScene getScene() {
 		return scene;
 	}
+	protected void delete(){
+		this.scene.remove(this);
+		// this.scene = null;
+	}
 
 	public gameObject(){
 		this(0,0);
@@ -41,6 +45,9 @@ public class gameObject extends sprite{
 	}
 	public int getTimer(){
 		return this.scene.getTimer();
+	}
+	public boolean wait(int time){
+		return false;
 	}
 	public void keypress(KeyCode keycode,boolean pressed){}
 	public boolean getNoCollision(double x,double y){
