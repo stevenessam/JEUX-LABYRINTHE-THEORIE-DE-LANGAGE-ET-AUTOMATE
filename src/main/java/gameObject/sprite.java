@@ -20,13 +20,23 @@ public class sprite {
 	public void setY(double y) {
 		this.y = y;
 	}
+	private double renderwidth;
 	private int width;
-	public int getWidth() {
-		return width;
+	public double getWidth() {
+		return width*scale;
 	}
+	private double renderheight;
 	private int height;
-	public int getHeight() {
-		return height;
+	public double getHeight() {
+		return height*scale;
+	}
+
+	private double scale = 1;
+	public double getScale() {
+		return scale;
+	}
+	public void setScale(double scale) {
+		this.scale = scale;
 	}
 
 	private Image image;
@@ -59,34 +69,52 @@ public class sprite {
 	public sprite(String sprite) {
 		// this.image = new Image(sprite);
 		this.image = Textures.load(sprite);
-		this.width = (int) this.image.getWidth();
-		this.height = (int) this.image.getHeight();
+		renderwidth = (image.getWidth());
+		this.width = (int) renderwidth;
+		renderheight = (image.getHeight());
+		this.height = (int) renderheight;
 		}
 	public void render(GraphicsContext graphic){
 		double dx = -width * this.deltaX;
 		double dy = -height * this.deltaY;
 		if(column == 1 && row ==1){
-			graphic.drawImage(image, x+dx, y+dy);
+			graphic.drawImage(image, x+dx, y+dy,renderwidth*scale,renderheight*scale);
 		}else{
-			graphic.drawImage(image, ((frame)%column)*width, (int)((frame)/column)*height, width, height, x+dx, y+dy, width, height);
+			graphic.drawImage(image, ((frame)%column)*width, (int)((frame)/column)*height, width, height, x+dx, y+dy, renderwidth*scale, renderheight*scale);
 		}
 	}
 	public void setSprite(int col,int row){
-		this.width = (int) (image.getWidth()/col);
-		this.height = (int) (image.getHeight()/row);
+		renderwidth = (image.getWidth()/col);
+		this.width = (int) renderwidth;
+		renderheight = (image.getHeight()/row);
+		this.height = (int) renderheight;
 		this.column = col;
 		this.row = row;
 		this.frame = 0;
 	}
 	public void setSprite(String url,int col,int row){
 		image = Textures.load(url);
-		this.width = (int) (image.getWidth()/col);
-		this.height = (int) (image.getHeight()/row);
+		renderwidth = (image.getWidth()/col);
+		this.width = (int) renderwidth;
+		renderheight = (image.getHeight()/row);
+		this.height = (int) renderheight;
 		this.column = col;
 		this.row = row;
 		this.frame = 0;
 	}
 	public void setFrame(int frame){
 		this.frame = frame;
+	}
+	public void setRenderWidth(double w) {
+		renderwidth = w/scale;
+	}
+	public void setRenderHeight(double h) {
+		renderheight = h/scale;
+	}
+	public double getRenderWidth() {
+		return renderwidth;
+	}
+	public double getRenderHeight() {
+		return renderheight;
 	}
 }

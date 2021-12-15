@@ -4,6 +4,7 @@ import java.util.List;
 
 import game.Game;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 
 public class gameObject extends sprite{
 	
@@ -18,8 +19,8 @@ public class gameObject extends sprite{
 	private gameScene scene;
 	public void setScene(gameScene scene) {
 		this.scene = scene;
-		this.setX(getX()*Game.BLOCK_WIDTH*this.scene.getScale());
-		this.setY(getY()*Game.BLOCK_HEIGHT*this.scene.getScale());
+		// this.setX(getX()*Game.BLOCK_WIDTH*this.scene.getScale());
+		// this.setY(getY()*);
 	}
 	protected gameScene getScene() {
 		return scene;
@@ -49,7 +50,12 @@ public class gameObject extends sprite{
 	public boolean wait(int time){
 		return false;
 	}
+	/**EVENT */
 	public void keypress(KeyCode keycode,boolean pressed){}
+	public void click(double x,double y,MouseButton button){}
+
+	/*UTILS*/
+
 	public boolean getNoCollision(double x,double y){
 		List<gameObject> objects = this.scene.getObjects(x,y);
 		return objects.stream().filter((gameObject gO)->{

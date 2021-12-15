@@ -21,12 +21,22 @@ public class Textures {
 
 	public static final String stairs = "stairs.png";
 	public static final String stairs_item = "stairsitem.png";
+	public static final String font = "font.png";
+	public static final String DarkSky = "DarkSky.png";
+	public static final String Title = "title.png";
 
-	private static int scale;
-	public static int getScale() {
+	private static double scale = 1;
+	private static double quality = 1;
+	public static void setQuality(double quality) {
+		Textures.quality = quality;
+	}
+	public static double getQuality() {
+		return quality;
+	}
+	public static double getScale() {
 		return scale;
 	}
-	public static void setScale(int scale) {
+	public static void setScale(double scale) {
 		Textures.scale = scale;
 	}
 
@@ -34,12 +44,9 @@ public class Textures {
 		Image input = new Image(url);
 		final int W = (int) input.getWidth();
 		final int H = (int) input.getHeight();
-		final int S = scale;
+		final int S = (int) (scale*quality);
 		
-		WritableImage output = new WritableImage(
-		  W * S,
-		  H * S
-		);
+		WritableImage output = new WritableImage((int)(W * S),(int)(H * S));
 		
 		PixelReader reader = input.getPixelReader();
 		PixelWriter writer = output.getPixelWriter();
@@ -49,7 +56,7 @@ public class Textures {
 			final int argb = reader.getArgb(x, y);
 			for (int dy = 0; dy < S; dy++) {
 			  for (int dx = 0; dx < S; dx++) {
-				writer.setArgb(x * S + dx, y * S + dy, argb);
+				writer.setArgb((int)(x * S + dx),(int)(y * S + dy), argb);
 			  }
 			}
 		  }

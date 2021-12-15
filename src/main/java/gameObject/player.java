@@ -25,6 +25,8 @@ public class player extends gameObject{
 		this.setDeltaX(.5);
 		this.setDeltaY(1);
 		lifeHUD.setSprite(3, 2);
+		lifeHUD.setRenderWidth(16);
+		lifeHUD.setRenderHeight(16);
 	}
 	private HashMap<KeyCode, String> playerControls;
 	public void setControls(HashMap<KeyCode, String> playerControls) {
@@ -47,7 +49,7 @@ public class player extends gameObject{
 		lifeHUD.setFrame(0);
 		double hearts = life;
 		for (int i = 0; i < 5; i++) {
-			lifeHUD.setX(10+i*16*this.getScene().getScale());
+			lifeHUD.setX(10+i*lifeHUD.getRenderWidth());
 			if(hearts<1){
 				if(hearts<0){
 					lifeHUD.setFrame(2);
@@ -58,10 +60,10 @@ public class player extends gameObject{
 			lifeHUD.render(graphic);
 			hearts--;
 		}
-		lifeHUD.setY(26*this.getScene().getScale());
+		lifeHUD.setY(10+lifeHUD.getRenderHeight());
 		lifeHUD.setFrame(0);
 		for (int i = 0; i < 3; i++) {
-			lifeHUD.setX(10+i*16*this.getScene().getScale());
+			lifeHUD.setX(10+i*lifeHUD.getRenderWidth());
 			lifeHUD.setFrame(3+((this.getTimer()/25)+1)%3);
 			lifeHUD.render(graphic);
 		}

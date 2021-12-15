@@ -3,12 +3,14 @@ package gameObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import game.Game;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 import javafx.util.Duration;
 import ressourceManages.Textures;
 
@@ -17,18 +19,26 @@ public class gameScene extends Canvas{
 	Image background;
 	private int width;
 	private int height;
-	private int scale = 2;
-	public int getScale() {
+	private double scale = 2;
+	public double getScale() {
 		return scale;
 	}
-	public void setScale(int scale) {
-		this.scale = scale;
+	private double zoom = 1.5;
+	public double getZoom() {
+		return zoom;
 	}
-	public int getCanvasHeight() {
-		return height;
+	public void setZoom(double zoom) {
+		double lastzoom = this.zoom;
+		lastzoom = 1/lastzoom;
+		graphic.scale(lastzoom, lastzoom);
+		this.zoom = zoom;
+		graphic.scale(zoom, zoom);
 	}
-	public int getCanvasWidth() {
-		return width;
+	public double getCanvasHeight() {
+		return height/zoom;
+	}
+	public double getCanvasWidth() {
+		return width/zoom;
 	}
 	private GraphicsContext graphic;
 	public gameScene(int width, int height) {
@@ -39,12 +49,27 @@ public class gameScene extends Canvas{
 		setScaleX(width/height);
 		setScaleY(width/height);
 		graphic = this.getGraphicsContext2D();
-		graphic.scale(scale, scale);
+		graphic.scale(zoom, zoom);
 		Textures.setScale(scale);
+		Textures.setQuality(1);
+	}
+	public gameScene(double width, double height) {
+		this((int) width,(int) height);
 	}
 	public void add(gameObject gameobject){
 		batch.add(gameobject);
 		gameobject.setScene(this);
+		gameobject.setScale(1/Textures.getQuality());
+	}
+	public void placeBlock(gameObject gO){
+		gO.setX(Game.BLOCK_WIDTH*scale*gO.getX());
+		gO.setY(Game.BLOCK_HEIGHT*scale*gO.getY());
+		add(gO);
+	}
+	public void placeBlock(gameObject gO,int x, int y){
+		gO.setX(Game.BLOCK_WIDTH*scale*x);
+		gO.setY(Game.BLOCK_HEIGHT*scale*y);
+		add(gO);
 	}
 	public void remove(gameObject gO){
 		batch.remove(gO);
@@ -52,8 +77,9 @@ public class gameScene extends Canvas{
 	private int timer = 0;
 	private void rendering(){
 		timer++;
+		graphic.clearRect(0, 0, width, height);
 		if(background != null){
-			graphic.drawImage(background,0,0,width/scale,height/scale);
+			graphic.drawImage(background,0,0,width/zoom,height/zoom);
 		}
 		try{
 			batch.forEach((gameobject)->{
@@ -106,6 +132,15 @@ public class gameScene extends Canvas{
 	public void keypress(KeyCode keycode,boolean pressed){
 		batch.forEach((gameobject)->{
 			gameobject.keypress(keycode,pressed);
+		});
+	}
+	public void click(double x,double y,MouseButton button){
+		final double cx = x /zoom;
+		final double cy = y /zoom;
+		batch.forEach((gameobject)->{
+			if(gameobject.isOn(cx, cy)){
+				gameobject.click(x,y,button);
+			}
 		});
 	}
 }

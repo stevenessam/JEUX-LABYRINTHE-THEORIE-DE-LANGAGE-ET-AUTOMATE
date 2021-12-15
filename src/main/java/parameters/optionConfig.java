@@ -99,6 +99,10 @@ public class optionConfig {
 		List<RegonizeToken> tokens = optionLang.regroup(new AutomateString(config),groups);
 		HashMap<String,Object> opts = interprete(tokens);
 		
+		if(opts.get("level")!= null){
+			level = (int) opts.get("level");
+		}
+
 		HashMap<String,Object> player = (HashMap<String, Object>) opts.get("player");
 		HashMap<KeyCode, String> playercontrols = new HashMap<KeyCode, String>();
 		player.forEach((String key,Object value)->{
@@ -200,5 +204,9 @@ public class optionConfig {
 	private List<HashMap<KeyCode, String>> playerControls = new ArrayList<HashMap<KeyCode, String>>();
 	public HashMap<KeyCode, String> getPlayerControls(int index){
 		return playerControls.get(index);
+	}
+	private int level = 0;
+	public int getLevel() {
+		return level;
 	}
 }
