@@ -2,6 +2,8 @@ package parameters;
 
 import gameObject.gameObject;
 import gameObject.wall;
+import gameObject.stairs;
+import gameObject.stairs_item;
 import gameObject.mob;
 import gameObject.gameScene;
 import gameObject.keyDoor;
@@ -22,13 +24,19 @@ public class levelConfig {
 		scene.setBackdrop(Textures.night_backdrop);
 		// scene.add(new gameObject(0,0));
 
+
+
+
 		keyDoor key1 = new keyDoor(2,1);
+		stairs_item itemStair1 = new stairs_item(0,1);
 
 		scene.add(new floor(0,1));
 		scene.add(new floor(1,0));
 		scene.add(new floor(1,1));
+//		scene.add(new stairs_item(0,1));
 		scene.add(new floor(2,1));
-		scene.add(new floor(3,1));
+//		scene.add(new floor(3,1));
+		scene.add(new stairs(3,1,itemStair1));
 		scene.add(new floor(4,1));
 		scene.add(new floor(5,1));
 		scene.add(new floor(6,1));
@@ -41,12 +49,15 @@ public class levelConfig {
 		scene.add(new wall(7,0));
 		scene.add(new wall(8,0));
 
+
+
 		scene.add(new mob(4,0,
 			new pattern(movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT)
 		));
 
 		
 		scene.add(key1);
+		scene.add(itemStair1);
 
 		player a =new player(0,1);
 		a.setControls(option.getPlayerControls(0));
