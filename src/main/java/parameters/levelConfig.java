@@ -52,7 +52,7 @@ public class levelConfig {
 
 
 		scene.add(new mob(4,0,
-			new pattern(movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT)
+			new pattern(movement.DOWN,movement.RIGHT,movement.UP,movement.LEFT)
 		));
 
 		

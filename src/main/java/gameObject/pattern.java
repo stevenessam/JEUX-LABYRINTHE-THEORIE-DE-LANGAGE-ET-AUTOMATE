@@ -20,7 +20,7 @@ public class pattern extends ArrayList<movement> {
     public movement next() {
         //tu retourne le prochain movement si c'est la si tu revient au debut
 
-        if( this.size() - 1 == cursor ){
+        if( this.size()  == cursor ){
             cursor=0;
         }
         return this.get(cursor++);
