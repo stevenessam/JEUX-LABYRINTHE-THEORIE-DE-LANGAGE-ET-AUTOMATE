@@ -1,7 +1,7 @@
 package gameObject;
 
+import assets.Textures;
 import javafx.scene.canvas.GraphicsContext;
-import ressourceManages.Textures;
 
 public class stairs extends gameObject {
     boolean pickup = false;

@@ -3,7 +3,7 @@ package gameObject;
 import java.util.List;
 import java.util.Optional;
 
-import ressourceManages.Textures;
+import assets.Textures;
 
 public class potion extends gameObject{
 	public potion(int x,int y) {

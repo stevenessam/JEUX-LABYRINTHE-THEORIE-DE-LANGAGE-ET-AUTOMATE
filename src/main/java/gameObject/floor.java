@@ -1,6 +1,6 @@
 package gameObject;
 
-import ressourceManages.Textures;
+import assets.Textures;
 
 public class floor extends gameObject{
 	public floor(int x,int y) {

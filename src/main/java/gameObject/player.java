@@ -3,9 +3,9 @@ package gameObject;
 import java.util.HashMap;
 import java.util.List;
 
+import assets.Textures;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
-import ressourceManages.Textures;
 
 public class player extends gameObject{
 
@@ -37,6 +37,7 @@ public class player extends gameObject{
 		this.setFrame(((this.getTimer()/50)+1)%2);
 		double x=getX()+dx*speed;
 		double y=getY()+dy*speed;
+		flipH(dx<0);
 		if(canWalkOn(x, y)){
 			setX(x);
 			setY(y);

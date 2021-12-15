@@ -1,8 +1,8 @@
 package gameObject;
 
+import assets.Textures;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import ressourceManages.Textures;
 
 public class sprite {
 
@@ -65,7 +65,6 @@ public class sprite {
 
 
 	protected int frame = 1;
-
 	public sprite(String sprite) {
 		// this.image = new Image(sprite);
 		this.image = Textures.load(sprite);
@@ -75,8 +74,8 @@ public class sprite {
 		this.height = (int) renderheight;
 		}
 	public void render(GraphicsContext graphic){
-		double dx = -width * this.deltaX;
-		double dy = -height * this.deltaY;
+		double dx = -renderheight * this.deltaX;
+		double dy = -renderwidth * this.deltaY;
 		if(column == 1 && row ==1){
 			graphic.drawImage(image, x+dx, y+dy,renderwidth*scale,renderheight*scale);
 		}else{
@@ -116,5 +115,19 @@ public class sprite {
 	}
 	public double getRenderHeight() {
 		return renderheight;
+	}
+	public void flipV(){
+		renderheight = -renderheight;
+	}
+	public void flipH(){
+		renderwidth = -renderwidth;
+	}
+	public void flipV(boolean activated){
+		int flip = activated?-1:1;
+		renderheight = Math.abs(renderheight)*flip;
+	}
+	public void flipH(boolean activated){
+		int flip = activated?-1:1;
+		renderwidth = Math.abs(renderwidth)*flip;
 	}
 }

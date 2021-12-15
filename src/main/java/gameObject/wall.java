@@ -1,6 +1,6 @@
 package gameObject;
 
-import ressourceManages.Textures;
+import assets.Textures;
 
 public class wall extends gameObject {
 

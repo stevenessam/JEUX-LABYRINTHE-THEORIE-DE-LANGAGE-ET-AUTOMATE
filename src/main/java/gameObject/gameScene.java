@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.util.Duration;
-import ressourceManages.Textures;
+import assets.Textures;
 
 public class gameScene extends Canvas{
 	List<gameObject> batch = new ArrayList<gameObject>();
@@ -127,7 +127,7 @@ public class gameScene extends Canvas{
 	}
 
 	public void setBackdrop(String texture){
-		background =  Textures.load(texture);
+		background = Textures.load(texture);
 	}
 	public void keypress(KeyCode keycode,boolean pressed){
 		batch.forEach((gameobject)->{

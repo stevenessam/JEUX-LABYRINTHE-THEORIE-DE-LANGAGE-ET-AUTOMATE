@@ -1,6 +1,6 @@
 package gameObject;
 
-import ressourceManages.Textures;
+import assets.Textures;
 
 public class mob extends gameObject {
 	private int speed = 5;

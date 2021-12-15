@@ -2,8 +2,8 @@ package gameObject;
 
 import java.util.List;
 
+import assets.Textures;
 import javafx.scene.canvas.GraphicsContext;
-import ressourceManages.Textures;
 
 public class keyDoor extends gameObject{
 

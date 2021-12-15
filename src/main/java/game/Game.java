@@ -1,19 +1,15 @@
 package game;
 
-import gameClass.Location;
+import assets.Textures;
 import gameObject.gameFont;
 import gameObject.gameObject;
 import gameObject.gameScene;
-import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import parameters.levelConfig;
 import parameters.optionConfig;
-import ressourceManages.Textures;
 
 public class Game{
 
@@ -44,7 +40,7 @@ public class Game{
 		initMainMenu();
 
 		/** aller au menu principale */
-		setLocation(Location.MAINMENU);
+		setLocation(gameClass.Location.MAINMENU);
 		// setLevel(levelconfig.getLevelScene(options.getLevel()));
 		/* Action*/
 		scene.setOnMouseClicked(event -> {
@@ -62,7 +58,7 @@ public class Game{
 		this(new Scene(new Pane(),debug?1000:1920,debug?660:1080,true,SceneAntialiasing.DISABLED));
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(gameClass.Location location) {
 		switch(location){
 			case MAINMENU:
 				MainMenu();
@@ -103,7 +99,6 @@ public class Game{
 		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(levelconfig.getLevelScene(options.getLevel()));}));
 		menu.add(new gameFont(centerX, 2.5*gapY, "Select Level",true));
 		menu.add(new gameFont(centerX, 3*gapY, "Options",true));
-		menu.add(new gameFont(centerX, 3.5*gapY, "Level Maker",true));
 		menu.add(gameFont.createButton(centerX, 4.5*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
 	}
 	public void MainMenu(){

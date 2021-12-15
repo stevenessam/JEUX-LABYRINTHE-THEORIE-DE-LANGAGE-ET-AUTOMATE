@@ -2,7 +2,6 @@ package parameters;
 
 import automate.Automate;
 import automate.Token;
-import gameObject.gameObject;
 import gameObject.wall;
 import gameObject.stairs;
 import gameObject.stairs_item;
@@ -15,8 +14,6 @@ import gameObject.door;
 import gameObject.floor;
 import gameObject.potion;
 import gameObject.player;
-import javafx.scene.paint.Material;
-import ressourceManages.Textures;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,9 +21,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.regex.Pattern;
 
-public class levelConfig<BlockPlaceEvent, Player, Block> {
+import assets.Textures;
+
+public class levelConfig{
 	private optionConfig option;
-	//private KerberosTicket Bukkit;
 
 	public levelConfig(optionConfig option) {
 		this.option = option;

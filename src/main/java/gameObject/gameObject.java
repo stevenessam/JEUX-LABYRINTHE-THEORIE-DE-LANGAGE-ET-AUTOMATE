@@ -2,7 +2,6 @@ package gameObject;
 
 import java.util.List;
 
-import game.Game;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
@@ -34,7 +33,7 @@ public class gameObject extends sprite{
 		this(0,0);
 	}
 	public gameObject(double x,double y){
-		this(x,y,"empty.png");
+		this(x,y,"/assets/empty.png");
 	}
 	public gameObject(double x,double y,String sprite){
 		super(sprite);

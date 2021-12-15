@@ -103,19 +103,26 @@ public class optionConfig {
 			level = (int) opts.get("level");
 		}
 
-		HashMap<String,Object> player = (HashMap<String, Object>) opts.get("player");
-		HashMap<KeyCode, String> playercontrols = new HashMap<KeyCode, String>();
-		player.forEach((String key,Object value)->{
-			KeyCode keycode = null;
-			switch(value.toString()){
-				case "Z":keycode = KeyCode.Z;break;
-				case "D":keycode = KeyCode.D;break;
-				case "Q":keycode = KeyCode.Q;break;
-				case "S":keycode = KeyCode.S;break;
-			}
-			playercontrols.put(keycode,key);
-		});
-		this.playerControls.add(playercontrols);
+		Object obj_play = opts.get("player");
+		if(obj_play instanceof HashMap){
+			HashMap<String,Object> player = (HashMap<String, Object>) obj_play;
+			HashMap<KeyCode, String> playercontrols = new HashMap<KeyCode, String>();
+			player.forEach((String key,Object value)->{
+				KeyCode keycode = null;
+				switch(value.toString()){
+					case "UP":keycode = KeyCode.UP;break;
+					case "Z":keycode = KeyCode.Z;break;
+					case "LEFT":keycode = KeyCode.LEFT;break;
+					case "D":keycode = KeyCode.D;break;
+					case "Q":keycode = KeyCode.Q;break;
+					case "RIGHT":keycode = KeyCode.RIGHT;break;
+					case "S":keycode = KeyCode.S;break;
+					case "DOWN":keycode = KeyCode.DOWN;break;
+				}
+				playercontrols.put(keycode,key);
+			});
+			this.playerControls.add(playercontrols);
+		}
 		
 	}
 	private HashMap<String,Object> interprete(List<RegonizeToken> tokens){

@@ -1,21 +1,19 @@
 package gameObject;
 
 import java.util.function.Consumer;
-import java.util.function.Function;
 
-import javafx.event.ActionEvent;
+import assets.Textures;
+
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
-import ressourceManages.Textures;
 
 public class gameFont extends gameObject{
-	private final static double default_FontSize = 20;
+	// private final static double default_FontSize = 20;
 	public void setScene(gameScene scene) {
 		super.setScene(scene);
 		// myfontSize = getFontSize()*scene.getScale();
 	}
-	private double myfontSize = 5;
+	// private double myfontSize = 5;
 	private static double fontSize = 5;
 	public static double getFontSize() {
 		return fontSize;
@@ -90,7 +88,7 @@ public class gameFont extends gameObject{
 	}
 	public boolean isOn(double x,double y){
 		int length = text.length();
-		double s = myfontSize/gameFont.default_FontSize;
+		// double s = myfontSize/gameFont.default_FontSize;
 		double ix = init_x;
 		if(centred){
 			ix = (init_x-(length/2*getWidth()));
