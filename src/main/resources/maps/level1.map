@@ -1,0 +1,32 @@
+-- variable element
+set # to wall;
+set _ to floor;
+set * to chest;
+
+-- creation du terrain utilise les variables
+create terrain 
+_____#_______#______
+####_#_#####_#_####_
+_____#___#_#_#____#_
+_#######_#_#_##_#_#_
+_______#_#_#____#_#_
+_#####_#_#_######_#_
+_#_______#________#_
+_#_#########_######_
+_#_#____*__#_#_#____
+_#_#_#####_#_#_#_###
+_#_#_____#_#_#_#____
+___#####_#_#_#_####_
+##_#_____#___#______
+___#################
+;
+
+-- apparition des montres
+
+spawn skeleton(6,4,(RIGHT*4,DOWN*2,LEFT*4,UP*2));
+
+spawn bat(1,4,(RIGHT*3,RESTART));
+spawn bat(19,2,(RIGHT*3,RESTART));
+spawn bat(5,12,(RIGHT*3,UP*2,RESTART));
+
+spawn player(0,0);
