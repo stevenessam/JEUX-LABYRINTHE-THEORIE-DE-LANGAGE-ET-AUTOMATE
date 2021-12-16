@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import parameters.levelConfig;
 import parameters.optionConfig;
 
@@ -32,6 +33,7 @@ public class Game{
 	private gameScene gameScene;
 	public Game(Scene scene){
 		this.scene = scene;
+		scene.setFill(Color.BLACK);
 		options = new optionConfig("/config.json");
 		levelconfig = new levelConfig(options);
 		gamePane = new BorderPane();

@@ -72,4 +72,8 @@ public class gameObject extends sprite{
 		boolean onY = sy<=y&&ey>=y;
 		return onX&&onY;
 	}
+	// public static gameObject create(Object ...objects){
+	// 	gO = new super();
+	// 	return gO;
+	// }
 }

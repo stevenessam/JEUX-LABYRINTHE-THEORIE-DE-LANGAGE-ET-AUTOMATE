@@ -14,10 +14,17 @@ import assets.Textures;
 
 public class levelConfig{
 	private optionConfig option;
-
+	private levelMaker lM;
 	public levelConfig(optionConfig option) {
 		this.option = option;
-		new levelMaker();
+		lM = new levelMaker();
+		lM.setWidth(1000);
+		lM.setHeight(660);
+		lM.put("floor",(ls)->{
+			System.out.println(ls);
+			return new floor(0,0);
+		});
+		lM.put("wall",(ls)->{return new wall(0,0);});
 	}
 	public gameScene getLevelScene(){
 		gameScene scene = new gameScene(1000,660);
@@ -94,7 +101,9 @@ public class levelConfig{
 		return scene;
 	}
 	public gameScene getLevelScene(int level) {
-		return getLevelScene();
+		String content = ReadeFile("/maps/level"+(level+1)+".map");
+		//getLevelScene()
+		return lM.exec(content);
 	}
 
 
@@ -109,7 +118,7 @@ public class levelConfig{
 				while ((line = br.readLine()) != null) {
 					sb.append(line + System.lineSeparator());
 				}
-				return sb.toString().trim().replaceAll("[\n\t\r]", "");
+				return sb.toString();//.trim().replaceAll("[\n\t\r]", "");
 
 			} catch (IOException e) {
 				System.err.println("path Not find");

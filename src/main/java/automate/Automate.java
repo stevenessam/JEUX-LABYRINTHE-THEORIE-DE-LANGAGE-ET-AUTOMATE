@@ -158,7 +158,7 @@ public class Automate extends AutomateBase{
 		});
 	}
 	public void addToken(Token token){
-		token.setStat(this.reconizeToken.size());
+		token.setStat(this.reconizeToken.size()+1);
 		this.reconizeToken.add(token);
 	}
 	
