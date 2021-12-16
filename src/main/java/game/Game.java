@@ -43,9 +43,9 @@ public class Game{
 		setLocation(gameClass.Location.MAINMENU);
 		// setLevel(levelconfig.getLevelScene(options.getLevel()));
 		/* Action*/
-		scene.setOnMouseClicked(event -> {
-			gameScene.click(event.getX(),event.getY(),event.getButton());
-		});
+		// scene.setOnMouseClicked(event -> {
+		// 	gameScene.click(event.getX(),event.getY(),event.getButton());
+		// });
 		scene.setOnKeyPressed(event -> {
 			gameScene.keypress(event.getCode(),true);
 		});
@@ -68,14 +68,22 @@ public class Game{
 			break;
 		}
 	}
-
-	public void setLevel(gameScene game){
+	private int level;
+	public void setLevel(int level){
+		this.level = level;
+		renderScene(levelconfig.getLevelScene(level));
+	}
+	public void restart(){
+		setLevel(level);
+	}
+	public void renderScene(gameScene game){
 		if(gameScene!=null)
 			gameScene.stop();
 		gamePane.setCenter(game);
 		game.render();
 		gameScene = game;
 		game.start();
+		game.setContainer(this);
 		// double W = scene.getWidth();
 		// double H = scene.getHeight();
 		// game.setWidth(W);
@@ -96,7 +104,7 @@ public class Game{
 		var gapY = menu.getCanvasHeight()/8;
 		gameObject title = new gameObject(centerX/2, 0, Textures.Title);
 		menu.add(title);
-		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(levelconfig.getLevelScene(options.getLevel()));}));
+		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
 		menu.add(new gameFont(centerX, 2.5*gapY, "Select Level",true));
 		menu.add(new gameFont(centerX, 3*gapY, "Options",true));
 		menu.add(gameFont.createButton(centerX, 4.5*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
@@ -104,7 +112,7 @@ public class Game{
 		menu.add(new gameFont(centerX, 7.5*gapY, "developper par Tostse gaming",true));
 	}
 	public void MainMenu(){
-		setLevel(menu);
+		renderScene(menu);
 	}
 
 }

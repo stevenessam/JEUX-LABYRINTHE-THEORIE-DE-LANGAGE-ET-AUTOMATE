@@ -100,6 +100,7 @@ public class gameFont extends gameObject{
 		double dy = -height * this.getDeltaY();
 		boolean onX = ix+dx<=x&&ix+dx+width>=x;
 		boolean onY = iy+dy<=y&&iy+dy+height>=y;
+		System.out.println(onX+ " " +onY);
 		return onX&&onY;
 	}
 	public static gameFont createButton(double x,double y,String text,Consumer<MouseButton> click){

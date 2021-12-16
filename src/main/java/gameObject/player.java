@@ -34,6 +34,10 @@ public class player extends gameObject{
 	}
 	@Override
 	protected void update() {
+		if(life <= 0){
+			this.getScene().gameOver();
+			return;
+		}
 		this.setFrame(((this.getTimer()/50)+1)%2);
 		double x=getX()+dx*speed;
 		double y=getY()+dy*speed;

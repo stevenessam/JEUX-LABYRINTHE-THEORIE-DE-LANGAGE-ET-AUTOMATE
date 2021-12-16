@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.Game;
+import gameClass.Location;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
@@ -11,6 +12,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import assets.Textures;
 
@@ -40,6 +43,10 @@ public class gameScene extends Canvas{
 	public double getCanvasWidth() {
 		return width/zoom;
 	}
+	private Game container;
+	public void setContainer(Game container) {
+		this.container = container;
+	}
 	private GraphicsContext graphic;
 	public gameScene(int width, int height) {
 		this.width = width;
@@ -52,6 +59,9 @@ public class gameScene extends Canvas{
 		graphic.scale(zoom, zoom);
 		Textures.setScale(scale);
 		Textures.setQuality(1);
+		this.setOnMouseClicked(event -> {
+			this.click(event.getX(),event.getY(),event.getButton());
+		});
 	}
 	public gameScene(double width, double height) {
 		this((int) width,(int) height);
@@ -142,5 +152,29 @@ public class gameScene extends Canvas{
 				gameobject.click(x,y,button);
 			}
 		});
+	}
+	public void gameOver(){
+		stop();
+		graphic.setFill(new Color(0,0,0,.5));
+		graphic.fillRect(0,0,width/zoom,height/zoom);
+		double gapX = width/zoom/4;
+		double gapY = height/zoom/4;
+		gameFont gameOverText = new gameFont(gapX, gapY, "Game Over",true);
+		gameFont btn_retry = gameFont.createButton(gapX, gapY*2, "Retry", (button)->{
+			System.out.println("retry");
+			container.restart();
+		});
+		gameFont btn_quit = gameFont.createButton(gapX*2, gapY*2, "Main Menu", (button)->{
+			System.out.println("main menu");
+			container.setLocation(Location.MAINMENU);
+		});
+
+		add(btn_retry);
+		add(btn_quit);
+
+		gameOverText.render(graphic);
+		btn_retry.render(graphic);
+		btn_quit.render(graphic);
+
 	}
 }
