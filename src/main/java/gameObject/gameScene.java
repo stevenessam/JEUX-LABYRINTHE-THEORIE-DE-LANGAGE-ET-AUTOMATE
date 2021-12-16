@@ -26,7 +26,7 @@ public class gameScene extends Canvas{
 	public double getScale() {
 		return scale;
 	}
-	private double zoom = 1.3;
+	private double zoom = .6;
 	public double getZoom() {
 		return zoom;
 	}
@@ -74,6 +74,7 @@ public class gameScene extends Canvas{
 	public void placeBlock(gameObject gO){
 		gO.setX(Game.BLOCK_WIDTH*scale*gO.getX());
 		gO.setY(Game.BLOCK_HEIGHT*scale*gO.getY());
+		System.out.println(gO.getX()+" "+gO.getY());
 		add(gO);
 	}
 	public void placeBlock(gameObject gO,int x, int y){

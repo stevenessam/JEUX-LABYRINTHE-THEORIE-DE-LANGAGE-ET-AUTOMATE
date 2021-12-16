@@ -9,6 +9,10 @@ public class bat extends mob {
 
 
     private boolean canplayer = true;
+	public bat(int x, int y) {
+        super(x, y);
+        setSprite(Textures.bat, 2, 1);
+    }
     public bat(int x, int y,pattern pattern) {
         super(x, y, pattern);
         setSprite(Textures.bat, 2, 1);

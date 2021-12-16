@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class skeleton extends mob{
+	public skeleton(int x, int y) {
+		super(x,y);
+	}
 	public skeleton(int x, int y,pattern pattern) {
 		super(x, y, pattern);
 	}

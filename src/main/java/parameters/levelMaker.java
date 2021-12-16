@@ -282,8 +282,10 @@ public class levelMaker {
 							args.add(value);
 						}
 					break;
+					case "ListEnd":
+						indent = -1;
+					break;
 					case "ListStart":
-						// System.out.println("start rec");
 						if(indent == 0){
 							indent = 1;
 							beinrecurtion = true;
@@ -298,6 +300,7 @@ public class levelMaker {
 					break;
 					case "endCommand":
 						createEntity(callback, args);
+						args.clear();
 					break;
 				}
 			}
@@ -320,8 +323,13 @@ public class levelMaker {
 		Function<List<Object>, gameObject> callback = this.gameObjectMatcher.get(name);
 		if(callback!=null){
 			gameObject gO = callback.apply(args);
-			if(gO!=null)
+			int x = (int) args.get(0);
+			int y = (int) args.get(1);
+			if(gO!=null){
+				gO.setX(x);
+				gO.setY(y);
 				scene.placeBlock(gO);
+			}
 		}
 	}
 }
