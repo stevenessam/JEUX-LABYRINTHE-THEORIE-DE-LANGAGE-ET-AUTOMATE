@@ -24,7 +24,10 @@ public class levelConfig{
 		lM.put("wall",(ls)->{return new wall((int)ls.get(0),(int)ls.get(1));});
 		lM.put("skeleton",(ls)->{return new skeleton(0,0);});
 		lM.put("bat",(ls)->{return new bat(0,0);});
-		lM.put("player",(ls)->{player a = new player(0,0);a.setControls(option.getPlayerControls(0));return a;});
+		lM.put("player",(ls)->{
+			player a = new player(0,0);a.setControls(option.getPlayerControls(0));
+			return a;
+		});
 	}
 	public gameScene getLevelScene(){
 		gameScene scene = new gameScene(1000,660);

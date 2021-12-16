@@ -6,7 +6,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
 public class gameObject extends sprite{
-	
+	private boolean positionGlobal = false;
+	public boolean isPositionGlobal() {
+		return positionGlobal;
+	}
+	public void setPositionGlobal(boolean positionGlobal) {
+		this.positionGlobal = positionGlobal;
+	}
 	private gameObjectType type = gameObjectType.NOCLIP;
 	public gameObjectType getType() {
 		return type;

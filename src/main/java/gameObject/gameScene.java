@@ -26,7 +26,7 @@ public class gameScene extends Canvas{
 	public double getScale() {
 		return scale;
 	}
-	private double zoom = .6;
+	private double zoom = 1.4;
 	public double getZoom() {
 		return zoom;
 	}
@@ -74,7 +74,6 @@ public class gameScene extends Canvas{
 	public void placeBlock(gameObject gO){
 		gO.setX(Game.BLOCK_WIDTH*scale*gO.getX());
 		gO.setY(Game.BLOCK_HEIGHT*scale*gO.getY());
-		System.out.println(gO.getX()+" "+gO.getY());
 		add(gO);
 	}
 	public void placeBlock(gameObject gO,int x, int y){
@@ -88,7 +87,7 @@ public class gameScene extends Canvas{
 	private int timer = 0;
 	private void rendering(){
 		timer++;
-		
+		// graphic.translate(tx, ty);
 		graphic.clearRect(0, 0, graphic.getCanvas().getWidth(), graphic.getCanvas().getHeight());
 		if(background != null){
 			graphic.drawImage(background,0,0,width/zoom,height/zoom);
@@ -96,14 +95,26 @@ public class gameScene extends Canvas{
 		try{
 			batch.forEach((gameobject)->{
 				gameobject.update();
-				gameobject.render(graphic);
+				// if(!gameobject.isPositionGlobal())
+					gameobject.render(graphic);
 			});
 		}catch(Exception e){
 			System.out.println("NO SCENE");
 		}
+		// graphic.translate(-tx, -ty);
+		// try{
+		// 	batch.forEach((gameobject)->{
+		// 		if(gameobject.isPositionGlobal())
+		// 			gameobject.render(graphic);
+		// 	});
+		// }catch(Exception e){
+		// 	System.out.println("NO SCENE");
+		// }
 	}
 	private boolean isrunning = false;
 	private Timeline timeline;
+	private double ty;
+	private double tx;
 	public void start(){
 		assert !isrunning;
 		isrunning = true;
@@ -158,7 +169,7 @@ public class gameScene extends Canvas{
 	public void gameOver(){
 		stop();
 		graphic.setFill(new Color(0,0,0,.5));
-		graphic.fillRect(0,0,width/zoom,height/zoom);
+		graphic.fillRect(tx,ty,width/zoom,height/zoom);
 		double gapX = width/zoom/4;
 		double gapY = height/zoom/4;
 		gameFont gameOverText = new gameFont(gapX, gapY, "Game Over",true);
@@ -177,6 +188,24 @@ public class gameScene extends Canvas{
 		gameOverText.render(graphic);
 		btn_retry.render(graphic);
 		btn_quit.render(graphic);
-
+	}
+	public void translate(double x,double y){
+		tx = x;
+		ty = y;
+		graphic.translate(tx, ty);
+	}
+	public double getTX() {
+		return tx;
+	}
+	public double getTY() {
+		return ty;
+	}
+	public void center(double x,double y){
+		x = -Game.BLOCK_WIDTH*scale*x;
+		y = -Game.BLOCK_HEIGHT*scale*y;
+		x += getCanvasWidth()/2;
+		y += getCanvasHeight()/2;
+		System.out.println(x+"x"+y);
+		translate(x, y);
 	}
 }

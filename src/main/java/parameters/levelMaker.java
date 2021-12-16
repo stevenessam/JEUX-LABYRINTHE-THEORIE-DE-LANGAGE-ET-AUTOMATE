@@ -331,6 +331,10 @@ public class levelMaker {
 				gO.setY(y);
 				scene.placeBlock(gO);
 			}
+			System.out.println(name);
+			if(name.equals("player")){
+				scene.center(x,y);
+			}
 		}
 	}
 }

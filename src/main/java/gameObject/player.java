@@ -30,6 +30,7 @@ public class player extends gameObject{
 		lifeHUD.setSprite(3, 2);
 		lifeHUD.setRenderWidth(16);
 		lifeHUD.setRenderHeight(16);
+		setPositionGlobal(true);
 	}
 	private HashMap<KeyCode, String> playerControls;
 	public void setControls(HashMap<KeyCode, String> playerControls) {
@@ -42,10 +43,13 @@ public class player extends gameObject{
 			return;
 		}
 		this.setFrame(((this.getTimer()/50)+1)%2);
-		double x=getX()+dx*speed;
-		double y=getY()+dy*speed;
+		double mx = dx*speed;
+		double my = dy*speed;
+		double x=getX()+mx;
+		double y=getY()+my;
 		flipH(dx<0);
 		if(canWalkOn(x, y)){
+			this.getScene().translate(-mx, -my);
 			setX(x);
 			setY(y);
 		}
@@ -58,7 +62,8 @@ public class player extends gameObject{
 	@Override
 	public void render(GraphicsContext graphic) {
 		super.render(graphic);
-		lifeHUD.setY(10);
+		lifeHUD.setX(this.getScene().getTX());
+		lifeHUD.setY(this.getScene().getTY()+10);
 		lifeHUD.setFrame(0);
 		double hearts = life;
 		for (int i = 0; i < 5; i++) {
