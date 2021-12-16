@@ -11,7 +11,7 @@ public class stairs extends gameObject {
         super(x, y+.5);
         this.itemStair=itemStair;
         setSprite(Textures.stairs, 1, 1);
-		setDeltaY(.5);
+		setDeltaY(.25);
     }
 
     @Override

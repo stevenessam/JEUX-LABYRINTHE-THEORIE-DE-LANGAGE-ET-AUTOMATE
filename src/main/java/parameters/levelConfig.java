@@ -13,6 +13,7 @@ import gameObject.pattern;
 import gameObject.door;
 import gameObject.floor;
 import gameObject.potion;
+import gameObject.skeleton;
 import gameObject.player;
 
 import java.io.BufferedReader;
@@ -61,8 +62,17 @@ public class levelConfig{
 
 
 
-		scene.placeBlock(new mob(4,0,
-			new pattern(movement.DOWN,movement.RIGHT,movement.UP,movement.LEFT)
+		scene.placeBlock(new skeleton(4,0,
+			new pattern(
+				movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,
+				movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,
+				movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,
+				movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,
+				movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT,
+				movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT,
+				movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT,
+				movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT,movement.LEFT
+			)
 		));
 
 		

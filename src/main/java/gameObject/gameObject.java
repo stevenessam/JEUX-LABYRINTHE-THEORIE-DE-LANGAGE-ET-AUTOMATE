@@ -47,7 +47,7 @@ public class gameObject extends sprite{
 		return this.scene.getTimer();
 	}
 	public boolean wait(int time){
-		return false;
+		return this.scene.getTimer() % time == 0;
 	}
 	/**EVENT */
 	public void keypress(KeyCode keycode,boolean pressed){}
@@ -62,10 +62,14 @@ public class gameObject extends sprite{
 		}).findFirst().isEmpty();
 	}
 	public boolean isOn(double x,double y){
-		double dx = -getWidth() * this.getDeltaX();
-		double dy = -getHeight() * this.getDeltaY();
-		boolean onX = this.getX()+dx<=x&&this.getX()+dx+getWidth()>=x;
-		boolean onY = this.getY()+dy<=y&&this.getY()+dy+getHeight()>=y;
+		double dx = -getRenderWidth() * this.getDeltaX();
+		double dy = -getRenderHeight() * this.getDeltaY();
+		double sx = (this.getX()+dx);
+		double ex = this.getX()+dx+getRenderWidth();
+		double sy = (this.getY()+dy);
+		double ey = this.getY()+dy+getRenderHeight();
+		boolean onX = sx<=x&&ex>=x;
+		boolean onY = sy<=y&&ey>=y;
 		return onX&&onY;
 	}
 }

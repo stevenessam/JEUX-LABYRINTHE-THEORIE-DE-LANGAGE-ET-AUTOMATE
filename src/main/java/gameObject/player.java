@@ -43,6 +43,11 @@ public class player extends gameObject{
 			setY(y);
 		}
 	}
+	public void flipH(boolean activated){
+		super.flipH(activated);
+		setDeltaX(activated?-.25:.25);
+		setDeltaY(activated?-1.2:1.2);
+	}
 	@Override
 	public void render(GraphicsContext graphic) {
 		super.render(graphic);

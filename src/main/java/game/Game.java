@@ -100,6 +100,8 @@ public class Game{
 		menu.add(new gameFont(centerX, 2.5*gapY, "Select Level",true));
 		menu.add(new gameFont(centerX, 3*gapY, "Options",true));
 		menu.add(gameFont.createButton(centerX, 4.5*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
+
+		menu.add(new gameFont(centerX, 7.5*gapY, "developper par Tostse gaming",true));
 	}
 	public void MainMenu(){
 		setLevel(menu);
