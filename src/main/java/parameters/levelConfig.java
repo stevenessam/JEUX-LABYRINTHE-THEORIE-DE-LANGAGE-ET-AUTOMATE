@@ -9,6 +9,7 @@ import gameObject.mob;
 import gameObject.gameScene;
 import gameObject.keyDoor;
 import gameObject.movement;
+import gameObject.spiderWeb;
 import gameObject.pattern;
 import gameObject.door;
 import gameObject.floor;
@@ -50,6 +51,10 @@ public class levelConfig{
 		scene.placeBlock(new floor(5,1));
 		scene.placeBlock(new floor(6,1));
 		scene.placeBlock(new floor(7,1));
+
+
+		scene.placeBlock(new spiderWeb(4,1));
+		scene.placeBlock(new spiderWeb(5,1));
 
 		scene.placeBlock(new wall(3,0));
 		scene.placeBlock(new wall(4,0));
