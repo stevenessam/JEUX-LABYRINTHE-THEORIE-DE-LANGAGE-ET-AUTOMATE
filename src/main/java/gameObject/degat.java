@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public class degat extends gameObject {
     public degat(int x,int y) {
-        super(x+.5,y+.5, Textures.HeatlthPostion);
+        super(x+.5,y+.5, Textures.roof);
         this.setDeltaX(.5);
-        this.setDeltaY(.5);
+        this.setDeltaY(1.5);
     }
     player player;
     private boolean isplayerTouching(){
@@ -25,11 +25,12 @@ public class degat extends gameObject {
     }
     public void effect(){
         System.out.println("apply effect");
-        player.addHealth(2);
+        player.addHealth(-1);
     }
     @Override
     protected void update() {
         if(isplayerTouching() && this.getScene()!=null){
+            setDeltaY(.5);
             effect();
             delete();
         }

@@ -2,21 +2,7 @@ package parameters;
 
 import automate.Automate;
 import automate.Token;
-import gameObject.wall;
-import gameObject.stairs;
-import gameObject.stairs_item;
-import gameObject.mob;
-import gameObject.gameScene;
-import gameObject.keyDoor;
-import gameObject.movement;
-import gameObject.spiderWeb;
-import gameObject.pattern;
-import gameObject.door;
-import gameObject.floor;
-import gameObject.potion;
-import gameObject.skeleton;
-import gameObject.bat;
-import gameObject.player;
+import gameObject.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,6 +22,7 @@ public class levelConfig{
 	public gameScene getLevelScene(){
 		gameScene scene = new gameScene(1000,660);
 
+
 		scene.setBackdrop(Textures.night_backdrop);
 		// scene.add(new gameObject(0,0));
 
@@ -53,6 +40,7 @@ public class levelConfig{
 		scene.placeBlock(new floor(5,1));
 		scene.placeBlock(new floor(6,1));
 		scene.placeBlock(new floor(7,1));
+		scene.placeBlock(new degat(2,1));
 
 
 		scene.placeBlock(new spiderWeb(4,1));
