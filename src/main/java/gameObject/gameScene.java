@@ -88,7 +88,8 @@ public class gameScene extends Canvas{
 	private int timer = 0;
 	private void rendering(){
 		timer++;
-		graphic.clearRect(0, 0, width, height);
+		
+		graphic.clearRect(0, 0, graphic.getCanvas().getWidth(), graphic.getCanvas().getHeight());
 		if(background != null){
 			graphic.drawImage(background,0,0,width/zoom,height/zoom);
 		}

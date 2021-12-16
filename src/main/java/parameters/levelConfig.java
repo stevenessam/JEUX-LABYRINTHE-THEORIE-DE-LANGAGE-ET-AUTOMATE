@@ -21,7 +21,7 @@ public class levelConfig{
 		lM.setWidth(1000);
 		lM.setHeight(660);
 		lM.put("floor",(ls)->{return new floor(0,0);});
-		lM.put("wall",(ls)->{return new wall(0,0);});
+		lM.put("wall",(ls)->{return new wall((int)ls.get(0),(int)ls.get(1));});
 		lM.put("skeleton",(ls)->{return new skeleton(0,0);});
 		lM.put("bat",(ls)->{return new bat(0,0);});
 		lM.put("player",(ls)->{player a = new player(0,0);a.setControls(option.getPlayerControls(0));return a;});

@@ -1,6 +1,7 @@
 package parameters;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
@@ -314,7 +315,7 @@ public class levelMaker {
 	private void createBlock(String name,int x,int y){
 		Function<List<Object>, gameObject> callback = this.gameObjectMatcher.get(name);
 		if(callback!=null){
-			gameObject gO = callback.apply(null);
+			gameObject gO = callback.apply(Arrays.asList(x,y));
 			if(gO!=null)
 			scene.placeBlock(gO, x, y);
 		}
