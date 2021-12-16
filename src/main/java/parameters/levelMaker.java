@@ -15,6 +15,8 @@ public class levelMaker {
 	Automate level = new Automate();
 	List<List<Token>> groups = new ArrayList<List<Token>>();
 	
+	HashMap<String,Class> gameObjectMatcher = new HashMap<String,Class>();
+
 	public levelMaker() {
 		// level.setDebug(true);
 		
@@ -165,13 +167,13 @@ public class levelMaker {
 
 		// exec("--set vars");
 		// exec("set _ to floor;");
-		exec("create terrain __\n__\n__;");
+		// exec("create terrain __\n__\n__;");
 		// parser("spawn skeleton()");
 		// parser("spawn skeleton(6,5)");
 		// parser("spawn skeleton(6,4,(2,0));");
 		// parser("(RIGHT)");
 		// parser("(RIGHT*4,DOWN*2,LEFT*4,UP*2)");
-		// parser("spawn skeleton(6,4,(RIGHT*4,DOWN*2,LEFT*4,UP*2));");
+		exec("spawn skeleton(6,4,(RIGHT*4,DOWN*2,LEFT*4,UP*2));");
 	}
 	public List<RegonizeToken> parser(String map){
 		return level.regroup(new AutomateString(map),groups);
@@ -181,7 +183,10 @@ public class levelMaker {
 		HashMap<String,String> block_synonym = new HashMap<String,String>();
 		String synonym = "";
 		int y = 0;
+		List<gameObject> batch = new ArrayList<gameObject>();
+		List<Object> args = new ArrayList<Object>();
 		boolean beinrecurtion = false;
+		boolean isrepeated = false;
 		for (RegonizeToken token : tokens) {
 			if(beinrecurtion){
 
@@ -198,8 +203,43 @@ public class levelMaker {
 					break;
 					case"terrainLine":
 						String line = token.getInput();
-						System.out.println(y+" : "+line.split(""));
+						for (int i = 0; i < line.length(); i++) {
+							String block = ""+line.charAt(i);
+							//change
+							System.out.println("block"+block+" "+i+"x"+y);
+						}
 						y++;
+					break;
+					case "EntityName":
+						System.out.println(token.getInput());
+					break;
+					case "Var":
+						System.out.println(token.getInput());
+					break;
+					case "Const":
+						args.add(token.getInput());
+					break;
+					case "Integer":
+						int value = Integer.valueOf(token.getInput());
+						if(isrepeated){
+							Object last = args.get(args.size()-1);
+							for (int i = 0; i < value; i++) {
+								args.add(last);
+							}
+							isrepeated = false;
+						}else{
+							args.add(value);
+						}
+					break;
+					case "ListStart":
+						System.out.println("start rec");
+					break;
+					case "Repeat":
+						isrepeated = true;
+					break;
+					case "endCommand":
+						Object last = args.get(args.size()-1);
+						System.out.println(last);
 					break;
 				}
 			}
