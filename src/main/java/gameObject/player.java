@@ -62,12 +62,12 @@ public class player extends gameObject{
 	@Override
 	public void render(GraphicsContext graphic) {
 		super.render(graphic);
-		lifeHUD.setX(this.getScene().getTX());
-		lifeHUD.setY(this.getScene().getTY()+10);
+		lifeHUD.setX(-this.getScene().getTX());
+		lifeHUD.setY(-this.getScene().getTY()+10);
 		lifeHUD.setFrame(0);
 		double hearts = life;
 		for (int i = 0; i < 5; i++) {
-			lifeHUD.setX(10+i*lifeHUD.getRenderWidth());
+			lifeHUD.setX(10-this.getScene().getTX()+i*lifeHUD.getRenderWidth());
 			if(hearts<1){
 				if(hearts<0){
 					lifeHUD.setFrame(2);

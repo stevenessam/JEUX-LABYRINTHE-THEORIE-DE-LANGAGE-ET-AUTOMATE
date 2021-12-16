@@ -88,7 +88,7 @@ public class gameScene extends Canvas{
 	private void rendering(){
 		timer++;
 		// graphic.translate(tx, ty);
-		graphic.clearRect(0, 0, graphic.getCanvas().getWidth(), graphic.getCanvas().getHeight());
+		graphic.clearRect(-tx, -ty, graphic.getCanvas().getWidth(), graphic.getCanvas().getHeight());
 		if(background != null){
 			graphic.drawImage(background,0,0,width/zoom,height/zoom);
 		}
@@ -113,8 +113,8 @@ public class gameScene extends Canvas{
 	}
 	private boolean isrunning = false;
 	private Timeline timeline;
-	private double ty;
-	private double tx;
+	private double ty = 0;
+	private double tx = 0;
 	public void start(){
 		assert !isrunning;
 		isrunning = true;
@@ -169,7 +169,7 @@ public class gameScene extends Canvas{
 	public void gameOver(){
 		stop();
 		graphic.setFill(new Color(0,0,0,.5));
-		graphic.fillRect(tx,ty,width/zoom,height/zoom);
+		graphic.fillRect(-tx,-ty,width/zoom,height/zoom);
 		double gapX = width/zoom/4;
 		double gapY = height/zoom/4;
 		gameFont gameOverText = new gameFont(gapX, gapY, "Game Over",true);
@@ -190,9 +190,9 @@ public class gameScene extends Canvas{
 		btn_quit.render(graphic);
 	}
 	public void translate(double x,double y){
-		tx = x;
-		ty = y;
-		graphic.translate(tx, ty);
+		tx += x;
+		ty += y;
+		graphic.translate(x,y);
 	}
 	public double getTX() {
 		return tx;
@@ -205,7 +205,6 @@ public class gameScene extends Canvas{
 		y = -Game.BLOCK_HEIGHT*scale*y;
 		x += getCanvasWidth()/2;
 		y += getCanvasHeight()/2;
-		System.out.println(x+"x"+y);
 		translate(x, y);
 	}
 }
