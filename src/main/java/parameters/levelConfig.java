@@ -31,6 +31,7 @@ public class levelConfig{
 
 	public levelConfig(optionConfig option) {
 		this.option = option;
+		new levelMaker();
 	}
 	public gameScene getLevelScene(){
 		gameScene scene = new gameScene(1000,660);
