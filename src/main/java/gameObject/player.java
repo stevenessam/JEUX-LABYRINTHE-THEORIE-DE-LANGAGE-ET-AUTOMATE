@@ -17,6 +17,9 @@ public class player extends gameObject{
 	public void addHealth(double heart){
 		life+=heart;
 	}
+	public void addSlow(double slowing){
+		speed*=slowing;
+	}
 
 	public player(int x, int y) {
 		super(x,y);
