@@ -1,6 +1,7 @@
 package parameters;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -8,13 +9,14 @@ import automate.Automate;
 import automate.AutomateString;
 import automate.RegonizeToken;
 import automate.Token;
+import gameObject.gameObject;
 
 public class levelMaker {
 	Automate level = new Automate();
 	List<List<Token>> groups = new ArrayList<List<Token>>();
 	
 	public levelMaker() {
-		level.setDebug(true);
+		// level.setDebug(true);
 		
 		Token endCommand = new Token(";","endCommand");
 		level.addToken(endCommand);
@@ -161,9 +163,9 @@ public class levelMaker {
 		Integer.add(Repeat);
 
 
-		// parser("--set vars");
-		// parser("set _ to floor;");
-		// parser("create terrain __\n__\n__;");
+		// exec("--set vars");
+		// exec("set _ to floor;");
+		exec("create terrain __\n__\n__;");
 		// parser("spawn skeleton()");
 		// parser("spawn skeleton(6,5)");
 		// parser("spawn skeleton(6,4,(2,0));");
@@ -176,5 +178,31 @@ public class levelMaker {
 	}
 	public void exec(String map){
 		List<RegonizeToken> tokens = this.parser(map);
+		HashMap<String,String> block_synonym = new HashMap<String,String>();
+		String synonym = "";
+		int y = 0;
+		boolean beinrecurtion = false;
+		for (RegonizeToken token : tokens) {
+			if(beinrecurtion){
+
+			}else{
+				switch(token.getOutput()){
+					case"commentComment":
+						System.out.println(token.getInput());
+					break;
+					case"blockVar":
+						synonym = token.getInput();
+					break;
+					case"blockName":
+						block_synonym.put(synonym, token.getInput());
+					break;
+					case"terrainLine":
+						String line = token.getInput();
+						System.out.println(y+" : "+line.split(""));
+						y++;
+					break;
+				}
+			}
+		}
 	}
 }
