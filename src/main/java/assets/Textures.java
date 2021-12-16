@@ -9,6 +9,7 @@ import javafx.scene.image.WritableImage;
 
 public class Textures {
 	public final static String night_backdrop = "/assets/skies/backdrop.png";
+	public final static String roof = "/assets/blocks/degat.png";
 
 	public final static String mob = "/assets/entities/skeleton.png";
 	public final static String Knight = "/assets/entities/knight.png";
