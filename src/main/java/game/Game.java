@@ -104,7 +104,10 @@ public class Game{
 		
 		var centerX = menu.getCanvasWidth()/2;
 		var gapY = menu.getCanvasHeight()/8;
-		gameObject title = new gameObject(centerX/2, 0, Textures.Title);
+		gameObject title = new gameObject(centerX, 0, Textures.Title);
+		title.setDeltaY(-.1);
+		title.setDeltaX(1.5);
+		title.setScale(6);
 		menu.add(title);
 		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
 		menu.add(new gameFont(centerX, 2.5*gapY, "Select Level",true));

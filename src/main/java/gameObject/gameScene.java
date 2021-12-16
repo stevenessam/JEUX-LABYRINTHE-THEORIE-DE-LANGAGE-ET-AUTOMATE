@@ -26,7 +26,11 @@ public class gameScene extends Canvas{
 	public double getScale() {
 		return scale;
 	}
+	public void setScale(double scale) {
+		this.scale = scale;
+	}
 	private double zoom = 1.4;
+
 	public double getZoom() {
 		return zoom;
 	}
