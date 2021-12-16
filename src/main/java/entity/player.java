@@ -1,9 +1,12 @@
-package gameObject;
+package entity;
 
 import java.util.HashMap;
 import java.util.List;
 
 import assets.Textures;
+import gameObject.gameObject;
+import gameObject.gameObjectType;
+import gameObject.sprite;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 

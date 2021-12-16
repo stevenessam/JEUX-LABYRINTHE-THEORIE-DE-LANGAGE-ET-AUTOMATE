@@ -1,6 +1,9 @@
-package gameObject;
+package block;
 
 import assets.Textures;
+import entity.player;
+import gameObject.gameObject;
+import gameObject.gameObjectType;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +13,6 @@ public class spiderWeb extends gameObject{
     private boolean canplayer = true;
 
     spiderWeb spider_web;
-    private player player_speed;
     public spiderWeb(int x,int y) {
         super(x,y, Textures.spiderWeb);
         setType(gameObjectType.PATH);

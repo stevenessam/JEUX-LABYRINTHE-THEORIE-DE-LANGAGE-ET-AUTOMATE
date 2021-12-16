@@ -1,10 +1,12 @@
-package gameObject;
+package item;
 
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 
 import assets.Textures;
+import gameObject.gameObject;
+import gameObject.gameObjectType;
 
 public class stairs_item extends gameObject{
 

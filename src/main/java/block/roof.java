@@ -1,12 +1,15 @@
-package gameObject;
+package block;
 
 import assets.Textures;
+import entity.player;
+import gameObject.gameObject;
+import gameObject.gameObjectType;
 
 import java.util.List;
 import java.util.Optional;
 
-public class degat extends gameObject {
-    public degat(int x,int y) {
+public class roof extends gameObject {
+    public roof(int x,int y) {
         super(x+.5,y+.5, Textures.roof);
         this.setDeltaX(.5);
         this.setDeltaY(1.5);

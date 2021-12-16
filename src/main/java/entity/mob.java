@@ -1,6 +1,9 @@
-package gameObject;
+package entity;
 
 import assets.Textures;
+import gameObject.gameObject;
+import gameObject.movement;
+import gameObject.pattern;
 
 public class mob extends gameObject {
 	private int speed = 5;

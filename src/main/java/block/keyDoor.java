@@ -1,8 +1,10 @@
-package gameObject;
+package block;
 
 import java.util.List;
 
 import assets.Textures;
+import gameObject.gameObject;
+import gameObject.gameObjectType;
 import javafx.scene.canvas.GraphicsContext;
 
 public class keyDoor extends gameObject{

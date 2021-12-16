@@ -1,6 +1,7 @@
-package gameObject;
+package block;
 
 import assets.Textures;
+import gameObject.gameObject;
 
 public class wall extends gameObject {
 	private final static int light_distance = 4;

@@ -1,7 +1,11 @@
-package gameObject;
+package entity;
 
 import java.util.List;
 import java.util.Optional;
+
+import gameObject.gameObject;
+import gameObject.gameObjectType;
+import gameObject.pattern;
 
 public class skeleton extends mob{
 	public skeleton(int x, int y) {

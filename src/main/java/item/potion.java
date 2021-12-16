@@ -1,9 +1,12 @@
-package gameObject;
+package item;
 
 import java.util.List;
 import java.util.Optional;
 
 import assets.Textures;
+import entity.player;
+import gameObject.gameObject;
+import gameObject.gameObjectType;
 
 public class potion extends gameObject{
 	public potion(int x,int y) {

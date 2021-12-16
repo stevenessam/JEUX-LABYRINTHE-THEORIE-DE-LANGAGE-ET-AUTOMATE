@@ -1,6 +1,9 @@
-package gameObject;
+package entity;
 
 import assets.Textures;
+import gameObject.gameObject;
+import gameObject.gameObjectType;
+import gameObject.pattern;
 
 import java.util.List;
 import java.util.Optional;

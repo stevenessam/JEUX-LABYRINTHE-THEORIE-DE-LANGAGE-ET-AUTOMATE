@@ -2,7 +2,19 @@ package parameters;
 
 import automate.Automate;
 import automate.Token;
+import block.roof;
+import block.door;
+import block.floor;
+import block.keyDoor;
+import block.spiderWeb;
+import block.stairs;
+import block.wall;
+import entity.bat;
+import entity.player;
+import entity.skeleton;
 import gameObject.*;
+import item.potion;
+import item.stairs_item;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,7 +62,7 @@ public class levelConfig{
 		scene.placeBlock(new floor(5,1));
 		scene.placeBlock(new floor(6,1));
 		scene.placeBlock(new floor(7,1));
-		scene.placeBlock(new degat(2,1));
+		scene.placeBlock(new roof(2,1));
 
 
 		scene.placeBlock(new spiderWeb(4,1));
