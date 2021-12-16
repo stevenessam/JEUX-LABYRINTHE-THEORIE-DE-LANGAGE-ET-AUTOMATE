@@ -13,6 +13,7 @@ public class Textures {
 	public final static String mob = "/assets/entities/skeleton.png";
 	public final static String Knight = "/assets/entities/knight.png";
 	public final static String skeleton = "/assets/entities/skeleton.png";
+	public final static String bat = "/assets/entities/bat.png";
 
 	public final static String wall = "/assets/blocks/wall.png";
 	public final static String wall_lighted = "/assets/blocks/wall_lighted.png";
