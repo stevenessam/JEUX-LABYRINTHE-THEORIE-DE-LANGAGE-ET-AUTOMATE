@@ -22,6 +22,7 @@ public class Textures {
 	public static final String Floor = "/assets/blocks/floor.png";
 	public static final String stairs = "/assets/blocks/stairs.png";
 	public static final String spiderWeb = "/assets/blocks/spiderWeb.png";
+	public static final String chest = "/assets/blocks/chest.png";
 
 	public final static String KeyDoor = "/assets/items/key.png";
 	public static final String HeatlthPostion = "/assets/items/potion.png";

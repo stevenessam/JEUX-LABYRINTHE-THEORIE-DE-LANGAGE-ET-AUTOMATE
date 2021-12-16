@@ -30,3 +30,4 @@ spawn bat(19,2,(RIGHT*3,RESTART));
 spawn bat(5,12,(RIGHT*3,UP*2,RESTART));
 
 spawn player(1,1);
+
