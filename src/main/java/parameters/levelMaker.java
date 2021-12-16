@@ -11,8 +11,11 @@ import automate.Automate;
 import automate.AutomateString;
 import automate.RegonizeToken;
 import automate.Token;
+import entity.mob;
 import gameObject.gameObject;
 import gameObject.gameScene;
+import gameObject.movement;
+import gameObject.pattern;
 
 public class levelMaker {
 	Automate level = new Automate();
@@ -326,10 +329,29 @@ public class levelMaker {
 			gameObject gO = callback.apply(args);
 			int x = (int) args.get(0);
 			int y = (int) args.get(1);
+			pattern path = new pattern();
+			if(args.size()>2 && args.get(2)!=null){
+				List<String> lso = (List<String>) args.get(2);
+				for (String move : lso) {
+					 switch(move){
+							case "RIGHT":path.add(movement.RIGHT);break;
+							case "DOWN":path.add(movement.DOWN);break;
+							case "LEFT":path.add(movement.LEFT);break;
+							case "UP":path.add(movement.UP);break;
+							case "RESTART":path.add(movement.RESTART);break;
+					 }
+				}
+				
+			}
 			if(gO!=null){
 				gO.setX(x);
 				gO.setY(y);
 				scene.placeBlock(gO);
+				if(args.size()>2 && args.get(2)!=null && gO instanceof mob){
+					((mob)gO).setInitX(x);
+					((mob)gO).setInitY(y);
+					((mob)gO).setPattern(path);
+				}
 			}
 			System.out.println(name);
 			if(name.equals("player")){

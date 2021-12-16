@@ -2,6 +2,6 @@ package gameObject;
 
 public enum movement {
 
-    UP,RIGHT,DOWN,LEFT
+    UP,RIGHT,DOWN,LEFT,RESTART
 
 }

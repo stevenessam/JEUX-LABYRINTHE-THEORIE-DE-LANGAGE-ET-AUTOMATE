@@ -7,6 +7,9 @@ import java.util.List;
 
 
 public class pattern extends ArrayList<movement> {
+    public pattern() {
+		super();
+	}
     public pattern(movement... args) {
         super();
 
