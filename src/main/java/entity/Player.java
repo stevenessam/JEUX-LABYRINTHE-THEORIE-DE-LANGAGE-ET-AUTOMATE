@@ -108,7 +108,10 @@ public class Player extends gameObject{
 		boolean floor = objects.stream().filter((gameObject gO)->{
 			return gameObjectType.PATH.equals(gO.getType());
 		}).findFirst().isPresent();
+		boolean solid = objects.stream().filter((gameObject gO)->{
+			return gameObjectType.SOLID.equals(gO.getType());
+		}).findFirst().isPresent();
 		// System.out.println(floor);
-		return floor;
+		return floor&&!solid;
 	}
 }

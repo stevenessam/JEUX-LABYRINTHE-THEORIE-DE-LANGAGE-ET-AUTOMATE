@@ -107,6 +107,7 @@ public class levelConfig{
 		Player a =new Player(1,1);
 		a.setControls(option.getPlayerControls(0));
 		scene.placeBlock(a);
+		scene.center(1, 1);
 		return scene;
 	}
 	public gameScene getLevelScene(int level) {

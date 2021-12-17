@@ -28,15 +28,27 @@ public class Roof extends gameObject {
         return ispresent;
     }
     public void effect(){
-        System.out.println("apply effect");
         player.addHealth(-1);
+		setType(gameObjectType.SOLID);
     }
+	boolean onfloor = false;
+	boolean isfalling = false;
     @Override
     protected void update() {
-        if(isplayerTouching() && this.getScene()!=null){
-            setDeltaY(.5);
-            effect();
-            delete();
-        }
+		if(!onfloor){
+			if(isplayerTouching() && this.getScene()!=null){
+				isfalling = true;
+	        }
+			if(isfalling){
+				if(getDeltaY()>.5){
+					this.setDeltaY(getDeltaY()-.05);
+					this.setFrame(getDeltaY()>1?0:1);
+				}else{
+					effect();
+					this.setFrame(2);
+					onfloor = true;
+				}
+			}
+		}
     }
 }
