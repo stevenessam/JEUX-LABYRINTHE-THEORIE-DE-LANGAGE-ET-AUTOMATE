@@ -1,7 +1,7 @@
 package block;
 
 import assets.Textures;
-import entity.player;
+import entity.Player;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
 
@@ -17,7 +17,7 @@ public class spiderWeb extends gameObject{
         super(x,y, Textures.spiderWeb);
         setType(gameObjectType.PATH);
     }
-    player player;
+    Player player;
     private boolean isplayerTouching(){
         List<gameObject> objects = this.getScene().getObjects(getX(),getY());
         Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
@@ -26,7 +26,7 @@ public class spiderWeb extends gameObject{
         // System.out.println(OgO);
         boolean ispresent = OgO.isPresent();
         if(ispresent){
-            player = (player) OgO.get();
+            player = (Player) OgO.get();
         }
         return ispresent;
     }

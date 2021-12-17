@@ -6,7 +6,7 @@ import gameObject.gameObject;
 import gameObject.movement;
 import gameObject.pattern;
 
-public class mob extends gameObject {
+public class Mob extends gameObject {
 	protected int speed = 5;
 	protected int init_X = 0;
 	protected int init_Y = 0;
@@ -20,14 +20,14 @@ public class mob extends gameObject {
 	public void setPattern(pattern pattern) {
 		this.pattern = pattern;
 	}
-	public mob(int x, int y) {
+	public Mob(int x, int y) {
 		super(x,y+.5);
 		init_X = x;
 		init_Y = y;
 		this.pattern = new pattern();
 		setSprite(Textures.mob, 2, 1);
 	}
-	public mob(int x, int y,pattern pattern) {
+	public Mob(int x, int y,pattern pattern) {
 		super(x, y+.5);
 		this.pattern = pattern;
 		init_X = x;

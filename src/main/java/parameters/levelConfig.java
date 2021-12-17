@@ -1,20 +1,9 @@
 package parameters;
 
-import automate.Automate;
-import automate.Token;
-import block.roof;
-import block.door;
-import block.floor;
-import block.keyDoor;
-import block.spiderWeb;
-import block.stairs;
-import block.wall;
-import entity.bat;
-import entity.player;
-import entity.skeleton;
+import block.*;
+import entity.*;
 import gameObject.*;
-import item.potion;
-import item.stairs_item;
+import item.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,6 +21,9 @@ public class levelConfig{
 		lM = new levelMaker();
 		lM.setWidth(1000);
 		lM.setHeight(660);
+		lM.put("chest",(ls)->{
+			return new chest(0,0);
+		});
 		lM.put("floor",(ls)->{return new floor(0,0);});
 		lM.put("wall",(ls)->{return new wall((int)ls.get(0),(int)ls.get(1));});
 		lM.put("skeleton",(ls)->{return new skeleton(0,0);});
@@ -76,6 +68,7 @@ public class levelConfig{
 		scene.placeBlock(new wall(8,0));
 
 		scene.placeBlock(new potion(6,1));
+		scene.placeBlock(new chest(8,1));
 
 
 
@@ -116,9 +109,9 @@ public class levelConfig{
 		return scene;
 	}
 	public gameScene getLevelScene(int level) {
-		String content = ReadeFile("/maps/level"+(level+1)+".map");
-		//getLevelScene()
-		return lM.exec(content);
+		// String content = ReadeFile("/maps/level"+(level+1)+".map");
+		return getLevelScene();
+		// return lM.exec(content);
 	}
 
 
@@ -143,23 +136,6 @@ public class levelConfig{
 			System.err.println(file + "not existe");
 		}
 		return null;
-	}
-
-	public void token(){
-		//Etats de L'automate
-		Automate ParaAuto = new Automate();
-		Token ObjectStart = new Token("{","ObjectStart");
-		ObjectStart.add(0);
-		ParaAuto.addToken(ObjectStart);
-		Token Indent = new Token(Pattern.compile("[\n\t\r]",Pattern.CASE_INSENSITIVE),"Indent");
-		Indent.add(ObjectStart);
-		ParaAuto.addToken(Indent);
-		Token ObjectKey = new Token(Pattern.compile("[a-z]",Pattern.CASE_INSENSITIVE),"ObjectKey");
-		ObjectKey.add(ObjectStart);
-		ObjectKey.add(Indent);
-		ParaAuto.addToken(ObjectKey);
-		ObjectKey.add(ObjectKey);
-
 	}
 }
 

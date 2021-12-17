@@ -8,16 +8,16 @@ import gameObject.pattern;
 import java.util.List;
 import java.util.Optional;
 
-public class bat extends mob {
+public class Bat extends Mob {
 
 	protected int speed = 15;
     private boolean canplayer = true;
-	public bat(int x, int y) {
-        super(x, y);
+	public Bat(int x, int y) {
+		super(x, y);
         setSprite(Textures.bat, 1, 3);
     }
-    public bat(int x, int y,pattern pattern) {
-        super(x, y, pattern);
+    public Bat(int x, int y,pattern pattern) {
+		super(x, y, pattern);
         setSprite(Textures.bat, 1, 3);
     }
 
@@ -35,7 +35,7 @@ public class bat extends mob {
             canplayer = true;
         }
     }
-    player player;
+    Player player;
     private boolean isplayerTouching(){
         List<gameObject> objects = this.getScene().getObjects(getX(),getY());
         Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
@@ -44,7 +44,7 @@ public class bat extends mob {
         // System.out.println(OgO);
         boolean ispresent = OgO.isPresent();
         if(ispresent){
-            player = (player) OgO.get();
+            player = (Player) OgO.get();
         }
         return ispresent;
     }

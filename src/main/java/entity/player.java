@@ -10,7 +10,7 @@ import gameObject.sprite;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 
-public class player extends gameObject{
+public class Player extends gameObject{
 
 	private int speed = 5;
 	private double life = 3.5f;
@@ -24,7 +24,7 @@ public class player extends gameObject{
 		speed = slowing;
 	}
 
-	public player(int x, int y) {
+	public Player(int x, int y) {
 		super(x,y);
 		setType(gameObjectType.PLAYER);
 		setSprite(Textures.Knight,2,1);

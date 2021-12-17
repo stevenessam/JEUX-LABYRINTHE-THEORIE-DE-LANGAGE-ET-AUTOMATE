@@ -7,11 +7,11 @@ import gameObject.gameObject;
 import gameObject.gameObjectType;
 import gameObject.pattern;
 
-public class skeleton extends mob{
-	public skeleton(int x, int y) {
+public class Skeleton extends Mob{
+	public Skeleton(int x, int y) {
 		super(x,y);
 	}
-	public skeleton(int x, int y,pattern pattern) {
+	public Skeleton(int x, int y,pattern pattern) {
 		super(x, y, pattern);
 	}
 	private boolean canplayer = true;
@@ -26,7 +26,7 @@ public class skeleton extends mob{
 			canplayer = true;
 		}
 	}
-	player player;
+	Player player;
 	private boolean isplayerTouching(){
 		List<gameObject> objects = this.getScene().getObjects(getX(),getY());
 		Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
@@ -35,7 +35,7 @@ public class skeleton extends mob{
 		// System.out.println(OgO);
 		boolean ispresent = OgO.isPresent();
 		if(ispresent){
-			player = (player) OgO.get();
+			player = (Player) OgO.get();
 		}
 		return ispresent;
 	}
