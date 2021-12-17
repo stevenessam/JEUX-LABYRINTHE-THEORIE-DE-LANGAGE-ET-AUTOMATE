@@ -21,11 +21,11 @@ public class levelConfig{
 		lM.setWidth(1000);
 		lM.setHeight(660);
 		lM.put("chest",(ls)->{
-			lM.getScene().placeBlock(new floor(0,0),(int)ls.get(0),(int)ls.get(1));
-			return new chest(0,0);
+			lM.getScene().placeBlock(new Floor(0,0),(int)ls.get(0),(int)ls.get(1));
+			return new Chest(0,0);
 		});
-		lM.put("floor",(ls)->{return new floor(0,0);});
-		lM.put("wall",(ls)->{return new wall((int)ls.get(0),(int)ls.get(1));});
+		lM.put("floor",(ls)->{return new Floor(0,0);});
+		lM.put("wall",(ls)->{return new Wall((int)ls.get(0),(int)ls.get(1));});
 		lM.put("skeleton",(ls)->{return new Skeleton(0,0);});
 		lM.put("bat",(ls)->{return new Bat(0,0);});
 		lM.put("player",(ls)->{
@@ -40,36 +40,36 @@ public class levelConfig{
 		scene.setBackdrop(Textures.night_backdrop);
 		// scene.add(new gameObject(0,0));
 
-		keyDoor key1 = new keyDoor(2,1);
+		KeyDoor key1 = new KeyDoor(2,1);
 		stairs_item itemStair1 = new stairs_item(0,1);
 
-		scene.placeBlock(new floor(0,1));
+		scene.placeBlock(new Floor(0,1));
 		// scene.placeBlock(new floor(1,0));
-		scene.placeBlock(new floor(1,1),1,1);
+		scene.placeBlock(new Floor(1,1),1,1);
 		scene.placeBlock(new stairs_item(0,1));
-		scene.placeBlock(new floor(2,1));
+		scene.placeBlock(new Floor(2,1));
 		// scene.add(new floor(3,1));
-		scene.placeBlock(new stairs(3,1,itemStair1));
-		scene.placeBlock(new floor(4,1));
-		scene.placeBlock(new floor(5,1));
-		scene.placeBlock(new floor(6,1));
-		scene.placeBlock(new floor(7,1));
-		scene.placeBlock(new roof(2,1));
+		scene.placeBlock(new Ladder(3,1,itemStair1));
+		scene.placeBlock(new Floor(4,1));
+		scene.placeBlock(new Floor(5,1));
+		scene.placeBlock(new Floor(6,1));
+		scene.placeBlock(new Floor(7,1));
+		scene.placeBlock(new Roof(2,1));
 
 
-		scene.placeBlock(new spiderWeb(4,1));
-		scene.placeBlock(new spiderWeb(5,1));
+		scene.placeBlock(new SpiderWeb(4,1));
+		scene.placeBlock(new SpiderWeb(5,1));
 
-		scene.placeBlock(new wall(3,0));
-		scene.placeBlock(new wall(4,0));
-		scene.placeBlock(new door(5,0,key1));
-		scene.placeBlock(new wall(6,0));
-		scene.placeBlock(new wall(7,0));
-		scene.placeBlock(new wall(8,0));
+		scene.placeBlock(new Wall(3,0));
+		scene.placeBlock(new Wall(4,0));
+		scene.placeBlock(new Door(5,0,key1));
+		scene.placeBlock(new Wall(6,0));
+		scene.placeBlock(new Wall(7,0));
+		scene.placeBlock(new Wall(8,0));
 
 		scene.placeBlock(new potion(6,1));
-		scene.placeBlock(new chest(8,1));
 		scene.placeBlock(new Bookshelf(2,2));
+		scene.placeBlock(new Chest(8,1));
 
 
 

@@ -8,8 +8,8 @@ import gameObject.gameObjectType;
 import java.util.List;
 import java.util.Optional;
 
-public class chest extends gameObject {
-	public chest(int x,int y) {
+public class Chest extends gameObject {
+	public Chest(int x, int y) {
 		super(x+.5,y+.5, Textures.chest);
 		this.setDeltaX(.5);
 		this.setDeltaY(1.5);

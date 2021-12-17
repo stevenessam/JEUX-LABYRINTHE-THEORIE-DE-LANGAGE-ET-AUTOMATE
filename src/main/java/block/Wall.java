@@ -3,10 +3,10 @@ package block;
 import assets.Textures;
 import gameObject.gameObject;
 
-public class wall extends gameObject {
+public class Wall extends gameObject {
 	private final static int light_distance = 4;
 	private boolean isLighted = false;
-	public wall(int x, int y){
+	public Wall(int x, int y){
 		super(x,y,x%light_distance==0&&y%2==0?Textures.wall_lighted:Textures.wall);
 		isLighted = x%light_distance==0&&y%2==0;//x%light_distance==0;
 		if(isLighted){

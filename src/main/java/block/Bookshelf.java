@@ -3,7 +3,7 @@ package block;
 import assets.Textures;
 // import gameObject.gameObjectType;
 
-public class Bookshelf extends wall{
+public class Bookshelf extends Wall{
 
 	public Bookshelf(int x, int y) {
 		super(x, y);
