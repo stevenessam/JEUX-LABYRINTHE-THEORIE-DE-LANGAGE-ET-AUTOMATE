@@ -7,12 +7,24 @@ import item.stairs_item;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- * Class stairs qui extends la class gameObject
+ * Class Ladder qui extends la class gameObject
  */
 public class Ladder extends gameObject {
+    /**
+     * pickup est un Variable boolean = false
+     * itemStair est Variable du class stairs_item
+     */
     boolean pickup = false;
-
     stairs_item itemStair;
+
+    /**
+     * Le costucteur Ladder prend les positions x , y  et itemStair comme paramètres
+     * dans le constructeur il y a un setSprite c'est pour definir la textures et
+     * le nombre de column et ligne pour decouper ces tiles
+     * @param x
+     * @param y
+     * @param itemStair
+     */
     public Ladder(int x, int y, stairs_item itemStair) {
         super(x, y+.5);
         this.itemStair=itemStair;
@@ -20,6 +32,10 @@ public class Ladder extends gameObject {
 		setDeltaY(.25);
     }
 
+    /**
+     * La methode render prend graphic comme paramètres qui est un varianble du class GraphicsContext
+      * @param graphic
+     */
     @Override
     public void render(GraphicsContext graphic) {
         if(this.itemStair.isPickup()) {
@@ -28,6 +44,10 @@ public class Ladder extends gameObject {
         }
     }
 
+    /**
+     * Update Override la methode Update dans la class gameObject
+     * La méthode Update permet de mettre à jour le Ladder
+     */
     @Override
     protected void update() {
         if(this.itemStair.isPickup()){
