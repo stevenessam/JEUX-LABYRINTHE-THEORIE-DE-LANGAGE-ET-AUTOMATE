@@ -32,15 +32,32 @@ public class optionConfig {
 		Indent.add(ObjectStart);
 		optionLang.addToken(Indent);
 
-		Token ObjectKey = new Token(Pattern.compile("[a-z]",Pattern.CASE_INSENSITIVE),"ObjectKey");
-		ObjectKey.add(ObjectStart);
-		ObjectKey.add(Indent);
-		optionLang.addToken(ObjectKey);
+		Token ObjectKeyStart = new Token("\"","ObjectKeyStart");
+		optionLang.addToken(ObjectKeyStart);
+		ObjectKeyStart.add(ObjectStart);
+		ObjectKeyStart.add(Indent);
+
+		Token ObjectKeyContent = new Token(Pattern.compile("[^\"]"),"ObjectKeyContent");
+		optionLang.addToken(ObjectKeyContent);
+		ObjectKeyContent.add(ObjectKeyStart);
+		ObjectKeyContent.add(ObjectKeyContent);
+
+		Token ObjectKeyEnd = new Token("\"","ObjectKeyEnd");
+		optionLang.addToken(ObjectKeyEnd);
+		ObjectKeyEnd.add(ObjectKeyStart);
+		ObjectKeyEnd.add(ObjectKeyContent);
+
+		Indent.add(ObjectKeyEnd);
+
+		// Token ObjectKey = new Token(Pattern.compile("[a-z]",Pattern.CASE_INSENSITIVE),"ObjectKey");
+		// ObjectKey.add(ObjectStart);
+		// ObjectKey.add(Indent);
+		// optionLang.addToken(ObjectKey);
 		
-		ObjectKey.add(ObjectKey);
+		// ObjectKey.add(ObjectKey);
 
 		Token ObjectAssign = new Token(":","ObjectAssign");
-		ObjectAssign.add(ObjectKey);
+		ObjectAssign.add(ObjectKeyEnd);
 		optionLang.addToken(ObjectAssign);
 
 		Indent.add(ObjectAssign);
@@ -67,7 +84,7 @@ public class optionConfig {
 		optionLang.addToken(ObjectSeparator);
 
 		Indent.add(ObjectSeparator);
-		ObjectKey.add(ObjectSeparator);
+		ObjectKeyStart.add(ObjectSeparator);
 
 		Token ObjectEnd = new Token("}","ObjectEnd");
 		ObjectEnd.add(ObjectEnd);
@@ -89,7 +106,7 @@ public class optionConfig {
 		groups.add(group);
 
 		group = new ArrayList<Token>();
-		group.add(ObjectKey);
+		group.add(ObjectKeyContent);
 		groups.add(group);
 
 		/* Prepare Execution */
@@ -101,7 +118,7 @@ public class optionConfig {
 		HashMap<String,Object> opts = interprete(tokens);
 		
 		if(opts.get("level")!= null){
-			level = (int) opts.get("level");
+			level = Integer.valueOf((String) opts.get("level"));
 		}
 
 		Object obj_play = opts.get("player");
@@ -168,7 +185,7 @@ public class optionConfig {
 						name = null;
 						value = null;
 					break;
-					case "ObjectKey":
+					case "ObjectKeyContent":
 						name = token.getInput();
 					break;
 					case "ObjectStringStart":
