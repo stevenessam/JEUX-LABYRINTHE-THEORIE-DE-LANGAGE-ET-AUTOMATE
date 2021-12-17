@@ -4,6 +4,7 @@ import assets.Textures;
 import entity.Player;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
+import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class Roof extends gameObject {
         this.setDeltaX(.5);
         this.setDeltaY(1.5);
 		setSprite(1, 3);
+		this.setFrame(-1);
     }
     Player player;
     private boolean isplayerTouching(){
@@ -33,6 +35,12 @@ public class Roof extends gameObject {
     }
 	boolean onfloor = false;
 	boolean isfalling = false;
+	@Override
+	public void render(GraphicsContext graphic) {
+		if(isfalling || onfloor)
+			super.render(graphic);
+		
+	}
     @Override
     protected void update() {
 		if(!onfloor){
