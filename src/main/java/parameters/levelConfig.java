@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.regex.Pattern;
 
 import assets.Textures;
 
@@ -26,10 +25,10 @@ public class levelConfig{
 		});
 		lM.put("floor",(ls)->{return new floor(0,0);});
 		lM.put("wall",(ls)->{return new wall((int)ls.get(0),(int)ls.get(1));});
-		lM.put("skeleton",(ls)->{return new skeleton(0,0);});
-		lM.put("bat",(ls)->{return new bat(0,0);});
+		lM.put("skeleton",(ls)->{return new Skeleton(0,0);});
+		lM.put("bat",(ls)->{return new Bat(0,0);});
 		lM.put("player",(ls)->{
-			player a = new player(0,0);a.setControls(option.getPlayerControls(0));
+			Player a = new Player(0,0);a.setControls(option.getPlayerControls(0));
 			return a;
 		});
 	}
@@ -72,7 +71,7 @@ public class levelConfig{
 
 
 
-		scene.placeBlock(new skeleton(4,0,
+		scene.placeBlock(new Skeleton(4,0,
 			new pattern(
 				movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,
 				movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,
@@ -86,7 +85,7 @@ public class levelConfig{
 		));
 
 
-		scene.placeBlock(new bat(2,0,
+		scene.placeBlock(new Bat(2,0,
 				new pattern(
 						movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,
 						movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,movement.RIGHT,
@@ -103,7 +102,7 @@ public class levelConfig{
 		scene.placeBlock(key1);
 		scene.placeBlock(itemStair1);
 
-		player a =new player(1,1);
+		Player a =new Player(1,1);
 		a.setControls(option.getPlayerControls(0));
 		scene.placeBlock(a);
 		return scene;

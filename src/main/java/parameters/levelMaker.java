@@ -11,7 +11,7 @@ import automate.Automate;
 import automate.AutomateString;
 import automate.RegonizeToken;
 import automate.Token;
-import entity.mob;
+import entity.Mob;
 import gameObject.gameObject;
 import gameObject.gameScene;
 import gameObject.movement;
@@ -347,10 +347,10 @@ public class levelMaker {
 				gO.setX(x);
 				gO.setY(y);
 				scene.placeBlock(gO);
-				if(args.size()>2 && args.get(2)!=null && gO instanceof mob){
-					((mob)gO).setInitX(x);
-					((mob)gO).setInitY(y);
-					((mob)gO).setPattern(path);
+				if(args.size()>2 && args.get(2)!=null && gO instanceof Mob){
+					((Mob)gO).setInitX(x);
+					((Mob)gO).setInitY(y);
+					((Mob)gO).setPattern(path);
 				}
 			}
 			System.out.println(name);

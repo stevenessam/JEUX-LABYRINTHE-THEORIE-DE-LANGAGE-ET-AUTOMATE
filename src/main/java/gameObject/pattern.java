@@ -1,10 +1,6 @@
 package gameObject;
 
 import java.util.ArrayList;
-import java.util.List;
-
-
-
 
 public class pattern extends ArrayList<movement> {
     public pattern() {
