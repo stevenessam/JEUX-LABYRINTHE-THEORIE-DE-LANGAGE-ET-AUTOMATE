@@ -263,7 +263,8 @@ public class levelMaker {
 							createBlock(block,i,y);
 							// System.out.println("block"+block+" "+i+"x"+y);
 						}
-						y++;
+						if(line.length()>2)
+							y++;
 					break;
 					case "EntityName":
 						callback = token.getInput();

@@ -13,6 +13,7 @@ public class chest extends gameObject {
 		super(x+.5,y+.5, Textures.chest);
 		this.setDeltaX(.5);
 		this.setDeltaY(1.5);
+		setSprite(1, 4);
 	}
 	Player player;
 	private boolean isplayerTouching(){
