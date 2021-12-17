@@ -96,13 +96,16 @@ public class gameScene extends Canvas{
 			graphic.drawImage(background,0,0,width/zoom,height/zoom);
 		}
 		try{
+			if(batch == null)return;
 			batch.forEach((gameobject)->{
-				gameobject.update();
-				// if(!gameobject.isPositionGlobal())
+				if(gameobject != null){
+					gameobject.update();
 					gameobject.render(graphic);
+				}
+				// if(!gameobject.isPositionGlobal())
 			});
 		}catch(Exception e){
-			System.out.println("NO SCENE");
+			System.out.println(e);
 		}
 		// graphic.translate(-tx, -ty);
 		// try{

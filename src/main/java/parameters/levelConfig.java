@@ -59,6 +59,10 @@ public class levelConfig{
 
 		scene.placeBlock(new SpiderWeb(4,1));
 		scene.placeBlock(new SpiderWeb(5,1));
+		scene.placeBlock(new SpiderWeb(1,2));
+		scene.placeBlock(new SpiderWeb(1,3));
+		scene.placeBlock(new SpiderWeb(1,4));
+		scene.placeBlock(new SpiderWeb(1,5));
 
 		scene.placeBlock(new Wall(3,0));
 		scene.placeBlock(new Wall(4,0));

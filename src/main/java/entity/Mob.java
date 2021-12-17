@@ -35,7 +35,7 @@ public class Mob extends gameObject {
 		setSprite(Textures.mob, 2, 1);
 	}
 
-	movement move_mob;
+	movement move_mob = movement.RESTART;
 	public void moves() {
 		if(this.wait(50))
 			move_mob =pattern.next();
