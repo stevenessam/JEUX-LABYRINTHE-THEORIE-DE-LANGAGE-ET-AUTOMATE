@@ -1,7 +1,7 @@
 -- variable element
 set # to wall;
 set _ to floor;
-set * to chest;
+set * to door;
 
 -- creation du terrain utilise les variables
 create terrain 

@@ -8,8 +8,8 @@ import entity.Player;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
 
-public class potion extends gameObject{
-	public potion(int x,int y) {
+public class Potion extends gameObject{
+	public Potion(int x,int y) {
 		super(x+.5,y+.5,Textures.HeatlthPostion);
 		this.setDeltaX(.5);
 		this.setDeltaY(.5);

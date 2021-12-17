@@ -8,7 +8,7 @@ import assets.Textures;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
 
-public class stairs_item extends gameObject{
+public class Ladder_item extends gameObject{
 
 
     boolean pickup = false;
@@ -16,7 +16,7 @@ public class stairs_item extends gameObject{
         return pickup;
     }
 
-    public stairs_item(int x,int y) {
+    public Ladder_item(int x,int y) {
         super(x+.5,y+.5,Textures.stairs_item);
         setSprite(Textures.stairs_item, 1, 1);
         this.setDeltaX(.5);

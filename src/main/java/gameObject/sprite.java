@@ -113,44 +113,69 @@ public class sprite {
 		this.row = row;
 		this.frame = 0;
 	}
+	/**
+	 * defini le numero du tiles a afficher
+	 * 0|1|2|3|
+	 * 4|5|6|7|
+	 * @param frame
+	 */
 	public void setFrame(int frame){
-		/** defini le numero du tiles a afficher  */
-		// 0|1|2|3|
-		// 4|5|6|7|
 		this.frame = frame;
 	}
+	/**
+	 * definir largeur de l'image à l'affichage
+	 * @param w
+	 */
 	public void setRenderWidth(double w) {
-		/** definir largeur de l'image à l'affichage */
 		renderwidth = w/scale;
 	}
+	/**
+	 * definir hauteur de l'image à l'affichage
+	 * @param h
+	 */
 	public void setRenderHeight(double h) {
-		/** definir hauteur de l'image à l'affichage */
 		renderheight = h/scale;
 	}
+	/**
+	 * retourner largeur de l'image à l'affichage
+	 * @return
+	 */
 	public double getRenderWidth() {
-		/** retourner largeur de l'image à l'affichage */
 		return renderwidth;
 	}
+	/**
+	 * retourner hauteur de l'image à l'affichage
+	 * @return
+	 */
 	public double getRenderHeight() {
-		/** retourner hauteur de l'image à l'affichage */
 		return renderheight;
 	}
 	/** Flip */
+	/**
+	 * flip vertical image 
+	 */
 	public void flipV(){
-		/** flip vertical image */
 		renderheight = -renderheight;
 	}
+	/**
+	 * flip horizontal image
+	 */
 	public void flipH(){
-		/** flip horizontal image */
 		renderwidth = -renderwidth;
 	}
+	/**
+	 * flip vertical image avec vrai ou faux
+	 * @param activated
+	 */
 	public void flipV(boolean activated){
-		/** flip vertical image avec vrai ou faux*/
 		int flip = activated?-1:1;
 		renderheight = Math.abs(renderheight)*flip;
 	}
+	/**
+	 * flip horizontal image avec vrai ou faux
+	 * @param activated
+	 */
 	public void flipH(boolean activated){
-		/** flip horizontal image avec vrai ou faux*/
 		int flip = activated?-1:1;
 		renderwidth = Math.abs(renderwidth)*flip;
 	}

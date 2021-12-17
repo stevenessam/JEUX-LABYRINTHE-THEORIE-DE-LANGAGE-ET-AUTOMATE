@@ -17,6 +17,13 @@ public class Door extends gameObject{
 	 * key un variable de la class {@link KeyDoor}
 	 */
 	KeyDoor key;
+	/**
+	 * 
+	 * @return clé de la porte
+	 */
+	public KeyDoor getKey() {
+		return key;
+	}
 
 	/**
 	 * Constructeur de la class {@link Door} qui a comme parametre x , y et  key
@@ -28,9 +35,14 @@ public class Door extends gameObject{
 	public Door(int x, int y, KeyDoor key) {
 		super(x,y);
 		this.key = key;
-		setSprite(Textures.Door,3,1);
+		setSprite(Textures.Door,3,2);
 	}
 
+	public Door(int x, int y, int kx, int ky) {
+		this(x, y, new KeyDoor(kx, ky));
+	}
+	/** */
+	private boolean isopen = false;
 	/**
 	 * Update Override la methode Update dans la class gameObject
 	 * La méthode Update permet de mettre à jour le Door
@@ -38,7 +50,14 @@ public class Door extends gameObject{
 	@Override
 	protected void update() {
 		if(this.key.isPickup()){
-			this.setFrame(1+((this.getTimer()/50)+1)%2);
+			if(isopen){
+				setType(gameObjectType.PATH);
+			}else{
+				this.setFrame(1+((this.getTimer()/50)+1)%6);
+				if(this.frame==5){
+					isopen = true;
+				}
+			}
 		}else{
 			this.setFrame(0);
 		}

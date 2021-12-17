@@ -3,7 +3,7 @@ package block;
 import assets.Textures;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
-import item.stairs_item;
+import item.Ladder_item;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
@@ -15,7 +15,7 @@ public class Ladder extends gameObject {
      * itemStair est Variable du class stairs_item
      */
     boolean pickup = false;
-    stairs_item itemStair;
+    Ladder_item itemStair;
 
     /**
      * Le costucteur Ladder prend les positions x , y  et itemStair comme paramètres
@@ -25,7 +25,7 @@ public class Ladder extends gameObject {
      * @param y
      * @param itemStair
      */
-    public Ladder(int x, int y, stairs_item itemStair) {
+    public Ladder(int x, int y, Ladder_item itemStair) {
         super(x, y+.5);
         this.itemStair=itemStair;
         setSprite(Textures.stairs, 1, 1);

@@ -20,9 +20,12 @@ public class levelConfig{
 		lM = new levelMaker();
 		lM.setWidth(1000);
 		lM.setHeight(660);
-		lM.put("chest",(ls)->{
-			lM.getScene().placeBlock(new Floor(0,0),(int)ls.get(0),(int)ls.get(1));
-			return new Chest(0,0);
+		lM.put("door",(ls)->{
+			Door door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
+			lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);
+			lM.getScene().placeBlock(door.getKey(),(int)ls.get(0),(int)ls.get(1));
+			//new Chest(0,0);
+			return new Floor(0,0);
 		});
 		lM.put("floor",(ls)->{return new Floor(0,0);});
 		lM.put("wall",(ls)->{return new Wall((int)ls.get(0),(int)ls.get(1));});
@@ -41,12 +44,12 @@ public class levelConfig{
 		// scene.add(new gameObject(0,0));
 
 		KeyDoor key1 = new KeyDoor(2,1);
-		stairs_item itemStair1 = new stairs_item(0,1);
+		Ladder_item itemStair1 = new Ladder_item(0,1);
 
 		scene.placeBlock(new Floor(0,1));
 		// scene.placeBlock(new floor(1,0));
 		scene.placeBlock(new Floor(1,1),1,1);
-		scene.placeBlock(new stairs_item(0,1));
+		scene.placeBlock(new Ladder_item(0,1));
 		scene.placeBlock(new Floor(2,1));
 		// scene.add(new floor(3,1));
 		scene.placeBlock(new Ladder(3,1,itemStair1));
@@ -71,8 +74,8 @@ public class levelConfig{
 		scene.placeBlock(new Wall(7,0));
 		scene.placeBlock(new Wall(8,0));
 
-		scene.placeBlock(new potion(6,1));
-		scene.placeBlock(new Bookshelf(2,2));
+		scene.placeBlock(new Potion(6,1));
+		scene.placeBlock(new Bookshelf(2,0));
 		scene.placeBlock(new Chest(8,1));
 
 
