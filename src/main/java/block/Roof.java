@@ -8,14 +8,11 @@ import gameObject.gameObjectType;
 import java.util.List;
 import java.util.Optional;
 
-public class spiderWeb extends gameObject{
-
-    private boolean canplayer = true;
-
-    spiderWeb spider_web;
-    public spiderWeb(int x,int y) {
-        super(x,y, Textures.spiderWeb);
-        setType(gameObjectType.PATH);
+public class Roof extends gameObject {
+    public Roof(int x, int y) {
+        super(x+.5,y+.5, Textures.roof);
+        this.setDeltaX(.5);
+        this.setDeltaY(1.5);
     }
     Player player;
     private boolean isplayerTouching(){
@@ -23,27 +20,22 @@ public class spiderWeb extends gameObject{
         Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
             return gameObjectType.PLAYER.equals(gO.getType());
         }).findFirst();
-        // System.out.println(OgO);
         boolean ispresent = OgO.isPresent();
         if(ispresent){
             player = (Player) OgO.get();
         }
         return ispresent;
     }
-
-
+    public void effect(){
+        System.out.println("apply effect");
+        player.addHealth(-1);
+    }
     @Override
     protected void update() {
-
-            if(isplayerTouching() && canplayer){
-                player.slowness(1);
-                canplayer = false;
-            }
-
-            if(!canplayer && this.wait(50)){
-                canplayer = true;
-                player.slowness(5);
-            }
-
+        if(isplayerTouching() && this.getScene()!=null){
+            setDeltaY(.5);
+            effect();
+            delete();
+        }
     }
 }

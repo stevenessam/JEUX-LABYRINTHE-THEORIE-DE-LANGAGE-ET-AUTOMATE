@@ -3,14 +3,15 @@ package block;
 import assets.Textures;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
+import item.KeyDoor;
 
-public class door extends gameObject{
+public class Door extends gameObject{
 
 	gameObjectType type = gameObjectType.SOLID;
 
-	keyDoor key;
+	KeyDoor key;
 
-	public door(int x,int y,keyDoor key) {
+	public Door(int x, int y, KeyDoor key) {
 		super(x,y);
 		this.key = key;
 		setSprite(Textures.Door,3,1);

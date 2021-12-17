@@ -6,11 +6,14 @@ import gameObject.gameObjectType;
 import item.stairs_item;
 import javafx.scene.canvas.GraphicsContext;
 
-public class stairs extends gameObject {
+/**
+ * Class stairs qui extends la class gameObject
+ */
+public class Ladder extends gameObject {
     boolean pickup = false;
 
     stairs_item itemStair;
-    public stairs(int x, int y,stairs_item itemStair) {
+    public Ladder(int x, int y, stairs_item itemStair) {
         super(x, y+.5);
         this.itemStair=itemStair;
         setSprite(Textures.stairs, 1, 1);

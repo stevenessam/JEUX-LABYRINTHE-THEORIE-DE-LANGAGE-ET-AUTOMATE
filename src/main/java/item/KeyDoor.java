@@ -1,4 +1,4 @@
-package block;
+package item;
 
 import java.util.List;
 
@@ -7,14 +7,14 @@ import gameObject.gameObject;
 import gameObject.gameObjectType;
 import javafx.scene.canvas.GraphicsContext;
 
-public class keyDoor extends gameObject{
+public class KeyDoor extends gameObject{
 
 	boolean pickup = false;
 	public boolean isPickup() {
 		return pickup;
 	}
 
-	public keyDoor(int x,int y) {
+	public KeyDoor(int x, int y) {
 		super(x+.5,y+.5,Textures.KeyDoor);
 		this.setDeltaX(.5);
 		this.setDeltaY(.5);
