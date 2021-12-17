@@ -21,6 +21,7 @@ public class levelConfig{
 		lM.setWidth(1000);
 		lM.setHeight(660);
 		lM.put("chest",(ls)->{
+			lM.getScene().placeBlock(new floor(0,0),(int)ls.get(0),(int)ls.get(1));
 			return new chest(0,0);
 		});
 		lM.put("floor",(ls)->{return new floor(0,0);});
@@ -68,6 +69,7 @@ public class levelConfig{
 
 		scene.placeBlock(new potion(6,1));
 		scene.placeBlock(new chest(8,1));
+		scene.placeBlock(new Bookshelf(2,2));
 
 
 
@@ -108,9 +110,9 @@ public class levelConfig{
 		return scene;
 	}
 	public gameScene getLevelScene(int level) {
-		// String content = ReadeFile("/maps/level"+(level+1)+".map");
-		return getLevelScene();
-		// return lM.exec(content);
+		String content = ReadeFile("/maps/level"+(level+1)+".map");
+		// return getLevelScene();
+		return lM.exec(content);
 	}
 
 

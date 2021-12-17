@@ -161,8 +161,8 @@ public class gameScene extends Canvas{
 		});
 	}
 	public void click(double x,double y,MouseButton button){
-		final double cx = x /zoom;
-		final double cy = y /zoom;
+		final double cx = x /zoom - tx;
+		final double cy = y /zoom - ty;
 		batch.forEach((gameobject)->{
 			if(gameobject.isOn(cx, cy)){
 				gameobject.click(x,y,button);
@@ -173,14 +173,15 @@ public class gameScene extends Canvas{
 		stop();
 		graphic.setFill(new Color(0,0,0,.5));
 		graphic.fillRect(-tx,-ty,width/zoom,height/zoom);
+		// graphic.fillRect(-tx,-ty,width/zoom,height/zoom);
 		double gapX = width/zoom/4;
 		double gapY = height/zoom/4;
-		gameFont gameOverText = new gameFont(gapX, gapY, "Game Over",true);
-		gameFont btn_retry = gameFont.createButton(gapX, gapY*2, "Retry", (button)->{
+		gameFont gameOverText = new gameFont(gapX-tx, gapY-ty, "Game Over",true);
+		gameFont btn_retry = gameFont.createButton(gapX-tx, gapY*2-ty, "Retry", (button)->{
 			System.out.println("retry");
 			container.restart();
 		});
-		gameFont btn_quit = gameFont.createButton(gapX*2, gapY*2, "Main Menu", (button)->{
+		gameFont btn_quit = gameFont.createButton(gapX*2-tx, gapY*2-ty, "Main Menu", (button)->{
 			System.out.println("main menu");
 			container.setLocation(Location.MAINMENU);
 		});
