@@ -27,6 +27,8 @@ public class Bookshelf extends Wall{
 		setSprite(Textures.Bookshelf, 1, 1);
 		setType(gameObjectType.SOLID);
 		setDeltaX(1);
+		VisitedX = vx;
+		VisitedY = vy;
 	}
 	/**
 	 *Le constructeur de Bookshelf prend les positions x et y comme paramètres
@@ -34,7 +36,9 @@ public class Bookshelf extends Wall{
 	 * @param y
 	 */
 	public Bookshelf(int x, int y) {
-		this(x,y,x+0,y+1);
+		this(x,y,0,0);
+		VisitedX = (int)(x+getWidth()/2);
+		VisitedY = (int)(y+getHeight());
 	}
 	private boolean hasVisited(){
 		if(!visited){

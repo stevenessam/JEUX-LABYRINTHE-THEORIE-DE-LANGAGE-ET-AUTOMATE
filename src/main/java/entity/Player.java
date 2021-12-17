@@ -14,11 +14,15 @@ public class Player extends gameObject{
 
 	private int speed = 5;
 	private double life = 3.5f;
+	private int stars = 0;
 
 	private sprite lifeHUD = new sprite(Textures.Stats);
 
 	public void addHealth(double heart){
 		life+=heart;
+	}
+	public void addStar(){
+		stars++;
 	}
 	public void slowness(int slowing){
 		speed = slowing;
@@ -83,7 +87,7 @@ public class Player extends gameObject{
 		}
 		lifeHUD.setY(10+lifeHUD.getRenderHeight());
 		lifeHUD.setFrame(0);
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < stars; i++) {
 			lifeHUD.setX(10+i*lifeHUD.getRenderWidth());
 			lifeHUD.setFrame(3+((this.getTimer()/25)+1)%3);
 			lifeHUD.render(graphic);

@@ -124,6 +124,12 @@ public class gameScene extends Canvas{
 	public void start(){
 		assert !isrunning;
 		isrunning = true;
+		this.batch.sort((o1,o2)->{
+			Integer s1 = o1.getType()==gameObjectType.PATH?-1:1;
+			Integer s2 = o2.getType()==gameObjectType.PATH?-1:1;
+			return Integer.compare(s1, s2);
+		});
+		// batch.forEach(System.out::println);
 		timeline = new Timeline(
 			new KeyFrame(
 				Duration.millis(10),

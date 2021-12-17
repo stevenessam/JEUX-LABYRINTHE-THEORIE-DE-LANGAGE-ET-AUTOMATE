@@ -8,13 +8,25 @@ import entity.Player;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
 
-public class Potion extends gameObject{
-	public Potion(int x,int y) {
+public class Diamond extends gameObject{
+	/**
+	 * placer une potion de Soin
+	 * @param x
+	 * @param y
+	 */
+	public Diamond(int x,int y) {
 		super(x+.5,y+.5,Textures.HeatlthPostion);
 		this.setDeltaX(.5);
 		this.setDeltaY(.5);
 	}
+	/**
+	 * garde le player toucher pour lui affecter un effet
+	 */
 	Player player;
+	/**
+	 * test les elments avec les memes position que la potion et filtre ceux qui sont aussi joueur
+	 * @return si un joueur touche la potion
+	 */
 	private boolean isplayerTouching(){
 		List<gameObject> objects = this.getScene().getObjects(getX(),getY());
 		Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
@@ -26,15 +38,25 @@ public class Potion extends gameObject{
 		}
 		return ispresent;
 	}
+	/**
+	 * ajoute une etoile au joueur
+	 */
 	public void effect(){
-		System.out.println("apply effect");
-		player.addHealth(2);
+		player.addStar();
 	}
+	/**
+	 * mise à jour de la potion
+	 * quand le joueur est toucher 
+	 * (et que la potion est dans un scene (pour povoir etre retire de cette scene))
+	 * appliquer l'effect {@link effect}
+	 * puis retire l'element de la scene {@link gameScene}
+	 */
 	@Override
 	protected void update() {
 		if(isplayerTouching() && this.getScene()!=null){
 			effect();
 			delete();
 		}
+		setFrame(2+((this.getTimer()/50)+1)%3);
 	}
 }

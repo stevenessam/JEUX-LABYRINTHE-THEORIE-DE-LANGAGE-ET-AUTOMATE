@@ -27,7 +27,12 @@ public class levelConfig{
 			//new Chest(0,0);
 			return new Floor(0,0);
 		});
-		lM.put("floor",(ls)->{return new Floor(0,0);});
+		lM.put("floor",(ls)->{
+			if(((int)(Math.random()*50)) == 0){
+				lM.getScene().placeBlock(new Chest((int)ls.get(0),(int)ls.get(1)));
+			}
+			return new Floor(0,0);
+		});
 		lM.put("wall",(ls)->{return new Wall((int)ls.get(0),(int)ls.get(1));});
 		lM.put("skeleton",(ls)->{return new Skeleton(0,0);});
 		lM.put("bat",(ls)->{return new Bat(0,0);});
@@ -74,7 +79,7 @@ public class levelConfig{
 		scene.placeBlock(new Wall(7,0));
 		scene.placeBlock(new Wall(8,0));
 
-		scene.placeBlock(new Potion(6,1));
+		scene.placeBlock(new HealthPotion(6,1));
 		scene.placeBlock(new Bookshelf(2,0));
 		scene.placeBlock(new Chest(8,1));
 
@@ -118,9 +123,9 @@ public class levelConfig{
 		return scene;
 	}
 	public gameScene getLevelScene(int level) {
-		// String content = ReadeFile("/maps/level"+(level+1)+".map");
-		return getLevelScene();
-		// return lM.exec(content);
+		String content = ReadeFile("/maps/level"+(level+1)+".map");
+		// return getLevelScene();
+		return lM.exec(content);
 	}
 
 
