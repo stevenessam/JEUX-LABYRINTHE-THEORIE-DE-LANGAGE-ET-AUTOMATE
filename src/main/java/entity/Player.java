@@ -10,24 +10,49 @@ import gameObject.sprite;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 
+
+/**
+ * Class Player qui extends la class gameObject
+ */
 public class Player extends gameObject{
 
 	private int speed = 5;
 	private double life = 3.5f;
 	private int stars = 0;
 
+	/**
+	 * lifeHUD est un variable de la class sprite
+	 */
 	private sprite lifeHUD = new sprite(Textures.Stats);
 
+	/**
+	 * addHealth prend comme parametre heart en double
+	 * @param heart
+	 */
 	public void addHealth(double heart){
 		life+=heart;
 	}
+
+	/**
+	 * Methode add star permet de ajouter des stars quand le player prend un stars dans le jeux
+	 */
 	public void addStar(){
 		stars++;
 	}
+
+	/**
+	 * Methode sloweness qui permet de ralentir le player
+	 * @param slowing
+	 */
 	public void slowness(int slowing){
 		speed = slowing;
 	}
 
+	/**
+	 * Constructeur de la class player prend comme parametre x et y
+	 * @param x
+	 * @param y
+	 */
 	public Player(int x, int y) {
 		super(x,y);
 		setType(gameObjectType.PLAYER);
@@ -40,9 +65,19 @@ public class Player extends gameObject{
 		setPositionGlobal(true);
 	}
 	private HashMap<KeyCode, String> playerControls;
+
+	/**
+	 * Methode setControls prend en parametre un hashmap et playerControls
+	 * @param playerControls
+	 */
 	public void setControls(HashMap<KeyCode, String> playerControls) {
 		this.playerControls=playerControls;
 	}
+
+	/**
+	 * Update Override la methode Update dans la class gameObject
+	 * La méthode Update permet de mettre à jour le player
+	 */
 	@Override
 	protected void update() {
 		if(life <= 0){
@@ -61,11 +96,21 @@ public class Player extends gameObject{
 			setY(y);
 		}
 	}
+
+	/**
+	 * Methode flipH prend en parametre un boolean activated
+	 * @param activated
+	 */
 	public void flipH(boolean activated){
 		super.flipH(activated);
 		setDeltaX(activated?-.25:.25);
 		setDeltaY(activated?-1.2:1.2);
 	}
+
+	/**
+	 * Methode render prend un parametre GraphicsContext graphic
+	 * @param graphic
+	 */
 	@Override
 	public void render(GraphicsContext graphic) {
 		super.render(graphic);
@@ -93,8 +138,16 @@ public class Player extends gameObject{
 			lifeHUD.render(graphic);
 		}
 	}
+
+
 	int dx = 0;
 	int dy = 0;
+
+	/**
+	 * Methode keypress a comme parametre KeyCode keycode,boolean pressed
+	 * @param keycode
+	 * @param pressed
+	 */
 	public void keypress(KeyCode keycode,boolean pressed){
 		String function = playerControls.get(keycode);
 		if(function == null)
@@ -106,6 +159,13 @@ public class Player extends gameObject{
 			case "UP":dy=pressed?-1:0;break;
 		}
 	}
+
+	/**
+	 * Methode canWalkOn verifie si le player peux marcher sur le block ou non
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	private boolean canWalkOn(double x,double y){
 		List<gameObject> objects = this.getScene().getObjects(x,y);
 		// System.out.println(objects+" at "+x+" "+y);
