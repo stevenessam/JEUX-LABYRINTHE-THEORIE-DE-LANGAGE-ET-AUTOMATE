@@ -60,11 +60,20 @@ public class Mob extends gameObject {
 				break;
 		 }
  	}
+	protected double degat = .5;
+	private boolean canplayer = true;
 	@Override
 	protected void update() {
 		if(wait(50)){
 			moves();
 		}
+		if(isplayerTouching() && canplayer){
+            player.addHealth(-degat);
+            canplayer = false;
+        }
+        if(!canplayer && this.wait(50)){
+            canplayer = true;
+        }
 	}
 	Player player;
 	protected boolean isplayerTouching(){

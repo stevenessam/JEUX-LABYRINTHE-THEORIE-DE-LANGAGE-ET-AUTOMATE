@@ -214,7 +214,7 @@ public class levelMaker {
 	public gameScene exec(String map){
 		scene = new gameScene(width,height);
 		List<RegonizeToken> tokens = this.parser(map);
-		System.err.println(tokens);
+		// System.err.println(tokens);
 		exec(tokens);
 		return scene;
 	}
@@ -354,7 +354,7 @@ public class levelMaker {
 					((Mob)gO).setPattern(path);
 				}
 			}
-			System.out.println(name);
+			// System.out.println(name);
 			if(name.equals("player")){
 				scene.center(x,y);
 			}

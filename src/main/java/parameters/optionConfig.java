@@ -114,7 +114,7 @@ public class optionConfig {
 		String config = readFile(path);
 		// System.out.println(config);
 		List<RegonizeToken> tokens = optionLang.regroup(new AutomateString(config),groups);
-		System.out.println(tokens);
+		// System.out.println(tokens);
 		HashMap<String,Object> opts = interprete(tokens);
 		
 		if(opts.get("level")!= null){

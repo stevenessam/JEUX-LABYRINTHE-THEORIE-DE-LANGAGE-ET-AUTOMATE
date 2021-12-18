@@ -6,7 +6,8 @@ import gameObject.pattern;
 public class Bat extends Mob {
 
 	protected int speed = 15;
-    private boolean canplayer = true;
+    protected double degat = .5;
+	
 	public Bat(int x, int y) {
 		super(x, y);
         setSprite(Textures.bat, 1, 3);
@@ -18,17 +19,9 @@ public class Bat extends Mob {
 
     @Override
     protected void update() {
-        if(wait(15)){
-			moves();
-		}
+        super.update();
 		this.setFrame(((this.getTimer()/15)+1)%3);
-        if(isplayerTouching() && canplayer){
-            player.addHealth(-1);
-            canplayer = false;
-        }
-        if(!canplayer && this.wait(50)){
-            canplayer = true;
-        }
+        
     }
 
 

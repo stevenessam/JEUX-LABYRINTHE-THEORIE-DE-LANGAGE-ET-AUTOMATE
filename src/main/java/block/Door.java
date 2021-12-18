@@ -39,6 +39,7 @@ public class Door extends gameObject{
 		super(x,y);
 		this.key = key;
 		setSprite(Textures.Door,3,2);
+		setType(gameObjectType.SOLID);
 	}
 
 	public Door(int x, int y, int kx, int ky) {
@@ -54,18 +55,20 @@ public class Door extends gameObject{
 	protected void update() {
 		if(this.key.isPickup()){
 			if(isopen){
-				System.out.println(isendDoor +" "+ isplayerTouching());
 				if(isendDoor && isplayerTouching()){
+					System.out.println("change level");
 					this.getScene().nextLevel();
 					return;
+				}else{
+					setType(gameObjectType.PATH);
 				}
-				setType(gameObjectType.PATH);
 			}else{
 				this.setFrame(1+((this.getTimer()/50)+1)%6);
 				if(this.frame==5){
 					isopen = true;
 				}
 			}
+			
 		}else{
 			this.setFrame(0);
 		}
@@ -76,11 +79,13 @@ public class Door extends gameObject{
 		isendDoor = true;
 	}
 	private boolean isplayerTouching(){
-		List<gameObject> objects = this.getScene().getObjects(getX(),getY());
+		List<gameObject> objects = this.getScene().getObjects(getX()+getRenderWidth()/2,getY());
 		Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
 			return gameObjectType.PLAYER.equals(gO.getType());
 		}).findFirst();
 		boolean ispresent = OgO.isPresent();
+		if(ispresent)
+			System.out.println("touche player");
 		return ispresent;
 	}
 }

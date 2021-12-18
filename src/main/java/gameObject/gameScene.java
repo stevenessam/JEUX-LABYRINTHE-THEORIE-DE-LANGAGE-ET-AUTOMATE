@@ -84,7 +84,9 @@ public class gameScene extends Canvas{
 		gO.setY(Game.BLOCK_HEIGHT*scale*y);
 		add(gO);
 	}
+	private List<gameObject> toberemoved = new ArrayList<gameObject>();
 	public void remove(gameObject gO){
+		// toberemoved.add(gO);
 		batch.remove(gO);
 	}
 	private int timer = 0;
@@ -98,6 +100,7 @@ public class gameScene extends Canvas{
 		try{
 			if(batch == null)return;
 			batch.forEach((gameobject)->{
+				if(toberemoved.contains(gameobject))return;
 				if(gameobject != null){
 					gameobject.update();
 					gameobject.render(graphic);
@@ -107,6 +110,12 @@ public class gameScene extends Canvas{
 		}catch(Exception e){
 			System.out.println(e);
 		}
+		// eviter une java.util.ConcurrentModificationException
+		// if(toberemoved.size()>1){
+		// 	toberemoved.forEach((gameObject)->{
+		// 		batch.remove(gameObject);
+		// 	});
+		// }
 		// graphic.translate(-tx, -ty);
 		// try{
 		// 	batch.forEach((gameobject)->{
@@ -132,7 +141,7 @@ public class gameScene extends Canvas{
 		// batch.forEach(System.out::println);
 		timeline = new Timeline(
 			new KeyFrame(
-				Duration.millis(10),
+				Duration.millis(20),
 				event -> rendering()
 			)
 		);
