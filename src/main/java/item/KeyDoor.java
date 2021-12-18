@@ -8,7 +8,7 @@ import gameObject.gameObjectType;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- * La class KeyDoor extends gameObject
+ * La class KeyDoor extends lA class gameObject
  */
 public class KeyDoor extends gameObject{
 
