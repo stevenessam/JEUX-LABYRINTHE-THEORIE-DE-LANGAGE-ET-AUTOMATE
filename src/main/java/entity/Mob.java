@@ -59,7 +59,7 @@ public class Mob extends gameObject {
 	movement move_mob = movement.RESTART;
 
 	/**
-	 *
+	 * Methode moves permet de donner la direction de mob
 	 */
 	public void moves() {
 		if(this.wait(50))
