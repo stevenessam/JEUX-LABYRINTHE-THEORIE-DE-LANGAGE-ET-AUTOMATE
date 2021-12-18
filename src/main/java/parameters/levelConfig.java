@@ -12,9 +12,18 @@ import java.io.InputStreamReader;
 
 import assets.Textures;
 
+/**
+ * La class levelConfig permet de paramétre les niveaux
+ */
+
 public class levelConfig{
 	private optionConfig option;
 	private levelMaker lM;
+
+	/**
+	 *
+	 * @param option
+	 */
 	public levelConfig(optionConfig option) {
 		this.option = option;
 		lM = new levelMaker();
@@ -41,6 +50,11 @@ public class levelConfig{
 			return a;
 		});
 	}
+
+	/**
+	 *
+	 * @return
+	 */
 	public gameScene getLevelScene(){
 		gameScene scene = new gameScene(1000,660);
 
@@ -128,7 +142,12 @@ public class levelConfig{
 		return lM.exec(content);
 	}
 
-
+	/**
+	 * La methode String ReadeFile(String file)permet de lire le ficher avec
+	 * InputStream config = optionConfig.class.getResourceAsStream(file);
+	 * @param file
+	 * @return
+	 */
 	public String ReadeFile(String file) {
 
 		InputStream config = optionConfig.class.getResourceAsStream(file);
