@@ -31,7 +31,7 @@ public class Bookshelf extends Wall{
 		VisitedY = vy;
 	}
 	/**
-	 *Le constructeur de Bookshelf prend les positions x et y comme paramètres
+	 *C
 	 * @param x
 	 * @param y
 	 */

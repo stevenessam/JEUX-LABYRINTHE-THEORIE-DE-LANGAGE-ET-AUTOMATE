@@ -78,6 +78,11 @@ public class Door extends gameObject{
 	public void setEndDoor(){
 		isendDoor = true;
 	}
+
+	/**
+	 * La méthode isplayerTouching permet de verifier si le player a toucher le door
+	 * @return
+	 */
 	private boolean isplayerTouching(){
 		List<gameObject> objects = this.getScene().getObjects(getX()+getRenderWidth()/2,getY());
 		Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{

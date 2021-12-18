@@ -10,6 +10,9 @@ import gameObject.gameObjectType;
 import gameObject.movement;
 import gameObject.pattern;
 
+/**
+ *La class Mob extends gameObject
+ */
 public class Mob extends gameObject {
 	protected int speed = 5;
 	protected int init_X = 0;
@@ -24,6 +27,12 @@ public class Mob extends gameObject {
 	public void setPattern(pattern pattern) {
 		this.pattern = pattern;
 	}
+
+	/**
+	 *la méthode Public Mod setSprite(col,row) le nombre de column et ligne pour decouper ces tiles
+	 * @param x
+	 * @param y
+	 */
 	public Mob(int x, int y) {
 		super(x,y+.5);
 		init_X = x;
@@ -31,6 +40,14 @@ public class Mob extends gameObject {
 		this.pattern = new pattern();
 		setSprite(Textures.mob, 2, 1);
 	}
+
+	/**
+	 * La methode public setSprite c'est pour definir
+	 * la textures et le nombre de column et ligne pour decouper ces tiles
+	 * @param x
+	 * @param y
+	 * @param pattern
+	 */
 	public Mob(int x, int y,pattern pattern) {
 		super(x, y+.5);
 		this.pattern = pattern;
@@ -40,6 +57,10 @@ public class Mob extends gameObject {
 	}
 
 	movement move_mob = movement.RESTART;
+
+	/**
+	 *
+	 */
 	public void moves() {
 		if(this.wait(50))
 			move_mob =pattern.next();
@@ -63,6 +84,10 @@ public class Mob extends gameObject {
 	protected double degat = .5;
 	private boolean canplayer = true;
 	@Override
+	/**
+	 *  Update Override la methode Update dans la class gameObject
+	 *  La méthode Update permet de mettre à jour le Mob
+	 */
 	protected void update() {
 		if(wait(50)){
 			moves();
@@ -76,6 +101,11 @@ public class Mob extends gameObject {
         }
 	}
 	Player player;
+
+	/**
+	 *La méthode isplayerTouching permet de verifier si le player a toucher l'enémie
+	 * @return
+	 */
 	protected boolean isplayerTouching(){
 		List<gameObject> objects = this.getScene().getObjects(getX(),getY());
 		Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
