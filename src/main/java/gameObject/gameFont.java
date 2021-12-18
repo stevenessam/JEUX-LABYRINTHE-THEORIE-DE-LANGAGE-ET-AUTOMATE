@@ -36,11 +36,24 @@ public class gameFont extends gameObject{
 	public boolean isCentred() {
 		return centred;
 	}
-
+/**
+ * Crée une instance de Text sur les coordonnées données contenant la chaîne donnée,
+ * avec un text centré
+ * @param x
+ * @param y
+ * @param text
+ * @param centred
+ */
 	public gameFont(double x,double y,String text,boolean centred) {
 		this(x,y,text);
 		this.setCentred(centred);
 	}
+	/**
+	 * Crée une instance de Text sur les coordonnées données contenant la chaîne donnée.
+	 * @param x
+	 * @param y
+	 * @param text
+	 */
 	public gameFont(double x,double y,String text) {
 		super(0,0,Textures.font);
 		init_x = x;
@@ -55,28 +68,39 @@ public class gameFont extends gameObject{
 				return letter - 'a';
 		}
 	}
+	/**
+	 * fait l'affichage du text
+	 * 
+	 */
 	@Override
 	public void render(GraphicsContext graphic) {
 		// var s = myfontSize/default_FontSize;
 		int s = 1;
 		// graphic.scale(s, s);
+		// calcul position 
 		var length = text.length();
 		if(centred){
+			//si centré x = position_initial - largeurText/2 avec largeurText = longeurText * largeurCharacter
 			super.setX(init_x-(length/2*getWidth()));
 		}else{
 			super.setX(init_x);
 		}
+		//pour chaque lettre du text
 		for (int i = 0; i < length; i++) {
-			char letter = text.charAt(i);
-			int frame = letterMatching(letter);
-			setFrame(frame);
-			super.render(graphic);
-			super.setX(getX()+getWidth());
+			char letter = text.charAt(i);//recupere le caracter
+			int frame = letterMatching(letter);//cherche la frame de ce caracter
+			setFrame(frame);// definie la frame a afficher
+			super.render(graphic);//faire l'affichage du character
+			super.setX(getX()+getWidth());//se deplacer d'un caracter avant de faire le prochain
 		}
 		s = 1/s;
 		// graphic.scale(s, s);
 	}
 	private Consumer<MouseButton> action;
+	/**
+	 * Defini une action au moment du clique
+	 * @param action
+	 */
 	public void setAction(Consumer<MouseButton> action) {
 		this.action = action;
 	}
@@ -86,6 +110,11 @@ public class gameFont extends gameObject{
 			action.accept(button);
 		}
 	}
+	/**
+	 * verifie si l'element est present au coordooné indique.
+	 * @param x
+	 * @param y
+	 */
 	public boolean isOn(double x,double y){
 		int length = text.length();
 		// double s = myfontSize/gameFont.default_FontSize;
@@ -103,6 +132,14 @@ public class gameFont extends gameObject{
 		System.out.println(onX+ " " +onY);
 		return onX&&onY;
 	}
+	/**
+	 * Creer une instance de gameFont qui agira comme un button,
+	 * @param x
+	 * @param y
+	 * @param text
+	 * @param click
+	 * @return
+	 */
 	public static gameFont createButton(double x,double y,String text,Consumer<MouseButton> click){
 		gameFont btn = new gameFont(x, y, text,true);
 		btn.setAction(click);

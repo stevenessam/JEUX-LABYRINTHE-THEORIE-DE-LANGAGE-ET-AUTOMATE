@@ -34,24 +34,45 @@ public class gameObject extends sprite{
 		this.scene.remove(this);
 		// this.scene = null;
 	}
-
+	/**
+ 	* Creer un element empty en 0,0
+	 * necessite une image /assets/empty.png
+	 * revient à gameObject(0,0)
+ 	*/
 	public gameObject(){
 		this(0,0);
 	}
+	/**
+	 * Creer un element empty en 0,0
+	 * necessite une image /assets/empty.png
+	 * revient à gameObject(x,y,"/assets/empty.png")
+	 * @param x
+	 * @param y
+	 */
 	public gameObject(double x,double y){
 		this(x,y,"/assets/empty.png");
 	}
+	/**
+	 * Creer un Object 2D ou position
+	 * @param x
+	 * @param y
+	 * avec l'image
+	 * @param sprite
+	 */
 	public gameObject(double x,double y,String sprite){
 		super(sprite);
 		this.setX(x);
 		this.setY(y);
 	}
-	protected void update(){
-
-	}
-	public int getTimer(){
-		return this.scene.getTimer();
-	}
+	/** sert de methode interface */
+	protected void update(){}
+	/** recuper le nombre de cylcle sur la boucle de la scene */
+	public int getTimer(){return this.scene.getTimer();}
+	/**
+	 * simule une attente avec un temps en nombre de cycle
+	 * @param time
+	 * @return
+	 */
 	public boolean wait(int time){
 		return this.scene.getTimer() % time == 0;
 	}
@@ -60,13 +81,25 @@ public class gameObject extends sprite{
 	public void click(double x,double y,MouseButton button){}
 
 	/*UTILS*/
-
+	/**
+	 * verifie si l'element a de colision en commun avec un autre element 
+	 * (condition : l'un des elements doit etre solid)
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean getNoCollision(double x,double y){
 		List<gameObject> objects = this.scene.getObjects(x,y);
 		return objects.stream().filter((gameObject gO)->{
 			return gO.type == gameObjectType.SOLID;
 		}).findFirst().isEmpty();
 	}
+	/**
+	 * verifie si l'element est present au coordooné indique.
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isOn(double x,double y){
 		double dx = -getRenderWidth() * this.getDeltaX();
 		double dy = -getRenderHeight() * this.getDeltaY();

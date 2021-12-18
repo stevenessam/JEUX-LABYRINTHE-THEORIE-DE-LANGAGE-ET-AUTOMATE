@@ -47,10 +47,19 @@ public class gameScene extends Canvas{
 		return width/zoom;
 	}
 	private Game container;
+	/**
+	 * recupere la class Game parent de la scene
+	 * @param container
+	 */
 	public void setContainer(Game container) {
 		this.container = container;
 	}
 	private GraphicsContext graphic;
+	/**
+	 * creer une scene apartir d'entier
+	 * @param width
+	 * @param height
+	 */
 	public gameScene(int width, int height) {
 		this.width = width;
 		setWidth(this.width);
@@ -66,25 +75,48 @@ public class gameScene extends Canvas{
 			this.click(event.getX(),event.getY(),event.getButton());
 		});
 	}
+	/**
+	 * creer un scene avec des doubles
+	 * @param width
+	 * @param height
+	 */
 	public gameScene(double width, double height) {
 		this((int) width,(int) height);
 	}
+	/**
+	 * ajouter un object a la scene
+	 * @param gameobject
+	 */
 	public void add(gameObject gameobject){
 		batch.add(gameobject);
 		gameobject.setScene(this);
 		gameobject.setScale(1/Textures.getQuality());
 	}
+	/**
+	 * ajouter un object a la scene en suivant les block de la class Game
+	 * @param gameobject
+	 */
 	public void placeBlock(gameObject gO){
 		gO.setX(Game.BLOCK_WIDTH*scale*gO.getX());
 		gO.setY(Game.BLOCK_HEIGHT*scale*gO.getY());
 		add(gO);
 	}
+	/**
+	 * ajouter un object a la scene en suivant les block de la class Game
+	 * @param gameobject
+	 * @param x
+	 * @param y
+	 */
 	public void placeBlock(gameObject gO,int x, int y){
 		gO.setX(Game.BLOCK_WIDTH*scale*x);
 		gO.setY(Game.BLOCK_HEIGHT*scale*y);
 		add(gO);
 	}
 	private List<gameObject> toberemoved = new ArrayList<gameObject>();
+	/**
+	 * retirer un object de la scene
+	 * @param gO
+	 */
 	public void remove(gameObject gO){
 		// toberemoved.add(gO);
 		batch.remove(gO);
@@ -130,6 +162,9 @@ public class gameScene extends Canvas{
 	private Timeline timeline;
 	private double ty = 0;
 	private double tx = 0;
+	/**
+	 * demarer la boucle de la scene
+	 */
 	public void start(){
 		assert !isrunning;
 		isrunning = true;
@@ -148,9 +183,19 @@ public class gameScene extends Canvas{
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
 	}
+	/**
+	 * recupere le nombre de cycle
+	 * @return
+	 */
 	public int getTimer(){
 		return timer;
 	}
+	/**
+	 * list tout les objects au coordonées indique pour les trier plsu tard
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public List<gameObject> getObjects(double x,double y){
 		List<gameObject> area = new ArrayList<gameObject>();
 		batch.forEach((gameObject gO)->{
@@ -161,23 +206,44 @@ public class gameScene extends Canvas{
 		});
 		return area;
 	}
+	/**
+	 * stop la boucle de la scene
+	 */
 	public void stop(){
 		assert isrunning;
 		assert timeline != null;
 		timeline.pause();
 	}
+	/**
+	 * effectue une seule iteration de la boucle de la scene
+	 */
 	public void render(){
 		rendering();
 	}
 
+	/**
+	 * definie un fond pour la scene
+	 * @param texture
+	 */
 	public void setBackdrop(String texture){
 		background = Textures.load(texture);
 	}
+	/**
+	 * quand on press une touche
+	 * @param keycode
+	 * @param pressed
+	 */
 	public void keypress(KeyCode keycode,boolean pressed){
 		batch.forEach((gameobject)->{
 			gameobject.keypress(keycode,pressed);
 		});
 	}
+	/**
+	 * quand on click dans la scene
+	 * @param x
+	 * @param y
+	 * @param button
+	 */
 	public void click(double x,double y,MouseButton button){
 		final double cx = x /zoom - tx;
 		final double cy = y /zoom - ty;
@@ -187,6 +253,9 @@ public class gameScene extends Canvas{
 			}
 		});
 	}
+	/**
+	 * ecran game Over
+	 */
 	public void gameOver(){
 		stop();
 		graphic.setFill(new Color(0,0,0,.5));
@@ -211,17 +280,35 @@ public class gameScene extends Canvas{
 		btn_retry.render(graphic);
 		btn_quit.render(graphic);
 	}
+	/**
+	 * deplacer la scene quand le contenu est trop grand pour etre vu normalement
+	 * @param x
+	 * @param y
+	 */
 	public void translate(double x,double y){
 		tx += x;
 		ty += y;
 		graphic.translate(x,y);
 	}
+	/**
+	 * recupere la tranlation sur X
+	 * @return
+	 */
 	public double getTX() {
 		return tx;
 	}
+	/**
+	 * recupere la tranlation sur Y
+	 * @return
+	 */
 	public double getTY() {
 		return ty;
 	}
+	/**
+	 * centre la scene sur les coordonnée passer en parametre
+	 * @param x
+	 * @param y
+	 */
 	public void center(double x,double y){
 		x = -Game.BLOCK_WIDTH*scale*x;
 		y = -Game.BLOCK_HEIGHT*scale*y;
@@ -229,7 +316,10 @@ public class gameScene extends Canvas{
 		y += getCanvasHeight()/2;
 		translate(x, y);
 	}
-	public void nextLevel() {
+	/**
+	 * ecran passer au niveau suivant
+	 */
+	public void nextLevel(){
 		stop();
 		graphic.setFill(new Color(0,0,0,.5));
 		graphic.fillRect(-tx,-ty,width/zoom,height/zoom);
