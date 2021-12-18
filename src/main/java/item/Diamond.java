@@ -58,6 +58,6 @@ public class Diamond extends gameObject{
 			effect();
 			delete();
 		}
-		setFrame(2+((this.getTimer()/50)+1)%3);
+		setFrame(3+((this.getTimer()/50)+1)%3);
 	}
 }

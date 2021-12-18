@@ -43,7 +43,7 @@ public class Roof extends gameObject {
 	 * la methode effect qui retourne un void
 	 */
     public void effect(){
-        player.addHealth(-1);
+        player.addHealth(-1.5);
 		setType(gameObjectType.SOLID);
     }
 	boolean onfloor = false;
@@ -62,8 +62,9 @@ public class Roof extends gameObject {
     @Override
     protected void update() {
 		if(!onfloor){
-			if(isplayerTouching() && this.getScene()!=null){
+			if(isplayerTouching() && this.getScene()!=null && !isfalling && !onfloor){
 				isfalling = true;
+				player.addHealth(-.5);
 	        }
 			if(isfalling){
 				if(getDeltaY()>.5){

@@ -43,9 +43,17 @@ public class levelConfig{
 			//new Chest(0,0);
 			return new Floor(0,0);
 		});
+		lM.put("deadend",(ls)->{
+			lM.getScene().placeBlock(new Roof((int)ls.get(0),(int)ls.get(1)));
+			return new Floor(0,0);
+		});
 		lM.put("floor",(ls)->{
-			if(((int)(Math.random()*50)) == 0){
+			int r = ((int)(Math.random()*50));
+			if(r == 0){
 				lM.getScene().placeBlock(new Chest((int)ls.get(0),(int)ls.get(1)));
+			}
+			if(r == 1){
+				lM.getScene().placeBlock(new Roof((int)ls.get(0),(int)ls.get(1)));
 			}
 			return new Floor(0,0);
 		});

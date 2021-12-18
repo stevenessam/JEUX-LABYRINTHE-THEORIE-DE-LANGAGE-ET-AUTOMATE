@@ -30,6 +30,12 @@ public class Automate extends AutomateBase{
 	private Token token;
 	private int stat;
 	private String culsym;
+	/**
+	 * Analyse Lexical : 
+	 * cette methode reconnait les tokens dans un text
+	 * @param entree
+	 * @return
+	 */
 	public List<RegonizeToken> recognize(AutomateString entree){
 		stat = AutomateBase.ETAT_INITIAL;
 		culsym = "";
@@ -59,6 +65,14 @@ public class Automate extends AutomateBase{
 		});
 		return tokensLS;
 	}
+	/**
+	 * Analyse lexical (avec regroupement)
+	 * @see recognize
+	 * @param text
+	 * @param groups
+	 * regroupe les tokens selon les groupes données
+	 * @return liste de tokens
+	 */
 	public List<RegonizeToken> regroup(AutomateString text,List<List<Token>> groups){
 		List<RegonizeToken> parsed = this.recognize(text);
 		List<RegonizeToken> tokenLs = new ArrayList<RegonizeToken>();

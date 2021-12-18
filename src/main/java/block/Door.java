@@ -63,7 +63,7 @@ public class Door extends gameObject{
 					setType(gameObjectType.PATH);
 				}
 			}else{
-				this.setFrame(1+((this.getTimer()/50)+1)%6);
+				this.setFrame(2+((this.getTimer()/50)+1)%6);
 				if(this.frame==5){
 					isopen = true;
 				}

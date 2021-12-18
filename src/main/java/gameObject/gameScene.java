@@ -141,7 +141,7 @@ public class gameScene extends Canvas{
 		// batch.forEach(System.out::println);
 		timeline = new Timeline(
 			new KeyFrame(
-				Duration.millis(20),
+				Duration.millis(15),
 				event -> rendering()
 			)
 		);

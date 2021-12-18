@@ -211,13 +211,24 @@ public class levelMaker {
 	}
 	private HashMap<String,String> block_synonym = new HashMap<String,String>();
 
+	/**
+	 * execute la chaine de character entré
+	 * @param map
+	 * @return 
+	 */
 	public gameScene exec(String map){
 		scene = new gameScene(width,height);
+		// decoupage des tokens
 		List<RegonizeToken> tokens = this.parser(map);
 		// System.err.println(tokens);
 		exec(tokens);
 		return scene;
 	}
+	/**
+	 * Analyse Syntaxique et Interpretation
+	 * @param tokens
+	 * @return
+	 */
 	public Object exec(List<RegonizeToken> tokens){
 		String synonym = "";
 		int y = 0;
