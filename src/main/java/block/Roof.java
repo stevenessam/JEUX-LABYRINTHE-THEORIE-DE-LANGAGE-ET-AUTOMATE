@@ -9,7 +9,16 @@ import javafx.scene.canvas.GraphicsContext;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * la class Roof extends gameObject
+ */
+
 public class Roof extends gameObject {
+	/**
+	 * paramétress des constructeurs
+	 * @param x
+	 * @param y
+	 */
     public Roof(int x, int y) {
         super(x+.5,y+.5, Textures.roof);
         this.setDeltaX(.5);
@@ -29,6 +38,10 @@ public class Roof extends gameObject {
         }
         return ispresent;
     }
+
+	/**
+	 * la methode effect qui retourne un void
+	 */
     public void effect(){
         player.addHealth(-1);
 		setType(gameObjectType.SOLID);
@@ -41,6 +54,11 @@ public class Roof extends gameObject {
 			super.render(graphic);
 		
 	}
+
+	/**
+	 * Update Override la methode Update dans la class gameObject
+	 *   La méthode Update permet de mettre à jour le Roof
+	 */
     @Override
     protected void update() {
 		if(!onfloor){
