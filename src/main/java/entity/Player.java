@@ -85,10 +85,10 @@ public class Player extends gameObject{
 			lifeHUD.render(graphic);
 			hearts--;
 		}
-		lifeHUD.setY(10+lifeHUD.getRenderHeight());
+		lifeHUD.setY(-this.getScene().getTY()+10+lifeHUD.getRenderHeight());
 		lifeHUD.setFrame(0);
 		for (int i = 0; i < stars; i++) {
-			lifeHUD.setX(10+i*lifeHUD.getRenderWidth());
+			lifeHUD.setX(10-this.getScene().getTX()+i*lifeHUD.getRenderWidth());
 			lifeHUD.setFrame(3+((this.getTimer()/25)+1)%3);
 			lifeHUD.render(graphic);
 		}

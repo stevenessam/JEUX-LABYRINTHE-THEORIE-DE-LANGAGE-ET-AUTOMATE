@@ -1,12 +1,7 @@
 package entity;
 
 import assets.Textures;
-import gameObject.gameObject;
-import gameObject.gameObjectType;
 import gameObject.pattern;
-
-import java.util.List;
-import java.util.Optional;
 
 public class Bat extends Mob {
 
@@ -35,18 +30,6 @@ public class Bat extends Mob {
             canplayer = true;
         }
     }
-    Player player;
-    private boolean isplayerTouching(){
-        List<gameObject> objects = this.getScene().getObjects(getX(),getY());
-        Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
-            return gameObjectType.PLAYER.equals(gO.getType());
-        }).findFirst();
-        // System.out.println(OgO);
-        boolean ispresent = OgO.isPresent();
-        if(ispresent){
-            player = (Player) OgO.get();
-        }
-        return ispresent;
-    }
+
 
 }

@@ -220,4 +220,28 @@ public class gameScene extends Canvas{
 		y += getCanvasHeight()/2;
 		translate(x, y);
 	}
+	public void nextLevel() {
+		stop();
+		graphic.setFill(new Color(0,0,0,.5));
+		graphic.fillRect(-tx,-ty,width/zoom,height/zoom);
+		// graphic.fillRect(-tx,-ty,width/zoom,height/zoom);
+		double gapX = width/zoom/4;
+		double gapY = height/zoom/4;
+		gameFont gameOverText = new gameFont(gapX*2-tx, gapY-ty, "You escape the mansoir",true);
+		gameFont btn_retry = gameFont.createButton(gapX-tx, gapY*2-ty, "Continue", (button)->{
+			System.out.println("Continue");
+			container.next();
+		});
+		gameFont btn_quit = gameFont.createButton(gapX*3-tx, gapY*2-ty, "Main Menu", (button)->{
+			System.out.println("main menu");
+			container.setLocation(Location.MAINMENU);
+		});
+
+		add(btn_retry);
+		add(btn_quit);
+
+		gameOverText.render(graphic);
+		btn_retry.render(graphic);
+		btn_quit.render(graphic);
+	}
 }

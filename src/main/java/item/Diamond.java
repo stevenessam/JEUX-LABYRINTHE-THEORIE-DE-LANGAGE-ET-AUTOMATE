@@ -15,9 +15,10 @@ public class Diamond extends gameObject{
 	 * @param y
 	 */
 	public Diamond(int x,int y) {
-		super(x+.5,y+.5,Textures.HeatlthPostion);
+		super(x+.5,y+.5,Textures.Stats);
 		this.setDeltaX(.5);
 		this.setDeltaY(.5);
+		setSprite(3, 2);
 	}
 	/**
 	 * garde le player toucher pour lui affecter un effet

@@ -29,6 +29,13 @@ public class levelConfig{
 		lM = new levelMaker();
 		lM.setWidth(1000);
 		lM.setHeight(660);
+		lM.put("end",(ls)->{
+			Door door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
+			door.setEndDoor();
+			lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);
+			lM.getScene().placeBlock(door.getKey(),(int)ls.get(0),(int)ls.get(1));
+			return new Floor(0,0);
+		});
 		lM.put("door",(ls)->{
 			Door door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
 			lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);

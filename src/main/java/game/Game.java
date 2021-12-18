@@ -120,4 +120,8 @@ public class Game{
 		renderScene(menu);
 	}
 
+	public void next() {
+		setLevel(level+1);
+	}
+
 }

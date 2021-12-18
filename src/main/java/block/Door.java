@@ -1,5 +1,8 @@
 package block;
 
+import java.util.List;
+import java.util.Optional;
+
 import assets.Textures;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
@@ -51,6 +54,11 @@ public class Door extends gameObject{
 	protected void update() {
 		if(this.key.isPickup()){
 			if(isopen){
+				System.out.println(isendDoor +" "+ isplayerTouching());
+				if(isendDoor && isplayerTouching()){
+					this.getScene().nextLevel();
+					return;
+				}
 				setType(gameObjectType.PATH);
 			}else{
 				this.setFrame(1+((this.getTimer()/50)+1)%6);
@@ -63,5 +71,16 @@ public class Door extends gameObject{
 		}
 		
 	}
-
+	private boolean isendDoor = false;
+	public void setEndDoor(){
+		isendDoor = true;
+	}
+	private boolean isplayerTouching(){
+		List<gameObject> objects = this.getScene().getObjects(getX(),getY());
+		Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
+			return gameObjectType.PLAYER.equals(gO.getType());
+		}).findFirst();
+		boolean ispresent = OgO.isPresent();
+		return ispresent;
+	}
 }
