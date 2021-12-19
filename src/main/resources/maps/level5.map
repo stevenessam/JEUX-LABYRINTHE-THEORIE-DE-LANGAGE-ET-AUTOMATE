@@ -1,16 +1,33 @@
 set w to wall;
-set f to floor;
+set _ to floor;
 set e to end;
 
 create terrain
-wwwwwwwwwwwwwwwwwwwwwwwwwww
-wffffffffffffffwffffffwfffw
-wwfwwwwwwwwwwffwffffffwfffw
-wffffwfffffffffwffffffffwfw
-wffwfwfwwwfwwwwwwwwwwwffwfw
-wwwwfwfwfffwfffffffffwffwfw
-wffwfwfwwwwwfwwwfwfffwwwwfw
-wffffwfffffffwffffffffffffw
+wwwwwwwwwwwwwwwwwwwwwwwww
+w_____________w_____w___w
+ww_wwwwwwwww_ww___w_w_w_w
+w____w________wwwww_w_w_w
+w_ww_w_wwww_www___w_w_w_w
+w__w_w_w______w___w___w_w
+wwww_w_w_wwww_w_wwwwwww_w
+w__w_w_w__w___w_________w
+w_ww_w_wwwwwwwwwww_wwww_w
+w____w___w____________w_w
+wwwwwwww_w_wwwwwwwwwwww_w
+w________w_w______w_____w
+w_wwwwwwww_w_ww_w___www_w
+w_w________w__wwwww___w_w
+w_wwwwwww_www____w__w___w
+w_______w_w_www_ww_wwww_w
+w_wwwww_w_w_____w_____w_w
+www_____w_w_wwwwwww_w_w_w
+w___wwwww_w_____w_w_w_w_w
+w_w_w_____wwwww_w_wwwwwww
+w_w_w_w___w___w_w_w___wew
+w_w_w_w___w_w_______w_w_w
+w_www_www_w_w_www_w_w_w_w
+w_____w___w___w___w_w___w
+wwwwwwwwwwwwwwwwwwwwwwwww
 ;
 
 spawn player(1,1);
