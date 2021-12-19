@@ -4,8 +4,8 @@ set _ to floor;
 set + to deadend;
 set * to end;
 
--- creation du terrain utilise les variables __
-create terrain
+-- creation du terrain __
+
 _____#___##___#___________
 ####_#_#####_#_####_####__
 _____#___#_#_#____#____#__
