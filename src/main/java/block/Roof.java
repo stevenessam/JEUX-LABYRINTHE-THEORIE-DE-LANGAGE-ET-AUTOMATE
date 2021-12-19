@@ -2,6 +2,7 @@ package block;
 
 import assets.Textures;
 import entity.Player;
+import game.Game;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,6 +15,7 @@ import java.util.Optional;
  */
 
 public class Roof extends gameObject {
+	private boolean visited = false;
 	private int VisitedX = 0;
 	private int VisitedY = 0;
 	/**
@@ -31,19 +33,25 @@ public class Roof extends gameObject {
 		setSprite(1, 3);
 		this.setFrame(-1);
 		VisitedX = vx;
-		VisitedY = vx;
+		VisitedY = vy;
     }
     Player player;
     private boolean isplayerTouching(){
-        List<gameObject> objects = this.getScene().getObjects(VisitedX,VisitedY);
-        Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
-            return gameObjectType.PLAYER.equals(gO.getType());
-        }).findFirst();
-        boolean ispresent = OgO.isPresent();
-        if(ispresent){
-            player = (Player) OgO.get();
-        }
-        return ispresent;
+        if(!visited){
+			List<gameObject> objects = this.getScene().getObjects(
+				(VisitedX+.5)*Game.BLOCK_WIDTH*this.getScene().getScale(),
+				(VisitedY+.5)*Game.BLOCK_HEIGHT*this.getScene().getScale()
+			);
+			Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
+				return gameObjectType.PLAYER.equals(gO.getType());
+			}).findFirst();
+			// System.out.println(OgO);
+			visited = OgO.isPresent();
+			if(visited){
+				player = (Player) OgO.get();
+			}
+		}
+		return visited;
     }
 
 	/**
@@ -69,7 +77,7 @@ public class Roof extends gameObject {
     @Override
     protected void update() {
 		if(!onfloor){
-			if(isplayerTouching() && this.getScene()!=null && !isfalling && !onfloor){
+			if(isplayerTouching() && this.getScene()!=null && !isfalling){
 				isfalling = true;
 				player.addHealth(-.5);
 	        }

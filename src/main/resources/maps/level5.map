@@ -6,14 +6,14 @@ create terrain
 wwwwwwwwwwwwwwwwwwwwwwwww
 w_____________w_____w___w
 ww_wwwwwwwww_ww___w_w_w_w
-w____w________wwwww_w_w_w
+w____w________ww_ww_w_w_w
 w_ww_w_wwww_www___w_w_w_w
 w__w_w_w______w___w___w_w
 wwww_w_w_wwww_w_wwwwwww_w
 w__w_w_w__w___w_________w
-w_ww_w_wwwwwwwwwww_wwww_w
+w_ww_w_wwww_wwwwww_wwww_w
 w____w___w____________w_w
-wwwwwwww_w_wwwwwwwwwwww_w
+wwww_www_w_wwwwwwwwwwww_w
 w________w_w______w_____w
 w_wwwwwwww_w_ww_w___www_w
 w_w________w__wwwww___w_w
@@ -29,5 +29,17 @@ w_www_www_w_w_www_w_w_w_w
 w_____w___w___w___w_w___w
 wwwwwwwwwwwwwwwwwwwwwwwww
 ;
+
+spawn bookshelf(12,13,15,11);
+spawn bookshelf(16,3,15,1);
+
+spawn deadend(4,10,4,7);
+spawn deadend(11,8,12,7);
+
+spawn door(9,18,3,21);
+spawn end(23,23,21,18);
+
+spawn chest(2,7,1);
+spawn chest(15,1,1);
 
 spawn player(1,1);
