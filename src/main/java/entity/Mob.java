@@ -14,7 +14,7 @@ import gameObject.pattern;
  *La class Mob extends gameObject
  */
 public class Mob extends gameObject {
-	protected int speed = 5;
+	protected int speed = 10;
 	protected int init_X = 0;
 	protected int init_Y = 0;
 	public void setInitX(int init_X) {
@@ -89,7 +89,7 @@ public class Mob extends gameObject {
 	 *  La méthode Update permet de mettre à jour le Mob
 	 */
 	protected void update() {
-		if(wait(50)){
+		if(wait(10)){
 			moves();
 		}
 		if(isplayerTouching() && canplayer){

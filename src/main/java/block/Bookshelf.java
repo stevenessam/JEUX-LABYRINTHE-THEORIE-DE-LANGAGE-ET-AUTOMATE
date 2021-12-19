@@ -79,7 +79,7 @@ public class Bookshelf extends Wall{
 				}
 			}
 		}else{
-			book.setFrame(((this.getTimer()/25)+1)%5);
+			book.setFrame(((this.getTimer()/10)+1)%5);
 		}
 	}
 	@Override

@@ -52,4 +52,16 @@ spawn chest(21,22,1);
 spawn chest(3,13,0);
 spawn chest(2,5,0);
 
+spawn bat(6,1,(RIGHT*8,LEFT*13,RIGHT*4));
+spawn bat(21,3,(UP*2,DOWN*6,UP*3));
+spawn bat(5,11,(RIGHT*2,LEFT*7,RIGHT*4));
+spawn bat(1,21,(UP*3,DOWN*7,UP*3));
+spawn bat(1,11,(DOWN*5,UP*5));
+
+spawn skeleton(23,5,(UP*4,DOWN*14,UP*9));
+spawn skeleton(14,11,(RIGHT*3,LEFT*3));
+spawn skeleton(20,11,(RIGHT*3,LEFT*3));
+spawn skeleton(8,13,(RIGHT*2,LEFT*6,RIGHT*3));
+spawn skeleton(15,21,(RIGHT*4,LEFT*7,RIGHT*2));
+
 spawn player(1,1);
