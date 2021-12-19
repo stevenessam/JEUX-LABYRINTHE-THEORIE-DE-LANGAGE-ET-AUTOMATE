@@ -8,6 +8,9 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 
 public class Textures {
+	/**
+	 * Images
+	 */
 	public final static String night_backdrop = "/assets/skies/backdrop.png";
 	public final static String roof = "/assets/blocks/degat.png";
 
@@ -34,6 +37,10 @@ public class Textures {
 	public static final String Title = "/assets/gui/title.png";
 	public static final String Stats = "/assets/gui/stats.png";
 
+	/**
+	 * chargement image
+	 */
+
 	private static double scale = 1;
 	private static double quality = 1;
 	public static void setQuality(double quality) {
@@ -48,7 +55,12 @@ public class Textures {
 	public static void setScale(double scale) {
 		Textures.scale = scale;
 	}
-
+	/**
+	 * charge l'image en parametre et l'agrandit par rapport au scale et quality
+	 * cette methode a pour but d'eviter l'antianliasing dans javafx sans faire de css
+	 * @param url
+	 * @return
+	 */
 	public static Image load(String url){
 		InputStream is = Textures.class.getResourceAsStream(url);
 		Image input;
@@ -84,7 +96,4 @@ public class Textures {
 		return null;
 		// return new Image(url,width,height,false,false);
 	}
-}
-class assets {
-	
 }

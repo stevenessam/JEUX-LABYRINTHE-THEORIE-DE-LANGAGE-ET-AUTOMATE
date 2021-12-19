@@ -145,8 +145,9 @@ public class optionConfig {
 	}
 	private HashMap<String,Object> interprete(List<RegonizeToken> tokens){
 		HashMap<String,Object> Object = new HashMap<String,Object>();
-		String name = null;
-		Object value = null;
+		String name = null;// nom clé
+		Object value = null;// valeur
+		//en json on peut avoir un object dans un objet il faut faire une recurence pour ça
 		boolean beinrecurtion = false;
 		int indent = -1;
 		List<RegonizeToken> childList = new ArrayList<RegonizeToken>();
@@ -154,16 +155,20 @@ public class optionConfig {
 			// System.out.println("Watch on "+token+"with indent = "+indent);
 			if(beinrecurtion){
 				if(token.getOutput() == "ObjectEnd" && indent == 1){
+					// fin de l'object
 					beinrecurtion = false;
 					childList.add(token);
 					value = interprete(childList);
 					childList.clear();
 					indent = 0;
 				}else{
+					//recuperer le code a executer pour faire la recurrence
 					if(token.getOutput() == "ObjectStart"){
+						// debut d'un object
 						indent++;
 					}
 					if(token.getOutput() == "ObjectEnd"){
+						//fin d'un object
 						indent--;
 					}
 					childList.add(token);
@@ -171,7 +176,9 @@ public class optionConfig {
 			}else{
 				switch(token.getOutput()){
 					case "ObjectStart":
+						//si on entre dans un object
 						if(indent == 0){
+							// on calcul l'intertation
 							indent = 1;
 							beinrecurtion = true;
 							childList.clear();
@@ -181,24 +188,29 @@ public class optionConfig {
 						}
 					break;
 					case "ObjectSeparator":
+						// enregister la clé et sa valeur pour passé a la clé suivant
 						Object.put(name, value);
 						name = null;
 						value = null;
 					break;
 					case "ObjectKeyContent":
+						// recupere la clé
 						name = token.getInput();
 					break;
 					case "ObjectStringStart":
+						//valeur de type string (on retire juste les guillemet pour aller plus vite)
 						String str = token.getInput();
 						value = str.substring(1, str.length()-1);
 					break;
 					case "Indent":
+						// les indent ne sont pas à executer
 						// System.out.println("Indent");
 					break;
 				}
 			}
 		}
 		if(name != null){
+			// si il y a toujour une clé (le cas ou la dernier clé dans un JSON normalizé)
 			Object.put(name, value);
 		}
 		return Object;
@@ -227,10 +239,25 @@ public class optionConfig {
 		return null;
 	}
 	private List<HashMap<KeyCode, String>> playerControls = new ArrayList<HashMap<KeyCode, String>>();
+	/**
+	 * recuperer les touche utilisé par le joueur en parametre
+	 * dans le cas ou l'on voudrez redre le jeu multijouer 
+	 * il faudrait rajouter des lists au langauge et 
+	 * adapter le constructeur pour ajouter touts les joueurs a
+	 * la variable privée playerControls.
+	 * @param index
+	 * @return
+	 */
 	public HashMap<KeyCode, String> getPlayerControls(int index){
 		return playerControls.get(index);
 	}
 	private int level = 0;
+	/**
+	 * permet d'obtenir le niveau du joueurs dans la config (par default 0)
+	 * en admettant qu'il ne triche pas a monter son niveau
+	 * il serait bien de sauvegarder les niveaux dans la config.
+	 * @return
+	 */
 	public int getLevel() {
 		return level;
 	}
