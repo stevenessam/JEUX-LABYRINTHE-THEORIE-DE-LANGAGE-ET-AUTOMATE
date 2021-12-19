@@ -10,9 +10,9 @@ w____w________ww_ww_w_w_w
 w_ww_w_wwww_www___w_w_w_w
 w__w_w_w______w___w___w_w
 wwww_w_w_wwww_w_wwwwwww_w
-w__w_w_w__w___w_________w
-w_ww_w_wwww_wwwwww_wwww_w
-w____w___w____________w_w
+w____w_w______w_________w
+w_wwww_wwwwwwwwwww_wwww_w
+w__w_w___w____________w_w
 wwww_www_w_wwwwwwwwwwww_w
 w________w_w______w_____w
 w_wwwwwwww_w_ww_w___www_w
@@ -35,7 +35,7 @@ spawn bookshelf(16,3,15,1);
 spawn bookshelf(8,22,9,23);
 
 spawn deadend(4,10,4,7);
-spawn deadend(11,8,12,7);
+spawn deadend(10,7,11,7);
 spawn deadend(19,11,22,11);
 
 spawn ladder(2,15,1,16);
@@ -45,7 +45,7 @@ spawn ladder(5,19,9,21);
 spawn door(9,18,6,21);
 spawn end(23,23,21,18);
 
-spawn chest(2,7,1);
+spawn chest(2,9,1);
 spawn chest(15,1,1);
 spawn chest(21,22,1);
 
