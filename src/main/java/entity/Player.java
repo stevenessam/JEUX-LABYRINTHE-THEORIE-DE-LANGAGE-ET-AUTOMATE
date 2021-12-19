@@ -56,7 +56,7 @@ public class Player extends gameObject{
 	public Player(int x, int y) {
 		super(x,y);
 		setType(gameObjectType.PLAYER);
-		setSprite(Textures.Knight,2,1);
+		setSprite(Textures.Knight,2,2);
 		this.setDeltaX(.5);
 		this.setDeltaY(1);
 		lifeHUD.setSprite(3, 2);
@@ -84,16 +84,22 @@ public class Player extends gameObject{
 			this.getScene().gameOver();
 			return;
 		}
-		this.setFrame(((this.getTimer()/50)+1)%2);
+		
 		double mx = dx*speed;
 		double my = dy*speed;
 		double x=getX()+mx;
 		double y=getY()+my;
 		flipH(dx<0);
-		if(canWalkOn(x, y)){
+		boolean canWalk = canWalkOn(x, y);
+		if(canWalk){
 			this.getScene().translate(-mx, -my);
 			setX(x);
 			setY(y);
+		}
+		if(canWalk && (mx!=0 || my != 0) ){
+			this.setFrame(2+((this.getTimer()/10)+1)%2);
+		}else{
+			this.setFrame(((this.getTimer()/50)+1)%2);
 		}
 	}
 
