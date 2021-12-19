@@ -59,6 +59,15 @@ public class levelConfig{
 			}
 			return new Floor(0,0);
 		});
+		lM.put("ladder",(ls)->{
+			Ladder_item ladder = new Ladder_item((int)ls.get(0),(int)ls.get(1));
+			if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
+				ladder = new Ladder_item((int)ls.get(2),(int)ls.get(3));
+			}
+			lM.getScene().placeBlock(ladder);
+			lM.getScene().placeBlock(new Ladder((int)ls.get(0),(int)ls.get(1),ladder));
+			return null;
+		});
 		lM.put("chest",(ls)->{
 			lM.getScene().placeBlock(new Chest((int)ls.get(0),(int)ls.get(1),(int)ls.get(2)));
 			return new Floor(0,0);

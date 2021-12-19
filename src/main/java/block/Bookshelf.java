@@ -7,12 +7,23 @@ import game.Game;
 // import gameObject.gameObjectType;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
+import gameObject.gameScene;
+import gameObject.sprite;
+import javafx.scene.canvas.GraphicsContext;
 
 public class Bookshelf extends Wall{
-
+	private sprite book = new sprite(Textures.Book);
 	private boolean visited = false;
-	private int VisitedX = 0;
-	private int VisitedY = 0;
+	private double VisitedX = 0;
+	private double VisitedY = 0;
+	@Override
+	public void setScene(gameScene scene) {
+		super.setScene(scene);
+		VisitedX *= this.getScene().getScale();
+		VisitedY *= this.getScene().getScale();
+		book.setX(VisitedX);
+		book.setY(VisitedY);
+	}
 	/**
 	 *Le constructeur de Bookshelf prend les positions x et y comme paramètres
 	 * @param x
@@ -28,8 +39,13 @@ public class Bookshelf extends Wall{
 		setSprite(Textures.Bookshelf, 1, 1);
 		setType(gameObjectType.SOLID);
 		setDeltaX(0);
-		VisitedX = vx;
-		VisitedY = vy;
+		VisitedX = (vx+.5)*Game.BLOCK_WIDTH;
+		VisitedY = (vy+.5)*Game.BLOCK_HEIGHT;
+		book.setX(VisitedX);
+		book.setY(VisitedY);
+		book.setSprite(1, 5);
+		book.setDeltaX(.5);
+		book.setDeltaY(.5);
 	}
 	/**
 	 *C
@@ -37,16 +53,11 @@ public class Bookshelf extends Wall{
 	 * @param y
 	 */
 	public Bookshelf(int x, int y) {
-		this(x,y,0,0);
-		VisitedX = (int)(x+getWidth()/2);
-		VisitedY = (int)(y+getHeight());
+		this(x,y,x,y);
 	}
 	private boolean hasVisited(){
 		if(!visited){
-			List<gameObject> objects = this.getScene().getObjects(
-				(VisitedX+.5)*Game.BLOCK_WIDTH*this.getScene().getScale(),
-				(VisitedY+.5)*Game.BLOCK_HEIGHT*this.getScene().getScale()
-			);
+			List<gameObject> objects = this.getScene().getObjects(VisitedX,VisitedY);
 			visited = objects.stream().filter((gameObject gO)->{
 				return gameObjectType.PLAYER.equals(gO.getType());
 			}).findFirst().isPresent();
@@ -67,6 +78,15 @@ public class Bookshelf extends Wall{
 					isopen = true;
 				}
 			}
+		}else{
+			book.setFrame(((this.getTimer()/25)+1)%5);
+		}
+	}
+	@Override
+	public void render(GraphicsContext graphic) {
+		super.render(graphic);
+		if(!visited){
+			book.render(graphic);
 		}
 	}
 }
