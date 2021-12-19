@@ -14,21 +14,28 @@ import java.util.Optional;
  */
 
 public class Roof extends gameObject {
+	private int VisitedX = 0;
+	private int VisitedY = 0;
 	/**
 	 * paramétress des constructeurs
 	 * @param x
 	 * @param y
 	 */
     public Roof(int x, int y) {
+		this(x,y,x,y);
+	}
+    public Roof(int x, int y,int vx,int vy) {
         super(x+.5,y+.5, Textures.roof);
         this.setDeltaX(.5);
         this.setDeltaY(1.5);
 		setSprite(1, 3);
 		this.setFrame(-1);
+		VisitedX = vx;
+		VisitedY = vx;
     }
     Player player;
     private boolean isplayerTouching(){
-        List<gameObject> objects = this.getScene().getObjects(getX(),getY());
+        List<gameObject> objects = this.getScene().getObjects(VisitedX,VisitedY);
         Optional<gameObject> OgO = objects.stream().filter((gameObject gO)->{
             return gameObjectType.PLAYER.equals(gO.getType());
         }).findFirst();

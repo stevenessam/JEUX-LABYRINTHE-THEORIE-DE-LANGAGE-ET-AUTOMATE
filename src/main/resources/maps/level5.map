@@ -1,0 +1,16 @@
+set w to wall;
+set f to floor;
+set e to end;
+
+create terrain
+wwwwwwwwwwwwwwwwwwwwwwwwwww
+wffffffffffffffwffffffwfffw
+wwfwwwwwwwwwwffwffffffwfffw
+wffffwfffffffffwffffffffwfw
+wffwfwfwwwfwwwwwwwwwwwffwfw
+wwwwfwfwfffwfffffffffwffwfw
+wffwfwfwwwwwfwwwfwfffwwwwfw
+wffffwfffffffwffffffffffffw
+;
+
+spawn player(1,1);
