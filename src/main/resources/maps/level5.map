@@ -1,3 +1,5 @@
+-- Niveau 5
+
 set w to wall;
 set _ to floor;
 set e to end;
