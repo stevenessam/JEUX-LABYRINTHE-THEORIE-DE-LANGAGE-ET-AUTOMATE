@@ -30,31 +30,53 @@ public class levelConfig{
 		lM.setWidth(1000);
 		lM.setHeight(660);
 		lM.put("end",(ls)->{
-			Door door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
+			Door door;
+			if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
+				door = new Door((int)ls.get(0),(int)ls.get(1),(int)ls.get(2),(int)ls.get(3));
+				lM.getScene().placeBlock(door);
+				lM.getScene().placeBlock(door.getKey());
+			}else{
+				door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
+				lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);
+				lM.getScene().placeBlock(door.getKey());
+			}
 			door.setEndDoor();
-			lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);
-			lM.getScene().placeBlock(door.getKey());
 			return new Floor(0,0);
 		});
-		lM.put("door",(ls)->{
-			Door door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
-			lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);
-			lM.getScene().placeBlock(door.getKey());
-			//new Chest(0,0);
+		lM.put("bookshelf",(ls)->{
+			if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
+				Bookshelf bookshelf = new Bookshelf((int)ls.get(0),(int)ls.get(1),(int)ls.get(2),(int)ls.get(3));
+				lM.getScene().placeBlock(bookshelf);
+			}
 			return new Floor(0,0);
 		});
 		lM.put("deadend",(ls)->{
-			lM.getScene().placeBlock(new Roof((int)ls.get(0),(int)ls.get(1)));
+			if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
+				Roof deadend = new Roof((int)ls.get(0),(int)ls.get(1),(int)ls.get(2),(int)ls.get(3));
+				lM.getScene().placeBlock(deadend);
+			}else{
+				lM.getScene().placeBlock(new Roof((int)ls.get(0),(int)ls.get(1)));
+			}
+			return new Floor(0,0);
+		});
+		lM.put("chest",(ls)->{
+			lM.getScene().placeBlock(new Chest((int)ls.get(0),(int)ls.get(1),(int)ls.get(2)));
+			return new Floor(0,0);
+		});
+		lM.put("door",(ls)->{
+			if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
+				Door door = new Door((int)ls.get(0),(int)ls.get(1),(int)ls.get(2),(int)ls.get(3));
+				lM.getScene().placeBlock(door);
+				lM.getScene().placeBlock(door.getKey());
+			}else{
+				Door door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
+				lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);
+				lM.getScene().placeBlock(door.getKey());
+			}
+			//new Chest(0,0);
 			return new Floor(0,0);
 		});
 		lM.put("floor",(ls)->{
-			int r = ((int)(Math.random()*50));
-			if(r == 0){
-				lM.getScene().placeBlock(new Chest((int)ls.get(0),(int)ls.get(1)));
-			}
-			if(r == 1){
-				lM.getScene().placeBlock(new Roof((int)ls.get(0),(int)ls.get(1)));
-			}
 			return new Floor(0,0);
 		});
 		lM.put("wall",(ls)->{return new Wall((int)ls.get(0),(int)ls.get(1));});
@@ -110,7 +132,7 @@ public class levelConfig{
 
 		scene.placeBlock(new HealthPotion(6,1));
 		scene.placeBlock(new Bookshelf(2,0));
-		scene.placeBlock(new Chest(8,1));
+		scene.placeBlock(new Chest(8,1,1));
 
 
 

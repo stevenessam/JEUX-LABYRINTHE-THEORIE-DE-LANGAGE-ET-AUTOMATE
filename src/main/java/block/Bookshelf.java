@@ -3,6 +3,7 @@ package block;
 import java.util.List;
 
 import assets.Textures;
+import game.Game;
 // import gameObject.gameObjectType;
 import gameObject.gameObject;
 import gameObject.gameObjectType;
@@ -26,7 +27,7 @@ public class Bookshelf extends Wall{
 		// defini l'image
 		setSprite(Textures.Bookshelf, 1, 1);
 		setType(gameObjectType.SOLID);
-		setDeltaX(1);
+		setDeltaX(0);
 		VisitedX = vx;
 		VisitedY = vy;
 	}
@@ -42,7 +43,10 @@ public class Bookshelf extends Wall{
 	}
 	private boolean hasVisited(){
 		if(!visited){
-			List<gameObject> objects = this.getScene().getObjects(VisitedX,VisitedY);
+			List<gameObject> objects = this.getScene().getObjects(
+				(VisitedX+.5)*Game.BLOCK_WIDTH*this.getScene().getScale(),
+				(VisitedY+.5)*Game.BLOCK_HEIGHT*this.getScene().getScale()
+			);
 			visited = objects.stream().filter((gameObject gO)->{
 				return gameObjectType.PLAYER.equals(gO.getType());
 			}).findFirst().isPresent();
@@ -57,7 +61,7 @@ public class Bookshelf extends Wall{
 	protected void update() {
 		if(hasVisited()){
 			if(!isopen){
-				if(getDeltaX()>0){
+				if(getDeltaX()>-1){
 					setDeltaX(getDeltaX()-.05);
 				}else{
 					isopen = true;

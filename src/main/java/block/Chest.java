@@ -11,11 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class Chest extends gameObject {
-	public Chest(int x, int y) {
+	private int givcode;
+	public Chest(int x, int y,int givcode) {
 		super(x+.5,y+.5, Textures.chest);
 		setDeltaX(.5);
 		setDeltaY(.5);
 		setSprite(1, 4);
+		this.givcode = givcode;
 	}
 	Player player;
 	private boolean isplayerTouching(){
@@ -46,8 +48,8 @@ public class Chest extends gameObject {
 	}
 	private void popRandomItem() {
 		gameObject gO = null;
-		int random = (int)(Math.random()*2);
-		switch (random){
+		//(int)(Math.random()*2)
+		switch (givcode){
 			case 0:gO = new HealthPotion((int)getX(), (int)getY());break;
 			case 1:gO = new Diamond((int)getX(), (int)getY());break;
 		}

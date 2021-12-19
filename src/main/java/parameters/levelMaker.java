@@ -40,7 +40,7 @@ public class levelMaker {
 
 	public levelMaker() {
 		//afficher si le token et reconnu ou pas (debug mode)
-		// level.setDebug(true);
+		//  level.setDebug(true);
 		
 		Token endCommand = new Token(";","endCommand");
 		level.addToken(endCommand);
@@ -407,7 +407,7 @@ public class levelMaker {
 			int x = (int) args.get(0);
 			int y = (int) args.get(1);
 			pattern path = new pattern();
-			if(args.size()>2 && args.get(2)!=null){
+			if(args.size()>2 && args.get(2)!=null && args.get(2) instanceof List){
 				List<String> lso = (List<String>) args.get(2);
 				for (String move : lso) {
 					 switch(move){
