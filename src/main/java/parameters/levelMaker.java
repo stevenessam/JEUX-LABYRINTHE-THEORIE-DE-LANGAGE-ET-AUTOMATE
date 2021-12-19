@@ -40,7 +40,7 @@ public class levelMaker {
 
 	public levelMaker() {
 		//afficher si le token et reconnu ou pas (debug mode)
-		// level.setDebug(true);
+		 level.setDebug(true);
 		
 		Token endCommand = new Token(";","endCommand");
 		level.addToken(endCommand);
