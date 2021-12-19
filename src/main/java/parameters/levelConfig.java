@@ -30,10 +30,17 @@ public class levelConfig{
 		lM.setWidth(1000);
 		lM.setHeight(660);
 		lM.put("end",(ls)->{
-			// Door door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
-			// door.setEndDoor();
-			// lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);
-			// lM.getScene().placeBlock(door.getKey());
+			Door door;
+			if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
+				door = new Door((int)ls.get(0),(int)ls.get(1),(int)ls.get(2),(int)ls.get(3));
+				lM.getScene().placeBlock(door);
+				lM.getScene().placeBlock(door.getKey());
+			}else{
+				door = new Door(0,0,(int)ls.get(0),(int)ls.get(1));
+				lM.getScene().placeBlock(door,(int)ls.get(0),(int)ls.get(1)-1);
+				lM.getScene().placeBlock(door.getKey());
+			}
+			door.setEndDoor();
 			return new Floor(0,0);
 		});
 		lM.put("bookshelf",(ls)->{
@@ -57,7 +64,7 @@ public class levelConfig{
 			return new Floor(0,0);
 		});
 		lM.put("door",(ls)->{
-			if(ls.get(2)!=null && ls.get(3)!=null){
+			if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
 				Door door = new Door((int)ls.get(0),(int)ls.get(1),(int)ls.get(2),(int)ls.get(3));
 				lM.getScene().placeBlock(door);
 				lM.getScene().placeBlock(door.getKey());
