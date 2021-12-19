@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
 	"level":"2",
+=======
+	"level":"4",
+>>>>>>> cdc4736614f85baa41cea5eb47e7c9c12c8b44c7
 	"player":{
 		"UP":"UP",
 		"LEFT":"LEFT",

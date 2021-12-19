@@ -18,28 +18,38 @@ w________w_w______w_____w
 w_wwwwwwww_w_ww_w___www_w
 w_w________w__wwwww___w_w
 w_wwwwwww_www____w__w___w
-w_______w_w_www_ww_wwww_w
+w_+_____w_w_www_ww_wwww_w
 w_wwwww_w_w_____w_____w_w
 www_____w_w_wwwwwww_w_w_w
 w___wwwww_w_____w_w_w_w_w
-w_w_w_____wwwww_w_wwwwwww
-w_w_w_w___w___w_w_w___wew
-w_w_w_w___w_w_______w_w_w
-w_www_www_w_w_www_w_w_w_w
-w_____w___w___w___w_w___w
+w_w_++____wwwww_w_wwwwwww
+w_wwwwwwwww___w_w_w_____w
+w_w_w__w__w_w_______w_w_w
+w_w_w_ww_ww_w_www_w_w_w_w
+w_________w___w___w_w_w_w
 wwwwwwwwwwwwwwwwwwwwwwwww
 ;
 
-spawn bookshelf(12,13,15,11);
+spawn bookshelf(12,12,15,11);
 spawn bookshelf(16,3,15,1);
+spawn bookshelf(8,22,9,23);
 
 spawn deadend(4,10,4,7);
 spawn deadend(11,8,12,7);
+spawn deadend(19,11,22,11);
 
-spawn door(9,18,3,21);
+spawn ladder(2,15,1,16);
+spawn ladder(4,19,3,21);
+spawn ladder(5,19,9,21);
+
+spawn door(9,18,6,21);
 spawn end(23,23,21,18);
 
 spawn chest(2,7,1);
 spawn chest(15,1,1);
+spawn chest(21,22,1);
+
+spawn chest(3,13,0);
+spawn chest(2,5,0);
 
 spawn player(1,1);
