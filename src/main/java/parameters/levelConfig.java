@@ -66,7 +66,7 @@ public class levelConfig{
 			// }else{
 			// 	lM.getScene().placeBlock((int)ls.get(0),(int)ls.get(1)));
 			// }
-			return new new SpiderWeb(0,0);
+			return new SpiderWeb(0,0);
 		});
 		lM.put("ladder",(ls)->{
 			Ladder_item ladder = new Ladder_item((int)ls.get(0),(int)ls.get(1));
