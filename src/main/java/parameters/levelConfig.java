@@ -59,6 +59,15 @@ public class levelConfig{
 			}
 			return new Floor(0,0);
 		});
+		lM.put("spider",(ls)->{
+			// if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
+			// 	SpiderWeb spiderWeb = new SpiderWeb((int)ls.get(0),(int)ls.get(1),(int)ls.get(2),(int)ls.get(3));
+			// 	lM.getScene().placeBlock(spiderWeb);
+			// }else{
+			// 	lM.getScene().placeBlock((int)ls.get(0),(int)ls.get(1)));
+			// }
+			return new new SpiderWeb(0,0);
+		});
 		lM.put("ladder",(ls)->{
 			Ladder_item ladder = new Ladder_item((int)ls.get(0),(int)ls.get(1));
 			if(ls.size()>2 && ls.get(2)!=null && ls.get(3)!=null){
