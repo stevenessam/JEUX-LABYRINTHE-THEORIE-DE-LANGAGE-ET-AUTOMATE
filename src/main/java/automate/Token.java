@@ -1,4 +1,8 @@
 package automate;
+/**
+ * Tom TOUZE 
+ * projet : TLA 2021
+ */
 
 import java.util.ArrayList;
 import java.util.Arrays;

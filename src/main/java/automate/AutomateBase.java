@@ -1,4 +1,8 @@
 package automate;
+/**
+ * Tom TOUZE 
+ * projet : TLA 2021
+ */
 
 public class AutomateBase {
 	final public static int ETAT_INITIAL = 0;

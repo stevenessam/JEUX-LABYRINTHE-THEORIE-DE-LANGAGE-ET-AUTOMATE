@@ -1,4 +1,8 @@
 package automate;
+/**
+ * Tom TOUZE 
+ * projet : TLA 2021
+ */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +40,19 @@ public class Automate extends AutomateBase{
 	/**
 	 * Analyse Lexical : 
 	 * cette methode reconnait les tokens dans un text
+	 * inspirer par TP1,TP2,TP3
+	 * Cette class a ete creer en suivant l'enoncé du TP3
+	 * puis nous avons reecrit cette class en JavaScript (pour un projet personnel)
+	 * nous avons fait evolué cette class notament avec le automateString
+	 * pour eviter le faite de devoir faire un tableau des transitions 
+	 * il nous a semblé judiceux d'ajouter une methode
+	 * addToken(symbole,etatavant,etataprès)
+	 * dans mon projet personelle je voulais decouper du XML pour traiter les données
+	 * Mais il y a tellement de character possible qu'il a faut opter pour ajouter les expression reguliere
+	 * enfin a force de devoir faire toute les transitions pour des elements reguliers comme <category> ou <item>
+	 * nous avons ajouté aussi les chaines de character
+	 * puis après avoir testé l'automate avec different language (HTML,JSON,TWIG)
+	 * nous l'avons traduit en java et fait quelque correction suplémentaire.
 	 * @param entree
 	 * @return
 	 */
