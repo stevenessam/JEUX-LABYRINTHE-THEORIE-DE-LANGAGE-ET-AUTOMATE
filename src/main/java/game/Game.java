@@ -13,7 +13,10 @@ import parameters.levelConfig;
 import parameters.optionConfig;
 
 import java.io.File;
+import java.net.URL;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,7 +48,8 @@ public class Game{
 		scene.setRoot(gamePane);
 		/**Main Menu */
 		initMainMenu();
-
+		/**Select Menu */
+		initSelectLevel();
 		/** aller au menu principale */
 		setLocation(gameClass.Location.MAINMENU);
 		// setLevel(levelconfig.getLevelScene(options.getLevel()));
@@ -81,8 +85,9 @@ public class Game{
 
 
 
-	public Set<String> listeFilesMaps(String dirLocation) {
-		return Stream.of(new File(dirLocation).listFiles())
+	private Set<String> listeFilesMaps() {
+		URL resource = this.getClass().getResource("/maps/");//level1.map
+		return Stream.of(new File(resource.getFile()).listFiles())
 				.filter(file -> !file.isDirectory())
 				.map(File::getName)
 				.collect(Collectors.toSet());
@@ -92,6 +97,10 @@ public class Game{
 	public void setLevel(int level){
 		this.level = level;
 		renderScene(levelconfig.getLevelScene(level));
+	}
+	private void setLevel(String map) {
+		int level = Integer.valueOf(map.split("level")[1].split(".map")[0]);
+		setLevel(level);
 	}
 	public void restart(){
 		setLevel(level);
@@ -128,11 +137,11 @@ public class Game{
 		title.setScale(6);
 		menu.add(title);
 		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
-		menu.add(gameFont.createButton(centerX, 2.5*gapY, "Select Level",(button)->{listeFilesMaps("D:/Scolarite/University/Licence_3/Projet/Labyrinthus/src/main/resources/maps");}));
+		menu.add(gameFont.createButton(centerX, 2.5*gapY, "Select Level",(button)->{SelectLevel();}));
 		//menu.add(new gameFont(centerX, 3*gapY, "Options",true));
 		menu.add(gameFont.createButton(centerX, 4.5*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
 
-		menu.add(new gameFont(centerX, 7.5*gapY, "developper par Tostse gaming",true));
+		menu.add(new gameFont(centerX, 7.5*gapY, "developped by \"Tostse\" gaming",true));
 	}
 	public void MainMenu(){
 		renderScene(menu);
@@ -142,23 +151,42 @@ public class Game{
 	gameScene select_level;
 
 	public void initSelectLevel(){
-		menu = new gameScene(this.scene.getWidth(),this.scene.getHeight());
-		menu.setBackdrop(Textures.DarkSky);
+		Set<String> maps = listeFilesMaps();
+		select_level = new gameScene(this.scene.getWidth(),this.scene.getHeight());
+		select_level.setBackdrop(Textures.DarkSky);
 
-		var centerX = menu.getCanvasWidth()/2;
-		var gapY = menu.getCanvasHeight()/8;
+		var centerX = select_level.getCanvasWidth()/2;
+		var gapX = select_level.getCanvasWidth()/3;
+		var gapY = select_level.getCanvasHeight()/8;
 		gameObject title = new gameObject(centerX, 0, Textures.Title);
 		title.setDeltaY(-.1);
 		title.setDeltaX(1.5);
 		title.setScale(6);
-		menu.add(title);
-		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
-		menu.add(gameFont.createButton(centerX, 2*gapY, "Select Level",(button)->{listeFilesMaps("D:/Scolarite/University/Licence_3/Projet/Labyrinthus/src/main/resources/maps");}));
-		menu.add(new gameFont(centerX, 3*gapY, "Options",true));
-		menu.add(gameFont.createButton(centerX, 4.5*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
+		select_level.add(title);
 
-		menu.add(new gameFont(centerX, 7.5*gapY, "developper par Tostse gaming",true));
+		int x = 1;
+		int y = 2;
+		for(String map : maps){
+			System.out.println(map);
+			select_level.add(gameFont.createButton(gapX*x, y*gapY, map.split(".map")[0],(button)->{
+				setLevel(map);
+			}));
+			x++;
+			if(x>2){
+				x= 1;
+				y++;
+			}
+
+		}
+		// menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
+		// menu.add(gameFont.createButton(centerX, 2*gapY, "Select Level",(button)->{listeFilesMaps("D:/Scolarite/University/Licence_3/Projet/Labyrinthus/src/main/resources/maps");}));
+		// menu.add(new gameFont(centerX, 3*gapY, "Options",true));
+		select_level.add(gameFont.createButton(centerX, 4.5*gapY, "Back", (button)->{MainMenu();}));
+
+		select_level.add(new gameFont(centerX, 7.5*gapY, "developped by \"Tostse\" gaming",true));
 	}
+	
+
 	public void SelectLevel(){
 		renderScene(select_level);
 	}

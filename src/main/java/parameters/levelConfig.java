@@ -192,7 +192,7 @@ public class levelConfig{
 		return scene;
 	}
 	public gameScene getLevelScene(int level) {
-		String content = ReadeFile("/maps/level"+(level+1)+".map");
+		String content = ReadeFile("/maps/level"+(level)+".map");
 		// return getLevelScene();
 		return lM.exec(content);
 	}

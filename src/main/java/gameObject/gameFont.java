@@ -59,11 +59,31 @@ public class gameFont extends gameObject{
 		init_x = x;
 		setY(y);
 		setText(text);
-		setSprite(6, 6);
+		setSprite(6, 8);
 	}
 	private int letterMatching(char letter){
 		switch(letter){
 			case '.':return 27;
+			case '!':return 28;
+			case '?':return 29;
+			case '-':return 30;
+			case ',':return 30;
+			case ';':return 31;
+			case '"':return 32;
+			case '`':return 33;
+			case '(':return 34;
+			case ')':return 35;
+			case '1':return 36;
+			case '2':return 37;
+			case '3':return 38;
+			case '4':return 39;
+			case '5':return 40;
+			case '6':return 41;
+			case '7':return 43;
+			case '8':return 44;
+			case '9':return 45;
+			case '0':return 46;
+			case ' ':return 48;
 			default:
 				return letter - 'a';
 		}
