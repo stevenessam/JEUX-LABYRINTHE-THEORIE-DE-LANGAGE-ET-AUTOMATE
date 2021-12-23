@@ -12,6 +12,11 @@ import javafx.scene.paint.Color;
 import parameters.levelConfig;
 import parameters.optionConfig;
 
+import java.io.File;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Game{
 
 	final static int TILE_SIZE = 32;
@@ -64,12 +69,25 @@ public class Game{
 		switch(location){
 			case MAINMENU:
 				MainMenu();
-			break;
+				break;
+			case SELECTLEVEL:
+				SelectLevel();
+				break;
 			case GAMEPLAY:
 				// setLevel(levelconfig.getLevelScene());
-			break;
+				break;
 		}
 	}
+
+
+
+	public Set<String> listeFilesMaps(String dirLocation) {
+		return Stream.of(new File(dirLocation).listFiles())
+				.filter(file -> !file.isDirectory())
+				.map(File::getName)
+				.collect(Collectors.toSet());
+	}
+
 	private int level;
 	public void setLevel(int level){
 		this.level = level;
@@ -101,7 +119,7 @@ public class Game{
 	public void initMainMenu(){
 		menu = new gameScene(this.scene.getWidth(),this.scene.getHeight());
 		menu.setBackdrop(Textures.DarkSky);
-		
+
 		var centerX = menu.getCanvasWidth()/2;
 		var gapY = menu.getCanvasHeight()/8;
 		gameObject title = new gameObject(centerX, 0, Textures.Title);
@@ -110,14 +128,39 @@ public class Game{
 		title.setScale(6);
 		menu.add(title);
 		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
-		menu.add(new gameFont(centerX, 2.5*gapY, "Select Level",true));
-		menu.add(new gameFont(centerX, 3*gapY, "Options",true));
+		menu.add(gameFont.createButton(centerX, 2.5*gapY, "Select Level",(button)->{listeFilesMaps("D:/Scolarite/University/Licence_3/Projet/Labyrinthus/src/main/resources/maps");}));
+		//menu.add(new gameFont(centerX, 3*gapY, "Options",true));
 		menu.add(gameFont.createButton(centerX, 4.5*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
 
 		menu.add(new gameFont(centerX, 7.5*gapY, "developper par Tostse gaming",true));
 	}
 	public void MainMenu(){
 		renderScene(menu);
+	}
+
+
+	gameScene select_level;
+
+	public void initSelectLevel(){
+		menu = new gameScene(this.scene.getWidth(),this.scene.getHeight());
+		menu.setBackdrop(Textures.DarkSky);
+
+		var centerX = menu.getCanvasWidth()/2;
+		var gapY = menu.getCanvasHeight()/8;
+		gameObject title = new gameObject(centerX, 0, Textures.Title);
+		title.setDeltaY(-.1);
+		title.setDeltaX(1.5);
+		title.setScale(6);
+		menu.add(title);
+		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
+		menu.add(gameFont.createButton(centerX, 2*gapY, "Select Level",(button)->{listeFilesMaps("D:/Scolarite/University/Licence_3/Projet/Labyrinthus/src/main/resources/maps");}));
+		menu.add(new gameFont(centerX, 3*gapY, "Options",true));
+		menu.add(gameFont.createButton(centerX, 4.5*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
+
+		menu.add(new gameFont(centerX, 7.5*gapY, "developper par Tostse gaming",true));
+	}
+	public void SelectLevel(){
+		renderScene(select_level);
 	}
 
 	public void next() {
