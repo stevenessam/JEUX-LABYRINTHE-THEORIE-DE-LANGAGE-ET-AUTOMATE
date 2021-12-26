@@ -40,6 +40,8 @@ spawn ladder(8,24,7,19);
 spawn ladder(7,24,9,19);
 spawn ladder(6,24,6,12);
 
+spawn skeleton(4,6,(RIGHT*4,RESTART));
+spawn bat(7,14,(RIGHT*4,RESTART));
 
 spawn bookshelf(23,6,1,21);
 
