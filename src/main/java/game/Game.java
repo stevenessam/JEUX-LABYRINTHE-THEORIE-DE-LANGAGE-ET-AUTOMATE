@@ -137,9 +137,9 @@ public class Game{
 		title.setScale(6);
 		menu.add(title);
 		menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
-		menu.add(gameFont.createButton(centerX, 2.5*gapY, "Select Level",(button)->{SelectLevel();}));
+		menu.add(gameFont.createButton(centerX, 3*gapY, "Select Level",(button)->{SelectLevel();}));
 		//menu.add(new gameFont(centerX, 3*gapY, "Options",true));
-		menu.add(gameFont.createButton(centerX, 4.5*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
+		menu.add(gameFont.createButton(centerX, 4*gapY, "Quit", (button)->{javafx.application.Platform.exit();}));
 
 		menu.add(new gameFont(centerX, 7.5*gapY, "developped by \"Tostse\" gaming",true));
 	}
@@ -181,7 +181,7 @@ public class Game{
 		// menu.add(gameFont.createButton(centerX, 2*gapY, "Continue",(button)->{setLevel(options.getLevel());}));
 		// menu.add(gameFont.createButton(centerX, 2*gapY, "Select Level",(button)->{listeFilesMaps("D:/Scolarite/University/Licence_3/Projet/Labyrinthus/src/main/resources/maps");}));
 		// menu.add(new gameFont(centerX, 3*gapY, "Options",true));
-		select_level.add(gameFont.createButton(centerX, 4.5*gapY, "Back", (button)->{MainMenu();}));
+		select_level.add(gameFont.createButton(centerX, 5*gapY, "Back", (button)->{MainMenu();}));
 
 		select_level.add(new gameFont(centerX, 7.5*gapY, "developped by \"Tostse\" gaming",true));
 	}
