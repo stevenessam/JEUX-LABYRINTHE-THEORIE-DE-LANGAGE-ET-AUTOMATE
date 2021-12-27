@@ -188,7 +188,7 @@ public class levelMaker {
 		Var.add(ListStart);
 		Const.add(ListStart);
 
-		Token ListSeparator = new Token(",","ListSeparator");
+		Token ListSeparator = new Token(Pattern.compile("\s*,"),"ListSeparator");
 		level.addToken(ListSeparator);
 		ListSeparator.add(ListStart);
 		ListSeparator.add(Integer);
@@ -200,7 +200,17 @@ public class levelMaker {
 		Const.add(ListSeparator);
 		ListStart.add(ListSeparator);
 
-		Token ListEnd = new Token(")","ListEnd");
+		Token ListSpace = new Token(Pattern.compile("\s"),"ListSeparator");
+		level.addToken(ListSpace);
+		ListSpace.add(ListSeparator);
+		ListSpace.add(ListStart);
+
+		Integer.add(ListSpace);
+		Var.add(ListSpace);
+		Const.add(ListSpace);
+		ListStart.add(ListSpace);
+
+		Token ListEnd = new Token(Pattern.compile("\s*[)]"),"ListEnd");
 		level.addToken(ListEnd);
 		ListEnd.add(ListStart);
 		ListEnd.add(ListEnd);
@@ -225,8 +235,10 @@ public class levelMaker {
 		// exec("set _ to floor;set _ to floor;");
 		// exec("create terrain __\n__\n__;");
 		// parser("spawn skeleton()");
-		// parser("spawn skeleton(6,5)");
-		// parser("spawn skeleton(6,4,(2,0));");
+		// List<RegonizeToken> tokens = parser("spawn skeleton(6,5)");
+		// List<RegonizeToken> tokens = parser("spawn skeleton(6 , 5)");
+		// List<RegonizeToken> tokens = parser("spawn skeleton(6 , 4 , (2 , 0) );");
+		// System.out.println(tokens);
 		// parser("(RIGHT)");
 		// parser("(RIGHT*4,DOWN*2,LEFT*4,UP*2)");
 		// exec("spawn skeleton(6,4,(RIGHT*4,DOWN*2,LEFT*4,UP*2));");

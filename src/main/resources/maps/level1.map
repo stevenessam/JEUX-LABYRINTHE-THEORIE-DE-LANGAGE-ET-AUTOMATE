@@ -28,7 +28,7 @@ spawn skeleton(6,4,(RIGHT*4,DOWN*2,LEFT*4,UP*2));
 
 spawn bat(1,4,(RIGHT*3,RESTART));
 spawn bat(19,2,(DOWN*3,RESTART));
-spawn bat(5,12,(RIGHT*3,UP*2,RESTART));
+spawn bat( 5 , 12 , (RIGHT*3,UP*2,RESTART) );
 
 spawn player(1,1);
 
