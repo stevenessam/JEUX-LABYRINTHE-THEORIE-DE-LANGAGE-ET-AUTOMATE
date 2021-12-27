@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -261,4 +262,16 @@ public class optionConfig {
 	public int getLevel() {
 		return level;
 	}
+	public List<KeyCode> bindedKeys = Arrays.asList(
+		KeyCode.UP,
+		KeyCode.Z,
+		KeyCode.W,
+		KeyCode.LEFT,
+		KeyCode.A,
+		KeyCode.Q,
+		KeyCode.RIGHT,
+		KeyCode.D,
+		KeyCode.DOWN,
+		KeyCode.S
+	);
 }
