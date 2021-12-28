@@ -26,6 +26,7 @@ public class levelConfig{
 	 */
 	public levelConfig(optionConfig option) {
 		this.option = option;
+		System.out.println(option);//evite l'erreur option == undefined
 		lM = new levelMaker();
 		lM.setWidth(1000);
 		lM.setHeight(660);

@@ -51,6 +51,7 @@ public class Game{
 		scene.setFill(Color.BLACK);
 		options = new optionConfig("/config.json");
 		levelconfig = new levelConfig(options);
+		System.out.println(levelconfig);//evite l'erreur levelconfig == undefined
 		gamePane = new BorderPane();
 		scene.setRoot(gamePane);
 		/**Main Menu */
