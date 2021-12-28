@@ -11,7 +11,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-
+		System.setProperty("prism.lcdtext", "false");
 		primaryStage.setTitle("Labyrinthus");
 
 		primaryStage.setScene(Game.create());

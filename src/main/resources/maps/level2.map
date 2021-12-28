@@ -1,0 +1,45 @@
+-- Niveau 2
+-- variable element
+set # to wall;
+set _ to floor;
+set * to end;
+
+-- creation du terrain utilise les variables
+create terrain
+#_#################
+#_________________#
+#################_#
+#_________________#
+#################_#
+#_______________+_#
+#_#################
+#_________________#
+#_#################
+#_________________#
+#################_#
+#_________________#
+#################_#
+#_________________#
+###################
+;
+
+-- apparition des montres
+
+spawn skeleton(5,7,(RIGHT*6,RESTART));
+spawn bat(5,9,(RIGHT*6,RESTART));
+
+spawn ladder(16,5,1,3);
+spawn bookshelf(17,3,15,1);
+spawn spider(4,1);
+spawn spider(5,1);
+
+spawn chest(5,11,0);
+spawn chest(17,10,1);
+spawn chest(17,7,1);
+spawn chest(5,13,1);
+
+spawn deadend(1,6,1,7);
+
+spawn end(1,13,1,11);
+
+spawn player(1,1);

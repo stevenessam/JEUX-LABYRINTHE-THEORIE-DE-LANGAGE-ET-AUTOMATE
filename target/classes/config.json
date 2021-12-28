@@ -1,8 +1,9 @@
 {
-	player:{
-		UP:"Z",
-		LEFT:"Q",
-		RIGHT:"D",
-		DOWN:"S",
+	"level":"1",
+	"player":{
+		"UP":"UP",
+		"LEFT":"LEFT",
+		"RIGHT":"RIGHT",
+		"DOWN":"DOWN"
 	}
 }
