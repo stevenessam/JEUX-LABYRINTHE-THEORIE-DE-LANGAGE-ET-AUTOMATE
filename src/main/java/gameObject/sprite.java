@@ -88,7 +88,7 @@ public class sprite {
 		if(column == 1 && row ==1){
 			graphic.drawImage(image, x+dx, y+dy,renderwidth*scale,renderheight*scale);
 		}else{
-			graphic.drawImage(image, ((frame)%column)*width, (int)((frame)/column)*height, width, height, x+dx, y+dy, renderwidth*scale, renderheight*scale);
+			graphic.drawImage(image, 1+((frame)%column)*width, 1+(int)((frame)/column)*height, width-2, height-2, x+dx, y+dy, renderwidth*scale, renderheight*scale);
 		}
 	}
 
