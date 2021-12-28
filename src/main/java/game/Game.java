@@ -18,6 +18,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -97,6 +98,7 @@ public class Game{
 
 	private Set<String> listeFilesMaps() {
 		URL resource = this.getClass().getResource("/maps/");//level1.map
+		if(resource==null)return new HashSet<String>();
 		return Stream.of(new File(resource.getFile()).listFiles())
 				.filter(file -> !file.isDirectory())
 				.map(File::getName)
