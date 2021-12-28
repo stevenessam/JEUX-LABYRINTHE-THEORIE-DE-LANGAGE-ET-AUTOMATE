@@ -229,8 +229,11 @@ public class Game{
 				}).findFirst();
 				if(_ok.isPresent()){
 					KeyCode _key = _ok.get();
-					int _idx = keys.indexOf(_key);
-					String _text = controls.get(control) + " - "+ keys.get(_idx+1).getName();
+					int _idx = keys.indexOf(_key)+1;
+					if(_idx<0)_idx = keys.size()-1;
+					if(_idx>=keys.size())_idx = 0;
+					String name = btn.getText().split(" - ")[0].toUpperCase();
+					String _text = name + " - "+ keys.get(_idx).getName();
 					btn.setText(_text);
 				}
 			};
@@ -241,6 +244,7 @@ public class Game{
 
 		}
 		optionscene.add(gameFont.createButton(gapX, 5*gapY, "Save", (button)->{
+			controls.clear();
 			btns.forEach((btn)->{
 				Optional<KeyCode> _ok = keys.stream().filter((key)->{
 					return btn.getText().split("- ")[1].equals(key.getName().toLowerCase());
@@ -252,6 +256,7 @@ public class Game{
 					controls.put(_key, name);
 				}
 			});
+			System.out.println(controls);
 			MainMenu();
 		}));
 		optionscene.add(gameFont.createButton(gapX*2, 5*gapY, "Back", (button)->{MainMenu();}));
